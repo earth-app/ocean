@@ -3,6 +3,7 @@
 .gradle/
 .kotlin/
 build/
+logs/
 *.iml
 local.properties
 kotlin-js-store/
