@@ -58,6 +58,11 @@ kotlin {
             implementation("io.github.oshai:kotlin-logging:7.0.7")
         }
 
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+        }
+
         jvmMain.dependencies {
             runtimeOnly("ch.qos.logback:logback-classic:1.5.18")
         }
