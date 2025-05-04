@@ -102,7 +102,7 @@ jobs:
         uses: PavanMudigonda/jacoco-reporter@v5.1
         with:
           coverage_results_path: build/jacoco.xml
-          coverage_report_name: Code Coverage (${{ matrix.name }})
+          coverage_report_name: Code Coverage
           github_token: ${{ secrets.GITHUB_TOKEN }}
           skip_check_run: false
           minimum_coverage: 85
@@ -121,7 +121,7 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-report-${{ matrix.name }}-${{ github.run_id }}
+          name: coverage-report-${{ github.run_id }}
           path: "*/coverage-results.md"
       - name: Upload Code Coverage Artifacts (Pull Request)
         if: ${{ github.event_name == 'pull_request' }}
