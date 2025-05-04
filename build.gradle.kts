@@ -123,6 +123,53 @@ signing {
     sign(publishing.publications)
 }
 
+publishing {
+    publications {
+        filterIsInstance<MavenPublication>().forEach {
+            it.apply {
+                pom {
+                    name = project.name
+
+                    licenses {
+                        license {
+                            name = "GNU AGPL-3.0"
+                            url = "https://www.gnu.org/licenses/agpl-3.0.en.html"
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id = "gmitch215"
+                            name = "Gregory Mitchell"
+                            email = "me@gmitch215.xyz"
+                        }
+                    }
+
+                    scm {
+                        connection = "scm:git:git://github.com/earth-app/ocean.git"
+                        developerConnection = "scm:git:ssh://github.com/earth-app/ocean.git"
+                        url = "https://github.com/earth-app/ocean"
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        if (!version.toString().endsWith("SNAPSHOT")) {
+            maven {
+                name = "GithubPackages"
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+
+                url = uri("https://maven.pkg.github.com/earth-app/ocean")
+            }
+        }
+    }
+}
+
 mavenPublishing {
     coordinates(project.group.toString(), project.name, project.version.toString())
 
@@ -134,8 +181,8 @@ mavenPublishing {
 
         licenses {
             license {
-                name.set("MIT License")
-                url.set("https://opensource.org/licenses/MIT")
+                name.set("GNU AGPL-3.0")
+                url.set("https://www.gnu.org/licenses/agpl-3.0.en.html")
             }
         }
 
@@ -166,7 +213,7 @@ npmPublish {
             name = "@earth-app/${project.name}"
             version = project.version.toString()
             description = desc
-            license = "MIT"
+            license = "GNU AGPL-3.0"
             homepage = "https://github.com/earth-app/ocean"
 
             types = "${project.name}.d.ts"
