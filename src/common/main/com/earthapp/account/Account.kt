@@ -1,5 +1,7 @@
-package com.earthapp
+package com.earthapp.account
 
+import com.earthapp.activity.Activity
+import com.earthapp.util.EmailValidator
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
@@ -14,31 +16,53 @@ import kotlin.js.JsExport
 class Account {
 
     /**
+     * The unique identifier for the account.
+     */
+    var id: String = ""
+
+    /**
+     * The username associated with the account.
+     */
+    var username: String = ""
+
+    /**
      * The first name of the account holder.
      */
     var firstName: String = ""
 
     /**
-     * Represents a type of account's visibility.
+     * The last name of the account holder.
      */
-    enum class Visibility {
-        PRIVATE,
-        UNLISTED,
-        PUBLIC
-    }
+    var lastName: String = ""
 
     /**
-     * Represents a type of account's privacy settings.
+     * The email address associated with the account.
      */
-    enum class Privacy {
-        PRIVATE,
-        CIRCLE,
-        MUTUAL,
-        PUBLIC
-    }
+    @Serializable(with = EmailValidator::class)
+    var email: String = ""
+
+    /**
+     * The address of the account holder.
+     */
+    var address: String = ""
+
+    /**
+     * The country of the account holder.
+     */
+    var country: String = ""
+
+    /**
+     * The phone number associated with the account.
+     */
+    var phoneNumber: Int = 0
+
+    /**
+     * The activities associated with the account.
+     */
+    var activities: List<Activity> = emptyList()
 
     companion object {
-        private val logger = KotlinLogging.logger("com.earthapp.Account")
+        private val logger = KotlinLogging.logger("com.earthapp.account.Account")
 
         /**
          * Represents the length of an account identifier.

@@ -1,5 +1,6 @@
 package com.earthapp
 
+import com.earthapp.account.Account
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
