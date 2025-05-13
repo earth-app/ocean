@@ -1,5 +1,6 @@
 package com.earthapp.account
 
+import com.earthapp.Exportable
 import com.earthapp.activity.Activity
 import com.earthapp.util.EmailValidator
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -13,7 +14,7 @@ import kotlin.js.JsExport
 @OptIn(ExperimentalJsExport::class)
 @Serializable
 @JsExport
-class Account {
+class Account : Exportable {
 
     /**
      * The unique identifier for the account.
