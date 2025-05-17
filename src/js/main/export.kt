@@ -12,3 +12,16 @@ import kotlin.js.Promise
 @OptIn(DelicateCoroutinesApi::class, ExperimentalJsExport::class)
 @JsExport
 fun Exportable.toBinaryEncryptedAsPromise(): Promise<List<ByteArray>> = GlobalScope.promise { toBinaryEncrypted().toList() }
+
+/**
+ * Creates an Exportable object from binary data and a key.
+ * @param data The binary data to decrypt.
+ * @param key The key used for decryption.
+ * @return The decrypted Exportable object.
+ */
+@OptIn(DelicateCoroutinesApi::class, ExperimentalJsExport::class)
+@JsExport
+fun Exportable.Companion.fromBinaryEncryptedAsPromise(
+    data: ByteArray,
+    key: ByteArray,
+): Promise<Exportable> = GlobalScope.promise { fromBinaryEncrypted(data, key) }

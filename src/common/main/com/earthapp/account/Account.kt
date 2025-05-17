@@ -3,29 +3,29 @@ package com.earthapp.account
 import com.earthapp.Exportable
 import com.earthapp.activity.Activity
 import com.earthapp.util.EmailValidator
+import com.earthapp.util.newIdentifier
+import com.earthapp.util.registerInMemory
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
+import kotlin.js.ExperimentalJsStatic
 import kotlin.js.JsExport
+import kotlin.js.JsStatic
 
 /**
  * Represents an account in the Earth App.
  */
-@OptIn(ExperimentalJsExport::class)
+@OptIn(ExperimentalJsExport::class, ExperimentalJsStatic::class)
 @Serializable
 @JsExport
-class Account : Exportable {
-
-    /**
-     * The unique identifier for the account.
-     */
-    var id: String = ""
+class Account(
+    override val id: String,
 
     /**
      * The username associated with the account.
      */
-    var username: String = ""
-
+    val username: String
+) : Exportable {
     /**
      * The first name of the account holder.
      */
@@ -45,7 +45,7 @@ class Account : Exportable {
     /**
      * The address of the account holder.
      */
-    var address: String = ""
+    var address: String? = null
 
     /**
      * The country of the account holder.
@@ -60,32 +60,27 @@ class Account : Exportable {
     /**
      * The activities associated with the account.
      */
-    var activities: List<Activity> = emptyList()
+    val activities = mutableListOf<Activity>()
+
+    override fun validate0() {
+        require(username.isNotEmpty()) { "Username must not be empty." }
+        require(firstName.isNotEmpty()) { "First name must not be empty." }
+        require(lastName.isNotEmpty()) { "Last name must not be empty." }
+        require(email.isNotEmpty()) { "Email must not be empty." }
+        require(country.isNotEmpty()) { "Country must not be empty." }
+    }
 
     companion object {
-        private val logger = KotlinLogging.logger("com.earthapp.account.Account")
-
-        /**
-         * Represents the length of an account identifier.
-         */
-        const val ID_LENGTH = 24
-
-        /**
-         * Represents the characters that can be used in an account identifier.
-         */
-        val ID_CHARACTERS = ('a'..'z') + ('A'..'Z') + ('0'..'9') + listOf('@', '#')
+        private val logger = KotlinLogging.logger("com.earthapp.account.Account").registerInMemory()
 
         /**
          * Generates a new unique identifier for an account.
          * @return A unique identifier string.
          */
+        @JsStatic
         fun newId(): String {
-            val id = (1..ID_LENGTH)
-                .map { ID_CHARACTERS.random() }
-                .joinToString("")
-
+            val id = newIdentifier()
             logger.debug { "Generated new Account ID: $id" }
-
             return id
         }
     }
