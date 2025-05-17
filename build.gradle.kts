@@ -6,7 +6,7 @@ plugins {
     kotlin("multiplatform") version "2.1.21"
     kotlin("plugin.serialization") version "2.1.21"
     id("org.jetbrains.dokka") version "2.0.0"
-    id("com.vanniktech.maven.publish") version "0.31.0"
+    id("com.vanniktech.maven.publish") version "0.32.0"
     id("dev.petuska.npm.publish") version "3.5.3"
 
     `maven-publish`
