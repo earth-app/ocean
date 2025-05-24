@@ -1,5 +1,8 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
+$dokka.location:////PointingToDeclaration/ocean/[root]/index.html
+$dokka.location://fromBinary/#kotlin.ByteArray/PointingToDeclaration/ocean/[root]/from-binary.html
+$dokka.location://fromJson/#kotlin.String/PointingToDeclaration/ocean/[root]/from-json.html
 $dokka.location:com.earthapp.account////PointingToDeclaration/ocean/com.earthapp.account/index.html
 $dokka.location:com.earthapp.account/Account.Companion///PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/index.html
 $dokka.location:com.earthapp.account/Account.Companion/newId/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/new-id.html
