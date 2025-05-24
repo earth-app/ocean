@@ -1,8 +1,5 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-$dokka.location:////PointingToDeclaration/ocean/[root]/index.html
-$dokka.location://fromBinaryEncryptedAsPromise/com.earthapp.Exportable.Companion#kotlin.ByteArray#kotlin.ByteArray/PointingToDeclaration/ocean/[root]/from-binary-encrypted-as-promise.html
-$dokka.location://toBinaryEncryptedAsPromise/com.earthapp.Exportable#/PointingToDeclaration/ocean/[root]/to-binary-encrypted-as-promise.html
 $dokka.location:com.earthapp.account////PointingToDeclaration/ocean/com.earthapp.account/index.html
 $dokka.location:com.earthapp.account/Account.Companion///PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/index.html
 $dokka.location:com.earthapp.account/Account.Companion/newId/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/new-id.html
@@ -83,8 +80,10 @@ $dokka.location:com.earthapp.event/Event/id/#/PointingToDeclaration/ocean/com.e
 $dokka.location:com.earthapp.event/Event/location/#/PointingToDeclaration/ocean/com.earthapp.event/-event/location.html
 $dokka.location:com.earthapp.event/Event/name/#/PointingToDeclaration/ocean/com.earthapp.event/-event/name.html
 $dokka.location:com.earthapp.util////PointingToDeclaration/ocean/com.earthapp.util/index.html
+$dokka.location:com.earthapp.util//API_KEY_LENGTH/#/PointingToDeclaration/ocean/com.earthapp.util/-a-p-i_-k-e-y_-l-e-n-g-t-h.html
 $dokka.location:com.earthapp.util//ID_CHARACTERS/#/PointingToDeclaration/ocean/com.earthapp.util/-i-d_-c-h-a-r-a-c-t-e-r-s.html
 $dokka.location:com.earthapp.util//ID_LENGTH/#/PointingToDeclaration/ocean/com.earthapp.util/-i-d_-l-e-n-g-t-h.html
+$dokka.location:com.earthapp.util//newApiKey/#/PointingToDeclaration/ocean/com.earthapp.util/new-api-key.html
 $dokka.location:com.earthapp.util//newIdentifier/#/PointingToDeclaration/ocean/com.earthapp.util/new-identifier.html
 $dokka.location:com.earthapp.util/EmailValidator///PointingToDeclaration/ocean/com.earthapp.util/-email-validator/index.html
 $dokka.location:com.earthapp.util/RegexValidatingSerializer///PointingToDeclaration/ocean/com.earthapp.util/-regex-validating-serializer/index.html
@@ -102,15 +101,12 @@ $dokka.location:com.earthapp/AuthenticationLevel/entries/#/PointingToDeclaration
 $dokka.location:com.earthapp/AuthenticationLevel/valueOf/#kotlin.String/PointingToDeclaration/ocean/com.earthapp/-authentication-level/value-of.html
 $dokka.location:com.earthapp/AuthenticationLevel/values/#/PointingToDeclaration/ocean/com.earthapp/-authentication-level/values.html
 $dokka.location:com.earthapp/Exportable.Companion///PointingToDeclaration/ocean/com.earthapp/-exportable/-companion/index.html
-$dokka.location:com.earthapp/Exportable.Companion/CIPHER_SIZE/#/PointingToDeclaration/ocean/com.earthapp/-exportable/-companion/-c-i-p-h-e-r_-s-i-z-e.html
 $dokka.location:com.earthapp/Exportable.Companion/fromBinary/#kotlin.ByteArray/PointingToDeclaration/ocean/com.earthapp/-exportable/-companion/from-binary.html
-$dokka.location:com.earthapp/Exportable.Companion/fromBinaryEncrypted/#kotlin.ByteArray#kotlin.ByteArray/PointingToDeclaration/ocean/com.earthapp/-exportable/-companion/from-binary-encrypted.html
 $dokka.location:com.earthapp/Exportable.Companion/fromJson/#kotlin.String/PointingToDeclaration/ocean/com.earthapp/-exportable/-companion/from-json.html
 $dokka.location:com.earthapp/Exportable///PointingToDeclaration/ocean/com.earthapp/-exportable/index.html
 $dokka.location:com.earthapp/Exportable/Exportable/#/PointingToDeclaration/ocean/com.earthapp/-exportable/-exportable.html
 $dokka.location:com.earthapp/Exportable/id/#/PointingToDeclaration/ocean/com.earthapp/-exportable/id.html
 $dokka.location:com.earthapp/Exportable/toBinary/#/PointingToDeclaration/ocean/com.earthapp/-exportable/to-binary.html
-$dokka.location:com.earthapp/Exportable/toBinaryEncrypted/#/PointingToDeclaration/ocean/com.earthapp/-exportable/to-binary-encrypted.html
 $dokka.location:com.earthapp/Exportable/toJson/#/PointingToDeclaration/ocean/com.earthapp/-exportable/to-json.html
 $dokka.location:com.earthapp/Exportable/validate/#/PointingToDeclaration/ocean/com.earthapp/-exportable/validate.html
 com.earthapp
