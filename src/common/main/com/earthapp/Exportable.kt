@@ -2,6 +2,9 @@
 
 package com.earthapp
 
+import com.earthapp.account.Account
+import com.earthapp.activity.Activity
+import com.earthapp.event.Event
 import dev.whyoleg.cryptography.BinarySize.Companion.bits
 import dev.whyoleg.cryptography.CryptographyProvider
 import dev.whyoleg.cryptography.algorithms.AES
@@ -12,17 +15,22 @@ import korlibs.io.compression.uncompress
 import korlibs.io.lang.Charsets
 import korlibs.io.lang.decodeToString
 import korlibs.io.lang.encodeToByteArray
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.modules.polymorphic
+import kotlinx.serialization.modules.subclass
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
 
+@Serializable
 @JsExport
-interface Exportable {
+abstract class Exportable {
 
     /**
      * The unique identifier for the object.
      */
-    val id: String
+    abstract val id: String
 
     /**
      * Validates its own state before storage. This method is not intended
@@ -33,11 +41,7 @@ interface Exportable {
         validate0()
     }
 
-    /**
-     * Validates its own state before storage.
-     * Should throw an [IllegalStateException] if the state is invalid.
-     */
-    fun validate0()
+    internal abstract fun validate0()
 
     /**
      * Exports the object to a string format.
@@ -73,17 +77,11 @@ interface Exportable {
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.Exportable")
 
-        private val json = Json {
-            ignoreUnknownKeys = true
-            isLenient = true
-            prettyPrint = true
-        }
-
         /**
          * The size of the cipher used for encryption and decryption.
-         * Should be 256 bits for AES-256 encryption.
+         * Should be 128 bits.
          */
-        const val CIPHER_SIZE = 256
+        const val CIPHER_SIZE = 128
 
         private val aesGcm = CryptographyProvider.Default.get(AES.GCM)
         private val keyGenerator = aesGcm.keyGenerator(AES.Key.Size.B256)

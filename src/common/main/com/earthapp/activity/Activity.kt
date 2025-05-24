@@ -20,7 +20,7 @@ class Activity(
      * The name of the activity.
      */
     val name: String,
-) : Exportable {
+) : Exportable() {
 
     /**
      * The type of the activity.
