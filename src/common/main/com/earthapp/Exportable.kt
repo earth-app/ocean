@@ -2,12 +2,6 @@
 
 package com.earthapp
 
-import com.earthapp.account.Account
-import com.earthapp.activity.Activity
-import com.earthapp.event.Event
-import dev.whyoleg.cryptography.BinarySize.Companion.bits
-import dev.whyoleg.cryptography.CryptographyProvider
-import dev.whyoleg.cryptography.algorithms.AES
 import io.github.oshai.kotlinlogging.KotlinLogging
 import korlibs.io.compression.compress
 import korlibs.io.compression.deflate.GZIP
@@ -16,10 +10,6 @@ import korlibs.io.lang.Charsets
 import korlibs.io.lang.decodeToString
 import korlibs.io.lang.encodeToByteArray
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
-import kotlinx.serialization.modules.subclass
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
 
@@ -58,34 +48,8 @@ abstract class Exportable {
         return bytes.compress(GZIP)
     }
 
-    /**
-     * Exports the object to a binary format and encrypts it using AES encryption.
-     * @return A pair containing the encrypted binary data and the encryption key.
-     */
-    @JsExport.Ignore
-    suspend fun toBinaryEncrypted(): Pair<ByteArray, ByteArray> {
-        val data = toBinary()
-        val key = keyGenerator.generateKey()
-        val cipher = key.cipher(CIPHER_SIZE.bits)
-
-        val encrypted = cipher.encrypt(data)
-        val encodedKey = key.encodeToByteArray(AES.Key.Format.RAW)
-
-        return Pair(encrypted, encodedKey)
-    }
-
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.Exportable")
-
-        /**
-         * The size of the cipher used for encryption and decryption.
-         * Should be 128 bits.
-         */
-        const val CIPHER_SIZE = 128
-
-        private val aesGcm = CryptographyProvider.Default.get(AES.GCM)
-        private val keyGenerator = aesGcm.keyGenerator(AES.Key.Size.B256)
-        private val keyDecoder = aesGcm.keyDecoder()
 
         /**
          * Deserializes a JSON string into an object of the specified type.
@@ -99,20 +63,6 @@ abstract class Exportable {
             val decompressed = binary.uncompress(GZIP)
             val jsonString = decompressed.decodeToString(Charsets.UTF8)
             return fromJson(jsonString)
-        }
-
-        /**
-         * Creates an Exportable object from binary data and a key.
-         * @param encrypted The binary data to decrypt.
-         * @param encodedKey The key used for decryption.
-         * @return The decrypted Exportable object.
-         */
-        @JsExport.Ignore
-        suspend fun fromBinaryEncrypted(encrypted: ByteArray, encodedKey: ByteArray): Exportable {
-            val decodedKey = keyDecoder.decodeFromByteArray(AES.Key.Format.RAW, encodedKey)
-            val cipher = decodedKey.cipher(CIPHER_SIZE.bits)
-            val decrypted = cipher.decrypt(encrypted)
-            return fromBinary(decrypted)
         }
     }
 

@@ -52,18 +52,6 @@ class TestAccount {
         assertNotNull(deserializedBinary)
         deserializedBinary.validate()
         assertEquals(account, deserializedBinary)
-
-        // To-From Binary Encrypted
-        val (encryptedData, key) = account.toBinaryEncrypted()
-        logger.debug { "Test Binary Encrypted: Data ${encryptedData.size}, Key ${key.size}}" }
-        assertTrue { encryptedData.isNotEmpty() }
-        assertTrue { key.isNotEmpty() }
-        assertTrue { key.size == Exportable.CIPHER_SIZE / 4 }
-
-        val deserializedEncrypted = Exportable.fromBinaryEncrypted(encryptedData, key) as? Account
-        assertNotNull(deserializedEncrypted)
-        deserializedEncrypted.validate()
-        assertEquals(account, deserializedEncrypted)
     }
 
 }

@@ -50,18 +50,6 @@ class TestEvent {
         assertNotNull(deserializedBinary)
         deserializedBinary.validate()
         assertEquals(event, deserializedBinary)
-
-        // To-From Binary Encrypted
-        val (encryptedData, key) = event.toBinaryEncrypted()
-        logger.debug { "Test Binary Encrypted: Data ${encryptedData.size}, Key ${key.size}}" }
-        assertTrue { encryptedData.isNotEmpty() }
-        assertTrue { key.isNotEmpty() }
-        assertTrue { key.size == Exportable.CIPHER_SIZE / 4 }
-
-        val deserializedEncrypted = Exportable.fromBinaryEncrypted(encryptedData, key) as? Event
-        assertNotNull(deserializedEncrypted)
-        deserializedEncrypted.validate()
-        assertEquals(event, deserializedEncrypted)
     }
 
 }

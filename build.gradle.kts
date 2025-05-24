@@ -62,7 +62,6 @@ kotlin {
             implementation("io.github.oshai:kotlin-logging:7.0.7")
 
             implementation("com.soywiz:korlibs-compression:6.0.0")
-            implementation("dev.whyoleg.cryptography:cryptography-core:$cryptoVersion")
         }
 
         commonTest.dependencies {
@@ -70,12 +69,7 @@ kotlin {
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
         }
 
-        jsMain.dependencies {
-            implementation("dev.whyoleg.cryptography:cryptography-provider-webcrypto:$cryptoVersion")
-        }
-
         jvmMain.dependencies {
-            implementation("dev.whyoleg.cryptography:cryptography-provider-jdk:$cryptoVersion")
             runtimeOnly("ch.qos.logback:logback-classic:1.5.18")
         }
     }
