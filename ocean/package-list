@@ -12,12 +12,13 @@ $dokka.location:com.earthapp.account/Account/activities/#/PointingToDeclaration/
 $dokka.location:com.earthapp.account/Account/address/#/PointingToDeclaration/ocean/com.earthapp.account/-account/address.html
 $dokka.location:com.earthapp.account/Account/country/#/PointingToDeclaration/ocean/com.earthapp.account/-account/country.html
 $dokka.location:com.earthapp.account/Account/email/#/PointingToDeclaration/ocean/com.earthapp.account/-account/email.html
+$dokka.location:com.earthapp.account/Account/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.account/-account/equals.html
 $dokka.location:com.earthapp.account/Account/firstName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/first-name.html
+$dokka.location:com.earthapp.account/Account/hashCode/#/PointingToDeclaration/ocean/com.earthapp.account/-account/hash-code.html
 $dokka.location:com.earthapp.account/Account/id/#/PointingToDeclaration/ocean/com.earthapp.account/-account/id.html
 $dokka.location:com.earthapp.account/Account/lastName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/last-name.html
 $dokka.location:com.earthapp.account/Account/phoneNumber/#/PointingToDeclaration/ocean/com.earthapp.account/-account/phone-number.html
 $dokka.location:com.earthapp.account/Account/username/#/PointingToDeclaration/ocean/com.earthapp.account/-account/username.html
-$dokka.location:com.earthapp.account/Account/validate0/#/PointingToDeclaration/ocean/com.earthapp.account/-account/validate0.html
 $dokka.location:com.earthapp.account/AccountType.FREE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.account/-account-type/-f-r-e-e/index.html
 $dokka.location:com.earthapp.account/AccountType.ORGANIZER///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.account/-account-type/-o-r-g-a-n-i-z-e-r/index.html
 $dokka.location:com.earthapp.account/AccountType.PRO///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.account/-account-type/-p-r-o/index.html
@@ -55,7 +56,6 @@ $dokka.location:com.earthapp.activity/Activity/Activity/#kotlin.String#kotlin.St
 $dokka.location:com.earthapp.activity/Activity/id/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/id.html
 $dokka.location:com.earthapp.activity/Activity/name/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/name.html
 $dokka.location:com.earthapp.activity/Activity/types/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/types.html
-$dokka.location:com.earthapp.activity/Activity/validate0/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/validate0.html
 $dokka.location:com.earthapp.activity/ActivityType.HOBBY///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.activity/-activity-type/-h-o-b-b-y/index.html
 $dokka.location:com.earthapp.activity/ActivityType.OTHER///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.activity/-activity-type/-o-t-h-e-r/index.html
 $dokka.location:com.earthapp.activity/ActivityType.RELAXATION///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.activity/-activity-type/-r-e-l-a-x-a-t-i-o-n/index.html
@@ -74,13 +74,17 @@ $dokka.location:com.earthapp.event/Event.Companion/newId/#/PointingToDeclaration
 $dokka.location:com.earthapp.event/Event///PointingToDeclaration/ocean/com.earthapp.event/-event/index.html
 $dokka.location:com.earthapp.event/Event/Event/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.event/-event/-event.html
 $dokka.location:com.earthapp.event/Event/attendees/#/PointingToDeclaration/ocean/com.earthapp.event/-event/attendees.html
+$dokka.location:com.earthapp.event/Event/date/#/PointingToDeclaration/ocean/com.earthapp.event/-event/date.html
+$dokka.location:com.earthapp.event/Event/description/#/PointingToDeclaration/ocean/com.earthapp.event/-event/description.html
+$dokka.location:com.earthapp.event/Event/endDate/#/PointingToDeclaration/ocean/com.earthapp.event/-event/end-date.html
+$dokka.location:com.earthapp.event/Event/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.event/-event/equals.html
+$dokka.location:com.earthapp.event/Event/hashCode/#/PointingToDeclaration/ocean/com.earthapp.event/-event/hash-code.html
 $dokka.location:com.earthapp.event/Event/id/#/PointingToDeclaration/ocean/com.earthapp.event/-event/id.html
+$dokka.location:com.earthapp.event/Event/location/#/PointingToDeclaration/ocean/com.earthapp.event/-event/location.html
 $dokka.location:com.earthapp.event/Event/name/#/PointingToDeclaration/ocean/com.earthapp.event/-event/name.html
-$dokka.location:com.earthapp.event/Event/validate0/#/PointingToDeclaration/ocean/com.earthapp.event/-event/validate0.html
 $dokka.location:com.earthapp.util////PointingToDeclaration/ocean/com.earthapp.util/index.html
 $dokka.location:com.earthapp.util//ID_CHARACTERS/#/PointingToDeclaration/ocean/com.earthapp.util/-i-d_-c-h-a-r-a-c-t-e-r-s.html
 $dokka.location:com.earthapp.util//ID_LENGTH/#/PointingToDeclaration/ocean/com.earthapp.util/-i-d_-l-e-n-g-t-h.html
-$dokka.location:com.earthapp.util//getInMemoryLog/#/PointingToDeclaration/ocean/com.earthapp.util/get-in-memory-log.html
 $dokka.location:com.earthapp.util//newIdentifier/#/PointingToDeclaration/ocean/com.earthapp.util/new-identifier.html
 $dokka.location:com.earthapp.util/EmailValidator///PointingToDeclaration/ocean/com.earthapp.util/-email-validator/index.html
 $dokka.location:com.earthapp.util/RegexValidatingSerializer///PointingToDeclaration/ocean/com.earthapp.util/-regex-validating-serializer/index.html
@@ -103,12 +107,12 @@ $dokka.location:com.earthapp/Exportable.Companion/fromBinary/#kotlin.ByteArray/P
 $dokka.location:com.earthapp/Exportable.Companion/fromBinaryEncrypted/#kotlin.ByteArray#kotlin.ByteArray/PointingToDeclaration/ocean/com.earthapp/-exportable/-companion/from-binary-encrypted.html
 $dokka.location:com.earthapp/Exportable.Companion/fromJson/#kotlin.String/PointingToDeclaration/ocean/com.earthapp/-exportable/-companion/from-json.html
 $dokka.location:com.earthapp/Exportable///PointingToDeclaration/ocean/com.earthapp/-exportable/index.html
+$dokka.location:com.earthapp/Exportable/Exportable/#/PointingToDeclaration/ocean/com.earthapp/-exportable/-exportable.html
 $dokka.location:com.earthapp/Exportable/id/#/PointingToDeclaration/ocean/com.earthapp/-exportable/id.html
 $dokka.location:com.earthapp/Exportable/toBinary/#/PointingToDeclaration/ocean/com.earthapp/-exportable/to-binary.html
 $dokka.location:com.earthapp/Exportable/toBinaryEncrypted/#/PointingToDeclaration/ocean/com.earthapp/-exportable/to-binary-encrypted.html
 $dokka.location:com.earthapp/Exportable/toJson/#/PointingToDeclaration/ocean/com.earthapp/-exportable/to-json.html
 $dokka.location:com.earthapp/Exportable/validate/#/PointingToDeclaration/ocean/com.earthapp/-exportable/validate.html
-$dokka.location:com.earthapp/Exportable/validate0/#/PointingToDeclaration/ocean/com.earthapp/-exportable/validate0.html
 com.earthapp
 com.earthapp.account
 com.earthapp.activity
