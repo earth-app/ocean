@@ -61,16 +61,61 @@ class Account(
      */
     val activities = mutableListOf<Activity>()
 
+    /**
+     * The visibility of the account.
+     */
+    var visibility: Visibility = Visibility.UNLISTED
+
     internal constructor(username: String, apply: Account.() -> Unit) : this(newId(), username) {
         apply(this)
         validate()
     }
 
+    /**
+     * Creates a new account instance with the specified properties.
+     * @param username The username for the account.
+     * @param firstName The first name of the account holder.
+     * @param lastName The last name of the account holder.
+     * @param email The email address associated with the account.
+     * @param address The address of the account holder.
+     * @param country The country of the account holder.
+     * @param phoneNumber The phone number associated with the account.
+     * @param visibility The visibility of the account.
+     * @return A new instance of [Account] with the specified properties.
+     */
+    fun patch(
+        username: String = this.username,
+        firstName: String = this.firstName,
+        lastName: String = this.lastName,
+        email: String = this.email,
+        address: String? = this.address,
+        country: String = this.country,
+        phoneNumber: Int = this.phoneNumber,
+        visibility: Visibility = this.visibility
+    ): Account {
+        return Account(id, username).apply {
+            this.firstName = firstName
+            this.lastName = lastName
+            this.email = email
+            this.address = address
+            this.country = country
+            this.phoneNumber = phoneNumber
+            this.visibility = visibility
+        }.also { it.validate() }
+    }
+
     override fun validate0() {
         require(username.isNotEmpty()) { "Username must not be empty." }
+        require(username.length in 4..20) { "Username must be between 4 and 20 characters long." }
+
         require(firstName.isNotEmpty()) { "First name must not be empty." }
+        require(firstName.length in 1..30) { "First name must be between 2 and 30 characters long." }
+
         require(lastName.isNotEmpty()) { "Last name must not be empty." }
+        require(lastName.length in 1..30) { "Last name must be between 2 and 30 characters long." }
+
         require(email.isNotEmpty()) { "Email must not be empty." }
+        require('@' in email) { "Email must contain '@' character." }
         require(country.isNotEmpty()) { "Country must not be empty." }
     }
 
@@ -101,7 +146,5 @@ class Account(
             return id
         }
     }
-
-
 
 }
