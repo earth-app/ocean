@@ -52,7 +52,7 @@ abstract class Exportable {
      * Creates a deep copy of the object.
      * @return A new instance of the object with the same properties.
      */
-    fun copy(): Exportable = json.decodeFromString<Exportable>(json.encodeToString(this))
+    fun deepCopy(): Exportable = json.decodeFromString<Exportable>(json.encodeToString(this))
 
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.Exportable")

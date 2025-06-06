@@ -31,6 +31,7 @@ abstract class Scraper {
     /**
      * Searches for pages based on the provided query.
      */
+    @JsExport.Ignore
     abstract suspend fun search(query: String): List<Page>
 
     init {
@@ -40,7 +41,6 @@ abstract class Scraper {
     /**
      * Represents a page scraped by the scraper.
      */
-    @JsExport
     @Serializable
     data class Page(
         /**

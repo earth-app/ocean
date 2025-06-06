@@ -7,7 +7,7 @@ import com.earthapp.shovel.querySelectorAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
-class PubMed : Scraper() {
+object PubMed : Scraper() {
 
     override val name: String = "PubMed"
     override val baseUrl: String = "https://pubmed.ncbi.nlm.nih.gov"
