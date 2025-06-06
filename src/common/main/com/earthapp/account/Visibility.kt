@@ -1,8 +1,14 @@
+@file:OptIn(ExperimentalJsExport::class)
+
 package com.earthapp.account
+
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
 
 /**
  * Represents a type of account's visibility.
  */
+@JsExport
 enum class Visibility {
     /**
      * The account is private and not visible to others.
