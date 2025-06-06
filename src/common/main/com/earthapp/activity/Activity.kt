@@ -31,6 +31,7 @@ class Activity(
         require(id.isNotEmpty()) { "ID must not be empty." }
         require(name.isNotEmpty()) { "Name must not be empty." }
         require(types.isNotEmpty()) { "Activity types must not be empty." }
+        require(types.size <= 3) { "Activity can have a maximum of 3 types." }
     }
 
 }
