@@ -10,6 +10,7 @@ import kotlinx.coroutines.promise
 /**
  * Performs a search using the Scraper class.
  * @param query The search query string.
+ * @param pageLimit The maximum number of pages to return. If -1, returns all pages.
  * @return A promise of the search results.
  */
-fun Scraper.searchAsPromise(query: String) = GlobalScope.promise { search(query) }
+fun Scraper.searchAsPromise(query: String, pageLimit: Int = -1) = GlobalScope.promise { search(query) }
