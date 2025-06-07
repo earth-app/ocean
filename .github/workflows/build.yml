@@ -33,6 +33,11 @@ jobs:
     needs: setup
     timeout-minutes: 120
 
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+
     name: Build Java 17
     steps:
       - uses: actions/checkout@v4
@@ -54,12 +59,17 @@ jobs:
             build/libs/
             build/packages/js/
           overwrite: true
+      - name: Attest Build Artifacts
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: build-artifacts-${{ github.run_id }}
+          subject-digest: sha256:${{ steps.archive.outputs.artifact-digest }}
       - name: Stop Gradle
         run: ./gradlew --stop
 
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 180
     needs: setup
 
     permissions:
@@ -138,7 +148,7 @@ jobs:
     needs: build
     name: Deploy Dokka
     if: ${{ github.event_name != 'pull_request' && github.ref_name == 'master' }}
-    timeout-minutes: 30
+    timeout-minutes: 90
 
     permissions:
       contents: write
@@ -163,7 +173,7 @@ jobs:
     needs: [build, test]
     name: Publish to Repository
     if: ${{ github.event_name != 'pull_request' }}
-    timeout-minutes: 30
+    timeout-minutes: 120
 
     permissions:
       contents: write
