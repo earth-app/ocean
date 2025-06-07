@@ -6,7 +6,6 @@ import com.earthapp.Exportable
 import com.earthapp.shovel.Document
 import com.earthapp.shovel.getFaviconUrl
 import com.earthapp.shovel.getTitle
-import com.earthapp.shovel.querySelector
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
@@ -200,15 +199,15 @@ abstract class Scraper {
          */
         fun createPage(href: String, articleDoc: Document, apply: Page.() -> Unit = {}): Page {
             val metadata = articleDoc.metadata
-            val title = metadata["citation_title"]?.firstOrNull() ?: articleDoc.getTitle() ?: "Unknown Title"
+            val title = metadata["citation_title"]?.get(0) ?: articleDoc.getTitle() ?: "Unknown Title"
 
-            val volume = metadata["citation_volume"]?.firstOrNull()?.let { "Vol. $it, " } ?: ""
-            val issue = metadata["citation_issue"]?.firstOrNull()?.let { "Issue $it, " } ?: ""
-            val journal = (metadata["citation_journal_title"]?.firstOrNull() ?: metadata["citation_publisher"]?.firstOrNull() ?: "Unknown Journal")
+            val volume = metadata["citation_volume"]?.get(0)?.let { "Vol. $it, " } ?: ""
+            val issue = metadata["citation_issue"]?.get(0)?.let { "Issue $it, " } ?: ""
+            val journal = (metadata["citation_journal_title"]?.get(0) ?: metadata["citation_publisher"]?.get(0) ?: "Unknown Journal")
                 .split(" ")
                 .joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
-            val firstPage = metadata["citation_firstpage"]?.firstOrNull()
-            val lastPage = metadata["citation_lastpage"]?.firstOrNull()
+            val firstPage = metadata["citation_firstpage"]?.get(0)
+            val lastPage = metadata["citation_lastpage"]?.get(0)
             val pp = when {
                 firstPage != null && lastPage != null -> ", pp. $firstPage-$lastPage"
                 firstPage != null -> ", p. $firstPage"
@@ -220,14 +219,14 @@ abstract class Scraper {
 
             val author = formatAuthors(metadata["citation_author"] ?: emptyList())
 
-            val date = metadata["citation_date"]?.firstOrNull() ?:
-                metadata["citation_online_date"]?.firstOrNull() ?:
-                metadata["citation_publication_date"]?.firstOrNull() ?:
+            val date = metadata["citation_date"]?.get(0) ?:
+                metadata["citation_online_date"]?.get(0) ?:
+                metadata["citation_publication_date"]?.get(0) ?:
                 "Unknown Date"
 
             val links = mutableMapOf<String, String>()
-            metadata["citation_pdf_url"]?.firstOrNull()?.let { links["PDF"] = it }
-            metadata["citation_doi"]?.firstOrNull()?.let { links["DOI"] = "https://doi.org/$it" }
+            metadata["citation_pdf_url"]?.get(0)?.let { links["PDF"] = it }
+            metadata["citation_doi"]?.get(0)?.let { links["DOI"] = "https://doi.org/$it" }
 
             return Page(
                 url = href,
@@ -238,9 +237,9 @@ abstract class Scraper {
                 links = links,
                 faviconUrl = articleDoc.getFaviconUrl() ?: ""
             ).apply {
-                abstract = metadata["citation_abstract"]?.firstOrNull() ?: ""
+                abstract = metadata["citation_abstract"]?.get(0) ?: ""
                 keywords.addAll(metadata["citation_keywords"] ?: metadata["dc.subject"] ?: emptyList())
-                themeColor = metadata["theme_color"]?.firstOrNull() ?: "#ffffff"
+                themeColor = metadata["theme_color"]?.get(0) ?: "#ffffff"
 
                 apply()
                 validate()
