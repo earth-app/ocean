@@ -52,6 +52,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew clean assemble
       - name: Archive Build Artifacts
+        id: archive
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts-${{ github.run_id }}
