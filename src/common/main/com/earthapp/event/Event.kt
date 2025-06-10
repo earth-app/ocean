@@ -1,7 +1,7 @@
 package com.earthapp.event
 
+import com.earthapp.CompressionSerializer
 import com.earthapp.Exportable
-import com.earthapp.account.Account
 import com.earthapp.util.newIdentifier
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.Serializable
@@ -9,7 +9,6 @@ import kotlin.js.ExperimentalJsExport
 import kotlin.js.ExperimentalJsStatic
 import kotlin.js.JsExport
 import kotlin.js.JsStatic
-import kotlin.time.Duration
 
 /**
  * Represents an event in the Earth App.
@@ -18,7 +17,11 @@ import kotlin.time.Duration
 @Serializable
 @JsExport
 class Event(
-    override val id: String
+    override val id: String,
+    /**
+     * The unique identifier for the host of the event.
+     */
+    val hostId: String,
 ) : Exportable() {
 
     /**
@@ -29,6 +32,7 @@ class Event(
     /**
      * The description of the event.
      */
+    @Serializable(with = CompressionSerializer::class)
     var description: String = ""
 
     /**
@@ -51,13 +55,21 @@ class Event(
      */
     val attendees = mutableListOf<String>()
 
-    internal constructor(apply: Event.() -> Unit) : this(newId()) {
+    /**
+     * The list of activities associated with the event.
+     */
+    val activities = mutableListOf<String>()
+
+    internal constructor(hostId: String, apply: Event.() -> Unit) : this(newId(), hostId) {
         apply(this)
         validate()
     }
 
     override fun validate0() {
         require(name.isNotEmpty()) { "Name must not be empty." }
+
+        if (activities.isNotEmpty())
+            require(activities.size <= 10) { "Event can have a maximum of 5 activities." }
     }
 
     override fun equals(other: Any?): Boolean {

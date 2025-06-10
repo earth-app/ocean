@@ -2,6 +2,7 @@
 
 package com.earthapp.ocean.boat
 
+import com.earthapp.CompressionSerializer
 import com.earthapp.Exportable
 import com.earthapp.shovel.Document
 import com.earthapp.shovel.getFaviconUrl
@@ -79,6 +80,7 @@ abstract class Scraper {
          * The abstract of the page, which is a brief summary or description.
          * If the abstract is empty, it defaults to a placeholder message.
          */
+        @Serializable(with = CompressionSerializer::class)
         var abstract: String = ""
             set(value) {
                 field = if (value.isEmpty()) {
@@ -91,6 +93,7 @@ abstract class Scraper {
         /**
          * Some string content of the page.
          */
+        @Serializable(with = CompressionSerializer::class)
         var content: String = "No content available."
             set(value) {
                 field = if (value.isEmpty()) {

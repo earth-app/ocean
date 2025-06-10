@@ -1,5 +1,6 @@
 package com.earthapp.activity
 
+import com.earthapp.CompressionSerializer
 import com.earthapp.Exportable
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
@@ -23,6 +24,12 @@ class Activity(
 ) : Exportable() {
 
     /**
+     * The description of the activity.
+     */
+    @Serializable(with = CompressionSerializer::class)
+    val description: String? = null
+
+    /**
      * The type of the activity.
      */
     val types = mutableListOf<ActivityType>()
@@ -32,6 +39,9 @@ class Activity(
         require(name.isNotEmpty()) { "Name must not be empty." }
         require(types.isNotEmpty()) { "Activity types must not be empty." }
         require(types.size <= 3) { "Activity can have a maximum of 3 types." }
+
+        if (!description.isNullOrEmpty())
+            require(description.length in 0..1000) { "Description must be between 0 and 1000 characters." }
     }
 
 }
