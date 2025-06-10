@@ -66,6 +66,23 @@ class Account(
      */
     var visibility: Visibility = Visibility.UNLISTED
 
+    /**
+     * The type of the account.
+     */
+    var type: AccountType = AccountType.FREE
+
+    /**
+     * Checks if the account is of type [AccountType.ADMINISTRATOR].
+     */
+    var isAdmin: Boolean
+        get() = type == AccountType.ADMINISTRATOR
+        set(value) {
+            if (value)
+                type = AccountType.ADMINISTRATOR
+            else if (type == AccountType.ADMINISTRATOR)
+                type = AccountType.FREE // Reset to free if not admin
+        }
+
     internal constructor(username: String, apply: Account.() -> Unit) : this(newId(), username) {
         apply(this)
         validate()
@@ -116,7 +133,9 @@ class Account(
 
         require(email.isNotEmpty()) { "Email must not be empty." }
         require('@' in email) { "Email must contain '@' character." }
-        require(country.isNotEmpty()) { "Country must not be empty." }
+
+        if (country.isNotEmpty())
+            require(country.length == 2) { "Country code must be exactly 2 characters long." }
     }
 
     override fun equals(other: Any?): Boolean {

@@ -23,6 +23,11 @@ enum class AccountType {
     /**
      * Represents an organizer account type.
      */
-    ORGANIZER
+    ORGANIZER,
+
+    /**
+     * Represents an administrator account type.
+     */
+    ADMINISTRATOR
 
 }
