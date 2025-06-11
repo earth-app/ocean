@@ -16,9 +16,11 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.Json.Default.serializersModule
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
+import kotlinx.serialization.serializer
 
 internal val serializers = SerializersModule {
     polymorphic(Exportable::class) {
@@ -42,13 +44,22 @@ object CompressionSerializer : KSerializer<String> {
     override val descriptor = PrimitiveSerialDescriptor("CompressedString", PrimitiveKind.STRING)
 
     override fun serialize(encoder: Encoder, value: String) {
+        if (value.isEmpty()) {
+            encoder.encodeString("")
+            return
+        }
+
         val bytes = value.encodeToByteArray(charset).compress(GZIP)
-        encoder.encodeString(bytes.decodeToString(charset))
+        encoder.encodeSerializableValue(serializersModule.serializer(), bytes)
     }
 
     override fun deserialize(decoder: Decoder): String {
-        val compressed = decoder.decodeString()
-        val bytes = compressed.encodeToByteArray(charset).uncompress(GZIP)
-        return bytes.decodeToString(charset)
+        val compressed = decoder.decodeSerializableValue(serializersModule.serializer<ByteArray>())
+        if (compressed.isEmpty()) {
+            return ""
+        }
+
+        val decompressed = compressed.uncompress(GZIP)
+        return decompressed.decodeToString(charset)
     }
 }
