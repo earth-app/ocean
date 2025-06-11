@@ -1,8 +1,15 @@
 package com.earthapp.account
 
+import kotlinx.serialization.Serializable
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
+
 /**
  * Enum class representing different types of accounts.
  */
+@OptIn(ExperimentalJsExport::class)
+@JsExport
+@Serializable
 enum class AccountType {
 
     /**

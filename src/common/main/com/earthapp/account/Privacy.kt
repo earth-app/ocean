@@ -1,8 +1,15 @@
 package com.earthapp.account
 
+import kotlinx.serialization.Serializable
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
+
 /**
  * Represents a type of account's privacy settings.
  */
+@OptIn(ExperimentalJsExport::class)
+@JsExport
+@Serializable
 enum class Privacy {
     /**
      * The field is private and only visible to the owner.
