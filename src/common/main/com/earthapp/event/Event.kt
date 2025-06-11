@@ -2,6 +2,7 @@ package com.earthapp.event
 
 import com.earthapp.CompressionSerializer
 import com.earthapp.Exportable
+import com.earthapp.util.ID_LENGTH
 import com.earthapp.util.newIdentifier
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.Serializable
@@ -66,6 +67,8 @@ class Event(
     }
 
     override fun validate0() {
+        require(hostId.isNotEmpty()) { "Host ID must not be empty." }
+        require(hostId.length == ID_LENGTH) { "Host ID must be exactly $ID_LENGTH characters long." }
         require(name.isNotEmpty()) { "Name must not be empty." }
 
         if (activities.isNotEmpty())

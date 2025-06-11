@@ -1,6 +1,7 @@
 package com.earthapp.event
 
 import com.earthapp.Exportable
+import com.earthapp.account.Account
 import com.earthapp.util.ID_CHARACTERS
 import com.earthapp.util.ID_LENGTH
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -25,7 +26,7 @@ class TestEvent {
 
     @Test
     fun testSerialize() = runTest {
-        val event = Event {
+        val event = Event(Account.newId()) {
             name = "My Event"
             description = "This is a test event."
             date = TimeSource.Monotonic.markNow().elapsedNow().inWholeMilliseconds.toDouble()
