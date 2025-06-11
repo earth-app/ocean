@@ -5,6 +5,7 @@ import com.earthapp.activity.Activity
 import com.earthapp.util.EmailValidator
 import com.earthapp.util.newIdentifier
 import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.ExperimentalJsStatic
@@ -69,6 +70,7 @@ class Account(
     /**
      * The type of the account.
      */
+    @SerialName("account_type")
     var type: AccountType = AccountType.FREE
 
     /**
