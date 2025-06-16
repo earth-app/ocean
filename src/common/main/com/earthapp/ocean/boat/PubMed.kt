@@ -31,7 +31,7 @@ object PubMed : Scraper() {
 
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
         val url = "$baseUrl/?term=${query.replace(" ", "+")}&filter=simsearch2.ffrft&sort=date"
-        logger.debug { "Searching $name for query: '$query'" }
+        logger.debug { "Searching $name for query: '$query' - $url" }
 
         val firstPage = url.fetchDocument()
         val pages = (firstPage.querySelector(PAGE_COUNT)?.textContent?.replace(",", "") ?: "of 1").split("\\s+".toRegex())[1].toIntOrNull() ?: 1
@@ -41,10 +41,12 @@ object PubMed : Scraper() {
         coroutineScope {
             for (i in 1..(if (pageLimit == -1) pages else minOf(pages, pageLimit))) {
                 launch {
-                    logger.debug { "$name -- Searching through Page $i..." }
-
                     val document = if (i == 1) firstPage else "$url&page=$i".fetchDocument()
+                    logger.debug { "$name -- Searching through Page $i... (${document.url})" }
+
                     val articleChunks = document.querySelectorAll("$SEARCH_RESULTS > article.full-docsum")
+
+                    logger.debug { "$name --- Found ${articleChunks.size} article chunks on Page $i" }
 
                     for (article in articleChunks) {
                         launch {

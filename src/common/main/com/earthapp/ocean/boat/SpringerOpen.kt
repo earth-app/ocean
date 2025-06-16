@@ -27,22 +27,23 @@ object SpringerOpen : Scraper() {
 
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
         val url = "$baseUrl/search?query=${query.replace(" ", "+")}&sort=PubDate&searchType=publisherSearch"
-        logger.debug { "Searching $name for query: '$query'" }
+        logger.debug { "Searching $name for query: '$query' - $url" }
 
         val firstPage = url.fetchDocument()
-        val pages = (firstPage.querySelector(PAGE_COUNT)?.textContent?.replace(",", "") ?: "Page 1 of 1").split("\\s+".toRegex())[3].toIntOrNull() ?: 1
-
+        val pages = (firstPage.querySelector(PAGE_COUNT)?.textContent?.trim()?.replace(",", "") ?: "Page 1 of 1").split("\\s+".toRegex())[3].toIntOrNull() ?: 1
         val articles = mutableListOf<Page>()
 
         coroutineScope {
             for (i in 1..(if (pageLimit == -1) pages else minOf(pages, pageLimit))) {
                 launch {
-                    logger.debug { "$name -- Searching through Page $i..." }
-
                     val document = if (i == 1) firstPage else "$url&page=$i".fetchDocument()
+                    logger.debug { "$name -- Searching through Page $i... (${document.url})" }
+
                     val articleUrls = document.querySelectorAll(ARTICLE_URLS)
                         .mapNotNull { normalizeLink(baseUrl, it["href"]) }
                         .filter { it.contains("springeropen.com") }
+
+                    logger.debug { "$name --- Found ${articleUrls.size} articles on Page $i" }
 
                     for (url in articleUrls) {
                         launch {

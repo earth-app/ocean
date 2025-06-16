@@ -29,7 +29,7 @@ object IMEJ : Scraper() {
 
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
         val url = "$baseUrl/imej/search/index?query=${query.replace(" ", "+")}"
-        logger.debug { "Searching $name for query: '$query'" }
+        logger.debug { "Searching $name for query: '$query' - $url" }
 
         val firstPage = url.fetchDocument()
         val numOfItems = firstPage.querySelector("div.cmp_pagination")?.ownTextContent?.split("\\s+".toRegex())?.getOrNull(4)?.toIntOrNull() ?: 0
@@ -42,10 +42,13 @@ object IMEJ : Scraper() {
         coroutineScope {
             for (i in 1..(if (pageLimit == -1) pages else minOf(pages, pageLimit))) {
                 launch {
-                    logger.debug { "$name -- Searching through Page $i..." }
                     val document = if (i == 1) firstPage else "$url&searchPage=$i".fetchDocument()
+                    logger.debug { "$name -- Searching through Page $i... (${document.url})" }
+
                     val articleUrls = document.querySelectorAll("$SEARCH_RESULTS > li > div.obj_article_summary > h3.title > a")
                         .mapNotNull { normalizeLink(baseUrl, it["href"]) }
+
+                    logger.debug { "$name --- Found ${articleUrls.size} articles on Page $i" }
 
                     for (url in articleUrls) {
                         launch {
