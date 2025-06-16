@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalJsExport::class)
+@file:OptIn(ExperimentalJsExport::class, ExperimentalJsStatic::class)
 
 package com.earthapp.ocean.boat
 
@@ -8,9 +8,12 @@ import com.earthapp.shovel.Document
 import com.earthapp.shovel.getFaviconUrl
 import com.earthapp.shovel.getTitle
 import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.coroutines.coroutineScope
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
+import kotlin.js.ExperimentalJsStatic
 import kotlin.js.JsExport
+import kotlin.js.JsStatic
 
 /**
  * Represents a base class for scrapers in the Earth App.
@@ -146,6 +149,28 @@ abstract class Scraper {
             SpringerOpen
         )
 
+        /**
+         * Searches for pages across all registered scrapers based on the provided query.
+         * This function aggregates results from all scrapers and returns a distinct list of pages.
+         * @param query The search query to use for finding pages.
+         * @param pageLimit The maximum number of pages to return from each scraper. Defaults to 5.
+         * @return A list of distinct pages that match the search query across all scrapers.
+         */
+        @JsExport.Ignore
+        suspend fun searchAll(query: String, pageLimit: Int = 5): List<Page> {
+            val articles = mutableListOf<Page>()
+
+            coroutineScope {
+                for (scraper in registeredScrapers) {
+                    logger.info { "Searching in ${scraper.name} for query: $query" }
+
+                    articles.addAll(scraper.search(query, pageLimit))
+                }
+            }
+
+            return articles.distinctBy { it.url }
+        }
+
         // Utilities
 
         /**
@@ -157,6 +182,7 @@ abstract class Scraper {
          * @return A normalized link, or null if the input link is null or empty.
          */
         @Suppress("HttpUrlsUsage")
+        @JsStatic
         fun normalizeLink(baseUrl: String, link: String?): String? {
             if (link == null || link.isEmpty()) return null
 
@@ -182,6 +208,7 @@ abstract class Scraper {
          * @return A formatted string representing the authors.
          * If the list is empty, returns "Unknown Author".
          */
+        @JsStatic
         fun formatAuthors(authors: List<String>): String {
             return when (authors.size) {
                 0 -> "Unknown Author"
@@ -200,6 +227,7 @@ abstract class Scraper {
          * @param apply A lambda function to apply additional properties to the `Page` object.
          * @return A `Page` object containing the article's metadata.
          */
+        @JsStatic
         fun createPage(href: String, articleDoc: Document, apply: Page.() -> Unit = {}): Page {
             val metadata = articleDoc.metadata
             val title = metadata["citation_title"]?.getOrNull(0) ?: articleDoc.getTitle() ?: "Unknown Title"
@@ -230,6 +258,7 @@ abstract class Scraper {
             val links = mutableMapOf<String, String>()
             metadata["citation_pdf_url"]?.getOrNull(0)?.let { links["PDF"] = it }
             metadata["citation_doi"]?.getOrNull(0)?.let { links["DOI"] = "https://doi.org/$it" }
+            metadata["citation_issn"]?.getOrNull(0)?.let { links["ISSN"] = "https://portal.issn.org/resource/ISSN/$it" }
 
             return Page(
                 url = href,
@@ -241,8 +270,11 @@ abstract class Scraper {
                 faviconUrl = articleDoc.getFaviconUrl() ?: ""
             ).apply {
                 abstract = metadata["citation_abstract"]?.getOrNull(0) ?: ""
-                keywords.addAll(metadata["citation_keywords"] ?: metadata["dc.subject"] ?: emptyList())
                 themeColor = metadata["theme_color"]?.getOrNull(0) ?: "#ffffff"
+
+                keywords.addAll(metadata["citation_keywords"] ?: metadata["dc.subject"] ?: emptyList())
+                keywords.addAll(metadata["citation_article_type"] ?: emptyList())
+                keywords.addAll(metadata["og:type"] ?: emptyList())
 
                 apply()
                 validate()
