@@ -110,7 +110,8 @@ class Account(
         address: String? = this.address,
         country: String = this.country,
         phoneNumber: Int = this.phoneNumber,
-        visibility: Visibility = this.visibility
+        visibility: Visibility = this.visibility,
+        type: AccountType = this.type,
     ): Account {
         return Account(id, username).apply {
             this.firstName = firstName
@@ -120,6 +121,7 @@ class Account(
             this.country = country
             this.phoneNumber = phoneNumber
             this.visibility = visibility
+            this.type = type
         }.also { it.validate() }
     }
 
