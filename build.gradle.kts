@@ -3,10 +3,10 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
-    kotlin("multiplatform") version "2.1.21"
-    kotlin("plugin.serialization") version "2.1.21"
+    kotlin("multiplatform") version "2.2.0"
+    kotlin("plugin.serialization") version "2.2.0"
     id("org.jetbrains.dokka") version "2.0.0"
-    id("com.vanniktech.maven.publish") version "0.32.0"
+    id("com.vanniktech.maven.publish") version "0.33.0"
     id("dev.petuska.npm.publish") version "3.5.3"
 
     `maven-publish`
