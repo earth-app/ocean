@@ -2,9 +2,12 @@ package com.earthapp.event
 
 import com.earthapp.CompressionSerializer
 import com.earthapp.Exportable
+import com.earthapp.account.Account
+import com.earthapp.activity.Activity
 import com.earthapp.util.ID_LENGTH
 import com.earthapp.util.newIdentifier
 import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.ExperimentalJsStatic
@@ -49,15 +52,21 @@ class Event(
     /**
      * The location of the event.
      */
-    var location: String = ""
+    var location: Location? = null
 
     /**
-     * The list of attendees for the event.
+     * The type of the event.
+     */
+    @SerialName("event_type")
+    var type: EventType = EventType.IN_PERSON
+
+    /**
+     * The list of attendees for the event, mapped as [Account.id]
      */
     val attendees = mutableListOf<String>()
 
     /**
-     * The list of activities associated with the event.
+     * The list of activities associated with the event, mapped as [Activity.id].
      */
     val activities = mutableListOf<String>()
 
@@ -68,7 +77,6 @@ class Event(
 
     override fun validate0() {
         require(hostId.isNotEmpty()) { "Host ID must not be empty." }
-        require(hostId.length == ID_LENGTH) { "Host ID must be exactly $ID_LENGTH characters long." }
         require(name.isNotEmpty()) { "Name must not be empty." }
 
         if (activities.isNotEmpty())
