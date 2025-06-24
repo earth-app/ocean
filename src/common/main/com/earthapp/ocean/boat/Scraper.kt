@@ -75,7 +75,7 @@ abstract class Scraper {
          */
         val links: Map<String, String> = emptyMap(),
         /**
-         * The image associated with the page, represented as a byte array.
+         * The URL of the favicon for the page.
          */
         val faviconUrl: String = "",
     ) : Exportable() {
@@ -110,6 +110,7 @@ abstract class Scraper {
          * The theme color for the page, defaulting to white.
          */
         var themeColor: String = "#ffffff"
+
         /**
          * A list of keywords associated with the page.
          */
@@ -136,7 +137,7 @@ abstract class Scraper {
         override fun hashCode(): Int = url.hashCode()
 
         override fun toString(): String {
-            return "'$title' by $author on $date\n$url ($source)\n-----\n$content\n-----\n${links.entries.joinToString(", ") { "${it.key}: ${it.value}" }}\n"
+            return "'$title' by $author on $date\n$url ($source)\n---\"$abstract\"\n-----\n$content\n-----\n${links.entries.joinToString(", ") { "${it.key}: ${it.value}" }}\n"
         }
     }
 
@@ -146,7 +147,8 @@ abstract class Scraper {
         internal val registeredScrapers = listOf<Scraper>(
             PubMed,
             IMEJ,
-            SpringerOpen
+            SpringerOpen,
+            *RSS.SCRAPERS.toTypedArray(),
         )
 
         /**
@@ -228,7 +230,7 @@ abstract class Scraper {
          * @return A `Page` object containing the article's metadata.
          */
         @JsStatic
-        fun createPage(href: String, articleDoc: Document, apply: Page.() -> Unit = {}): Page {
+        fun createArticle(href: String, articleDoc: Document, apply: Page.() -> Unit = {}): Page {
             val metadata = articleDoc.metadata
             val title = metadata["citation_title"]?.getOrNull(0) ?: articleDoc.getTitle() ?: "Unknown Title"
 

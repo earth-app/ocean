@@ -1,7 +1,6 @@
 package com.earthapp.ocean.boat
 
 import com.earthapp.shovel.fetchDocument
-import com.earthapp.shovel.getTitle
 import com.earthapp.shovel.querySelector
 import com.earthapp.shovel.querySelectorAll
 import kotlinx.coroutines.coroutineScope
@@ -55,7 +54,7 @@ object IMEJ : Scraper() {
                             val articleDoc = url.fetchDocument()
 
                             articles.add(
-                                createPage(url, articleDoc) {
+                                createArticle(url, articleDoc) {
                                     content = articleDoc.querySelector("section.item.abstract > p")?.textContent ?: ""
                                 }
                             )

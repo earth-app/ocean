@@ -54,7 +54,7 @@ object SpringerOpen : Scraper() {
                                 .map { it.textContent }
 
                             articles.add(
-                                createPage(url, articleDoc) {
+                                createArticle(url, articleDoc) {
                                     content = contents.joinToString("\n\n")
                                 }
                             )

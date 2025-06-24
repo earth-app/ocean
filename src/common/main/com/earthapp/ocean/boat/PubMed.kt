@@ -65,7 +65,7 @@ object PubMed : Scraper() {
                             }
 
                             articles.add(
-                                createPage(href, articleDoc) {
+                                createArticle(href, articleDoc) {
                                     content = contents
                                 }
                             )
