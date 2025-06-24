@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
@@ -70,6 +69,12 @@ kotlin {
 
         jvmMain.dependencies {
             runtimeOnly("ch.qos.logback:logback-classic:1.5.18")
+
+            implementation("com.prof18.rssparser:rssparser:6.0.12")
+        }
+
+        jsMain.dependencies {
+            implementation(npm("rss-parser", "^3.13.0"))
         }
     }
 }
@@ -204,7 +209,7 @@ mavenPublishing {
         }
     }
 
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, true)
+    publishToMavenCentral(true)
     signAllPublications()
 }
 
