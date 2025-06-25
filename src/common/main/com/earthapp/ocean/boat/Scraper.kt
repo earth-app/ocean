@@ -9,6 +9,7 @@ import com.earthapp.shovel.getFaviconUrl
 import com.earthapp.shovel.getTitle
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.coroutineScope
+import kotlinx.io.IOException
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.ExperimentalJsStatic
@@ -147,8 +148,7 @@ abstract class Scraper {
         internal val registeredScrapers = listOf<Scraper>(
             PubMed,
             IMEJ,
-            SpringerOpen,
-            *RSS.SCRAPERS.toTypedArray(),
+            SpringerOpen
         )
 
         /**
@@ -166,7 +166,11 @@ abstract class Scraper {
                 for (scraper in registeredScrapers) {
                     logger.info { "Searching in ${scraper.name} for query: $query" }
 
-                    articles.addAll(scraper.search(query, pageLimit))
+                    try {
+                        articles.addAll(scraper.search(query, pageLimit))
+                    } catch (e: IOException) {
+                        logger.error { "Error while searching in ${scraper.name}: ${e.message}" }
+                    }
                 }
             }
 
