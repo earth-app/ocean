@@ -14,6 +14,7 @@ import kotlin.math.exp
 
 //<editor-fold desc="Activity Recommendation Function">
 
+@JsExport.Ignore
 private data class ScoredActivity(val activity: Activity, val keywordScore: Double, val typeScore: Double) {
     val totalScore: Double get() = keywordScore * 0.6 + typeScore * 0.4
 }

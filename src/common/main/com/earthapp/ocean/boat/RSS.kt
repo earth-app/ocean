@@ -27,6 +27,7 @@ class RSS(
     override val name: String = "RSS Feed [$name]"
     override val baseUrl: String = url
 
+    @JsExport.Ignore
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
         val queries = query.split(" ").filter { it.isNotBlank() }
         return retrieveRSSFeed(url).filter { page ->
