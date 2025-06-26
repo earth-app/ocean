@@ -1,6 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:////PointingToDeclaration/ocean/[root]/index.html
+$dokka.location://createRSS/#kotlin.String#kotlin.String#kotlin.Array[kotlin.String]/PointingToDeclaration/ocean/[root]/create-r-s-s.html
 $dokka.location://fromBinary/#kotlin.ByteArray/PointingToDeclaration/ocean/[root]/from-binary.html
 $dokka.location://fromJson/#kotlin.String/PointingToDeclaration/ocean/[root]/from-json.html
 $dokka.location:com.earthapp.account////PointingToDeclaration/ocean/com.earthapp.account/index.html
@@ -130,8 +131,12 @@ $dokka.location:com.earthapp.ocean.boat/PubMed/name/#/PointingToDeclaration/oce
 $dokka.location:com.earthapp.ocean.boat/PubMed/search/#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/search.html
 $dokka.location:com.earthapp.ocean.boat/PubMed/tags/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/tags.html
 $dokka.location:com.earthapp.ocean.boat/RSS///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/index.html
-$dokka.location:com.earthapp.ocean.boat/RSS/RSS_FEEDS/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/-r-s-s_-f-e-e-d-s.html
-$dokka.location:com.earthapp.ocean.boat/RSS/SCRAPERS/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/-s-c-r-a-p-e-r-s.html
+$dokka.location:com.earthapp.ocean.boat/RSS/RSS/#kotlin.String#kotlin.String#kotlin.collections.List[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/-r-s-s.html
+$dokka.location:com.earthapp.ocean.boat/RSS/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/base-url.html
+$dokka.location:com.earthapp.ocean.boat/RSS/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/name.html
+$dokka.location:com.earthapp.ocean.boat/RSS/search/#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/search.html
+$dokka.location:com.earthapp.ocean.boat/RSS/tags/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/tags.html
+$dokka.location:com.earthapp.ocean.boat/RSS/url/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s/url.html
 $dokka.location:com.earthapp.ocean.boat/RSSChannel///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s-channel/index.html
 $dokka.location:com.earthapp.ocean.boat/RSSChannel/copyright/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s-channel/copyright.html
 $dokka.location:com.earthapp.ocean.boat/RSSChannel/description/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s-channel/description.html
