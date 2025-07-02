@@ -73,6 +73,17 @@ fun recommendActivity(
     return listOfNotNull(first, second, different)
 }
 
+/**
+ * Recommends activities based on the current activities that the user is engaged in.
+ * @param all A list of all available activities in the system.
+ * @param account An [Account] object representing the user, which contains a list of activities
+ * @see recommendActivity
+ */
+fun recommendActivityForAccount(
+    all: List<Activity>,
+    account: Account,
+): List<Activity> = recommendActivity(all, account.activities)
+
 //</editor-fold>
 
 //<editor-fold desc="Event Recommendation Function">
