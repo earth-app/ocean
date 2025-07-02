@@ -1,10 +1,10 @@
 package com.earthapp.event
 
-import com.earthapp.CompressionSerializer
+import com.earthapp.StringCompressionSerializer
 import com.earthapp.Exportable
+import com.earthapp.ListByteArrayCompressionSerializer
 import com.earthapp.account.Account
 import com.earthapp.activity.Activity
-import com.earthapp.util.ID_LENGTH
 import com.earthapp.util.newIdentifier
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.SerialName
@@ -36,7 +36,7 @@ class Event(
     /**
      * The description of the event.
      */
-    @Serializable(with = CompressionSerializer::class)
+    @Serializable(with = StringCompressionSerializer::class)
     var description: String = ""
 
     /**
@@ -53,6 +53,13 @@ class Event(
      * The location of the event.
      */
     var location: Location? = null
+
+    /**
+     * The list of images associated with the event, stored as byte arrays.
+     * The first image is considered the main image.
+     */
+    @Serializable(with = ListByteArrayCompressionSerializer::class)
+    val images: List<ByteArray> = mutableListOf()
 
     /**
      * The type of the event.

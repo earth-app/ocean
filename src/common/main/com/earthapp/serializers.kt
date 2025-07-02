@@ -38,28 +38,41 @@ internal val json = Json {
     serializersModule = serializers
 }
 
-object CompressionSerializer : KSerializer<String> {
+internal abstract class CompressionSerializer<T> : KSerializer<T> {
+    override fun serialize(encoder: Encoder, value: T) {
+        val bytes = encode(value).compress(GZIP)
+        encoder.encodeSerializableValue(serializersModule.serializer(), bytes)
+    }
+
+    override fun deserialize(decoder: Decoder): T {
+        val compressed = decoder.decodeSerializableValue(serializersModule.serializer<ByteArray>())
+        if (compressed.isEmpty()) throw IllegalArgumentException("Compressed data found to be empty")
+
+        val decompressed = compressed.uncompress(GZIP)
+        return decode(decompressed)
+    }
+
+    abstract fun encode(value: T): ByteArray
+    abstract fun decode(array: ByteArray): T
+}
+
+internal class StringCompressionSerializer : CompressionSerializer<String>() {
     private val charset = Charsets.UTF8
 
     override val descriptor = PrimitiveSerialDescriptor("CompressedString", PrimitiveKind.STRING)
 
-    override fun serialize(encoder: Encoder, value: String) {
-        if (value.isEmpty()) {
-            encoder.encodeString("")
-            return
-        }
+    override fun encode(value: String): ByteArray = value.encodeToByteArray()
+    override fun decode(array: ByteArray): String = array.decodeToString()
+}
 
-        val bytes = value.encodeToByteArray(charset).compress(GZIP)
-        encoder.encodeSerializableValue(serializersModule.serializer(), bytes)
+internal class ListByteArrayCompressionSerializer : CompressionSerializer<List<ByteArray>>() {
+    override val descriptor = PrimitiveSerialDescriptor("CompressedListByteArray", PrimitiveKind.STRING)
+
+    override fun encode(value: List<ByteArray>): ByteArray {
+        return value.joinToString(",") { it.decodeToString() }.encodeToByteArray()
     }
 
-    override fun deserialize(decoder: Decoder): String {
-        val compressed = decoder.decodeSerializableValue(serializersModule.serializer<ByteArray>())
-        if (compressed.isEmpty()) {
-            return ""
-        }
-
-        val decompressed = compressed.uncompress(GZIP)
-        return decompressed.decodeToString(charset)
+    override fun decode(array: ByteArray): List<ByteArray> {
+        return array.decodeToString().split(",").map { it.encodeToByteArray() }
     }
 }
