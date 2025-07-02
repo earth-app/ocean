@@ -1,5 +1,6 @@
 package com.earthapp.account
 
+import com.earthapp.StringCompressionSerializer
 import com.earthapp.Exportable
 import com.earthapp.activity.Activity
 import com.earthapp.util.EmailValidator
@@ -11,6 +12,7 @@ import kotlin.js.ExperimentalJsExport
 import kotlin.js.ExperimentalJsStatic
 import kotlin.js.JsExport
 import kotlin.js.JsStatic
+import kotlin.reflect.KProperty
 
 /**
  * Represents an account in the Earth App.
@@ -35,6 +37,12 @@ class Account(
      * The last name of the account holder.
      */
     var lastName: String = ""
+
+    /**
+     * A short biography or description of the account holder.
+     */
+    @Serializable(with = StringCompressionSerializer::class)
+    var bio: String = ""
 
     /**
      * The email address associated with the account.
@@ -84,6 +92,14 @@ class Account(
             else if (type == AccountType.ADMINISTRATOR)
                 type = AccountType.FREE // Reset to free if not admin
         }
+
+    private val fieldPrivacy = mutableMapOf(
+        "email" to Privacy.CIRCLE,
+        "phoneNumber" to Privacy.PRIVATE,
+        "address" to Privacy.PRIVATE,
+        "activities" to Privacy.MUTUAL,
+        "country" to Privacy.PUBLIC,
+    )
 
     internal constructor(username: String, apply: Account.() -> Unit) : this(newId(), username) {
         apply(this)
@@ -140,6 +156,9 @@ class Account(
 
         if (country.isNotEmpty())
             require(country.length == 2) { "Country code must be exactly 2 characters long." }
+
+        if (bio.isNotEmpty())
+            require(bio.length <= 500) { "Bio must not exceed 300 characters." }
     }
 
     override fun equals(other: Any?): Boolean {
@@ -168,6 +187,29 @@ class Account(
             logger.debug { "Generated new Account ID: $id" }
             return id
         }
+    }
+
+    /**
+     * Checks if a field is private based on the specified privacy level.
+     * @param field The name of the field to check.
+     * @param level The requesting body's privacy level of access. For example, if it is your own account, it is [Privacy.PRIVATE] access.
+     * If it is a mutual friend, it is [Privacy.MUTUAL] access. If it is a random account, it is [Privacy.PUBLIC] access.
+     * @return Whether the requesting body does not have access to the field.
+     */
+    fun isFieldPrivate(field: String, level: Privacy): Boolean {
+        val privacy = fieldPrivacy[field] ?: Privacy.PUBLIC
+        return privacy.ordinal < level.ordinal
+    }
+
+    /**
+     * Checks if a field is private based on the specified privacy level.
+     * @param field The property to check.
+     * @param level The requesting body's privacy level of access. For example, if it is your own account, it is [Privacy.PRIVATE] access.
+     * If it is a mutual friend, it is [Privacy.MUTUAL] access. If it is a random account, it is [Privacy.PUBLIC] access.
+     * @return Whether the requesting body does not have access to the field.
+     */
+    fun isFieldPrivate(field: KProperty<Any>, level: Privacy): Boolean {
+        return isFieldPrivate(field.name, level)
     }
 
 }
