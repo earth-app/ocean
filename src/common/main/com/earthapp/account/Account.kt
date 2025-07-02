@@ -208,6 +208,7 @@ class Account(
      * If it is a mutual friend, it is [Privacy.MUTUAL] access. If it is a random account, it is [Privacy.PUBLIC] access.
      * @return Whether the requesting body does not have access to the field.
      */
+    @JsExport.Ignore
     fun isFieldPrivate(field: KProperty<Any>, level: Privacy): Boolean {
         return isFieldPrivate(field.name, level)
     }
