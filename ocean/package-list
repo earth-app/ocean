@@ -10,6 +10,9 @@ $dokka.location:com.earthapp.account/Account.Companion/newId/#/PointingToDeclara
 $dokka.location:com.earthapp.account/Account///PointingToDeclaration/ocean/com.earthapp.account/-account/index.html
 $dokka.location:com.earthapp.account/Account/Account/#kotlin.String#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/-account.html
 $dokka.location:com.earthapp.account/Account/activities/#/PointingToDeclaration/ocean/com.earthapp.account/-account/activities.html
+$dokka.location:com.earthapp.account/Account/addFriend/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friend.html
+$dokka.location:com.earthapp.account/Account/addFriends/#kotlin.Array[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
+$dokka.location:com.earthapp.account/Account/addFriends/#kotlin.collections.Collection[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
 $dokka.location:com.earthapp.account/Account/address/#/PointingToDeclaration/ocean/com.earthapp.account/-account/address.html
 $dokka.location:com.earthapp.account/Account/bio/#/PointingToDeclaration/ocean/com.earthapp.account/-account/bio.html
 $dokka.location:com.earthapp.account/Account/country/#/PointingToDeclaration/ocean/com.earthapp.account/-account/country.html
@@ -17,6 +20,7 @@ $dokka.location:com.earthapp.account/Account/email/#/PointingToDeclaration/ocea
 $dokka.location:com.earthapp.account/Account/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.account/-account/equals.html
 $dokka.location:com.earthapp.account/Account/firstName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/first-name.html
 $dokka.location:com.earthapp.account/Account/getFriendCount/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-friend-count.html
+$dokka.location:com.earthapp.account/Account/getFriendIds/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-friend-ids.html
 $dokka.location:com.earthapp.account/Account/hashCode/#/PointingToDeclaration/ocean/com.earthapp.account/-account/hash-code.html
 $dokka.location:com.earthapp.account/Account/id/#/PointingToDeclaration/ocean/com.earthapp.account/-account/id.html
 $dokka.location:com.earthapp.account/Account/isAdmin/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-admin.html
@@ -28,6 +32,7 @@ $dokka.location:com.earthapp.account/Account/isVisible/#/PointingToDeclaration/
 $dokka.location:com.earthapp.account/Account/lastName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/last-name.html
 $dokka.location:com.earthapp.account/Account/patch/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String?#kotlin.String#kotlin.Int#com.earthapp.account.Visibility#com.earthapp.account.AccountType/PointingToDeclaration/ocean/com.earthapp.account/-account/patch.html
 $dokka.location:com.earthapp.account/Account/phoneNumber/#/PointingToDeclaration/ocean/com.earthapp.account/-account/phone-number.html
+$dokka.location:com.earthapp.account/Account/toString/#/PointingToDeclaration/ocean/com.earthapp.account/-account/to-string.html
 $dokka.location:com.earthapp.account/Account/type/#/PointingToDeclaration/ocean/com.earthapp.account/-account/type.html
 $dokka.location:com.earthapp.account/Account/username/#/PointingToDeclaration/ocean/com.earthapp.account/-account/username.html
 $dokka.location:com.earthapp.account/Account/visibility/#/PointingToDeclaration/ocean/com.earthapp.account/-account/visibility.html
