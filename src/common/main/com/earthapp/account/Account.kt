@@ -101,6 +101,8 @@ class Account(
         "country" to Privacy.PUBLIC,
     )
 
+    private val friends = mutableSetOf<String>()
+
     internal constructor(username: String, apply: Account.() -> Unit) : this(newId(), username) {
         apply(this)
         validate()
@@ -211,6 +213,41 @@ class Account(
     @JsExport.Ignore
     fun isFieldPrivate(field: KProperty<Any>, level: Privacy): Boolean {
         return isFieldPrivate(field.name, level)
+    }
+
+    /**
+     * Checks if the account is visible to search and discovery.
+     * @return True if the account is not private, false otherwise.
+     */
+    fun isVisible(): Boolean {
+        return visibility != Visibility.PRIVATE
+    }
+
+    /**
+     * Gets the count of friends associated with this account.
+     * @return The number of friends.
+     */
+    fun getFriendCount(): Int {
+        return friends.size
+    }
+
+    /**
+     * Checks if an account is marked as a friend.
+     * @param account The account to check.
+     * @return True if the account is marked as a friend, false otherwise.
+     */
+    fun isFriendAdded(account: Account): Boolean {
+        return friends.contains(account.id)
+    }
+
+    /**
+     * Checks if an account is a mutual friend.
+     * Mutual friends are accounts that are friends with each other.
+     * @param account The account to check.
+     * @return True if the account is a mutual friend, false otherwise.
+     */
+    fun isMutualFriend(account: Account): Boolean {
+        return friends.contains(account.id) && account.friends.contains(this.id)
     }
 
 }
