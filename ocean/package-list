@@ -12,7 +12,7 @@ $dokka.location:com.earthapp.account/Account/Account/#kotlin.String#kotlin.Strin
 $dokka.location:com.earthapp.account/Account/activities/#/PointingToDeclaration/ocean/com.earthapp.account/-account/activities.html
 $dokka.location:com.earthapp.account/Account/addFriend/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friend.html
 $dokka.location:com.earthapp.account/Account/addFriends/#kotlin.Array[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
-$dokka.location:com.earthapp.account/Account/addFriends/#kotlin.collections.Collection[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
+$dokka.location:com.earthapp.account/Account/addFriends/#kotlin.collections.List[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
 $dokka.location:com.earthapp.account/Account/address/#/PointingToDeclaration/ocean/com.earthapp.account/-account/address.html
 $dokka.location:com.earthapp.account/Account/bio/#/PointingToDeclaration/ocean/com.earthapp.account/-account/bio.html
 $dokka.location:com.earthapp.account/Account/country/#/PointingToDeclaration/ocean/com.earthapp.account/-account/country.html
