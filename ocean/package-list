@@ -16,11 +16,15 @@ $dokka.location:com.earthapp.account/Account/country/#/PointingToDeclaration/oc
 $dokka.location:com.earthapp.account/Account/email/#/PointingToDeclaration/ocean/com.earthapp.account/-account/email.html
 $dokka.location:com.earthapp.account/Account/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.account/-account/equals.html
 $dokka.location:com.earthapp.account/Account/firstName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/first-name.html
+$dokka.location:com.earthapp.account/Account/getFriendCount/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-friend-count.html
 $dokka.location:com.earthapp.account/Account/hashCode/#/PointingToDeclaration/ocean/com.earthapp.account/-account/hash-code.html
 $dokka.location:com.earthapp.account/Account/id/#/PointingToDeclaration/ocean/com.earthapp.account/-account/id.html
 $dokka.location:com.earthapp.account/Account/isAdmin/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-admin.html
 $dokka.location:com.earthapp.account/Account/isFieldPrivate/#kotlin.String#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/is-field-private.html
 $dokka.location:com.earthapp.account/Account/isFieldPrivate/#kotlin.reflect.KProperty[kotlin.Any]#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/is-field-private.html
+$dokka.location:com.earthapp.account/Account/isFriendAdded/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/is-friend-added.html
+$dokka.location:com.earthapp.account/Account/isMutualFriend/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/is-mutual-friend.html
+$dokka.location:com.earthapp.account/Account/isVisible/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-visible.html
 $dokka.location:com.earthapp.account/Account/lastName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/last-name.html
 $dokka.location:com.earthapp.account/Account/patch/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String?#kotlin.String#kotlin.Int#com.earthapp.account.Visibility#com.earthapp.account.AccountType/PointingToDeclaration/ocean/com.earthapp.account/-account/patch.html
 $dokka.location:com.earthapp.account/Account/phoneNumber/#/PointingToDeclaration/ocean/com.earthapp.account/-account/phone-number.html
@@ -190,6 +194,7 @@ $dokka.location:com.earthapp.ocean////PointingToDeclaration/ocean/com.earthapp.
 $dokka.location:com.earthapp.ocean//recommendActivity/#kotlin.collections.List[com.earthapp.activity.Activity]#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-activity.html
 $dokka.location:com.earthapp.ocean//recommendActivityForAccount/#kotlin.collections.List[com.earthapp.activity.Activity]#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-activity-for-account.html
 $dokka.location:com.earthapp.ocean//recommendEvents/#com.earthapp.event.Location#kotlin.collections.List[kotlin.String]#kotlin.collections.List[com.earthapp.event.Event]#kotlin.collections.List[com.earthapp.event.Event]#kotlin.collections.List[com.earthapp.event.Event]#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-events.html
+$dokka.location:com.earthapp.ocean//recommendFriends/#com.earthapp.account.Account#com.earthapp.event.Location#kotlin.collections.List[com.earthapp.account.Account]#kotlin.collections.List[com.earthapp.event.Event]/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-friends.html
 $dokka.location:com.earthapp.util////PointingToDeclaration/ocean/com.earthapp.util/index.html
 $dokka.location:com.earthapp.util//API_KEY_LENGTH/#/PointingToDeclaration/ocean/com.earthapp.util/-a-p-i_-k-e-y_-l-e-n-g-t-h.html
 $dokka.location:com.earthapp.util//ID_CHARACTERS/#/PointingToDeclaration/ocean/com.earthapp.util/-i-d_-c-h-a-r-a-c-t-e-r-s.html
