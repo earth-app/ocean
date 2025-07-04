@@ -297,8 +297,8 @@ class Account(
      * @param accounts The collection of accounts to add as friends.
      * If an account is already a friend, it will not be added again.
      */
-    @JsName("addFriendsCollection")
-    fun addFriends(accounts: Collection<Account>) {
+    @JsName("addFriendsList")
+    fun addFriends(accounts: List<Account>) {
         accounts.forEach { addFriend(it) }
     }
 
