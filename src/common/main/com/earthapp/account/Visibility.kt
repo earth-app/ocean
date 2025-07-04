@@ -17,6 +17,8 @@ enum class Visibility {
     PRIVATE,
     /**
      * The account is public but not visible in search results.
+     * Unlisted accounts can still be recommended to others for
+     * friending.
      */
     UNLISTED,
     /**
