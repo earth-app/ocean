@@ -11,6 +11,7 @@ import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.ExperimentalJsStatic
 import kotlin.js.JsExport
+import kotlin.js.JsName
 import kotlin.js.JsStatic
 import kotlin.reflect.KProperty
 
@@ -296,6 +297,7 @@ class Account(
      * @param accounts The collection of accounts to add as friends.
      * If an account is already a friend, it will not be added again.
      */
+    @JsName("addFriendsCollection")
     fun addFriends(accounts: Collection<Account>) {
         accounts.forEach { addFriend(it) }
     }
