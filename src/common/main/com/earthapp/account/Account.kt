@@ -101,10 +101,11 @@ class Account(
         "country" to Privacy.PUBLIC,
     )
 
-    private val friends = mutableSetOf<String>()
+    internal val friends = mutableSetOf<String>()
 
-    internal constructor(username: String, apply: Account.() -> Unit) : this(newId(), username) {
+    internal constructor(username: String, apply: Account.() -> Unit) : this(newId(), "user-$username") {
         apply(this)
+        firstName = username
         validate()
     }
 
@@ -147,14 +148,14 @@ class Account(
         require(username.isNotEmpty()) { "Username must not be empty." }
         require(username.length in 4..20) { "Username must be between 4 and 20 characters long." }
 
-        require(firstName.isNotEmpty()) { "First name must not be empty." }
-        require(firstName.length in 1..30) { "First name must be between 2 and 30 characters long." }
+        if (firstName.isNotEmpty())
+            require(firstName.length in 1..30) { "First name must be between 2 and 30 characters long." }
 
-        require(lastName.isNotEmpty()) { "Last name must not be empty." }
-        require(lastName.length in 1..30) { "Last name must be between 2 and 30 characters long." }
+        if (lastName.isNotEmpty())
+            require(lastName.length in 1..30) { "Last name must be between 2 and 30 characters long." }
 
-        require(email.isNotEmpty()) { "Email must not be empty." }
-        require('@' in email) { "Email must contain '@' character." }
+        if (email.isNotEmpty())
+            require('@' in email) { "Email must contain '@' character." }
 
         if (country.isNotEmpty())
             require(country.length == 2) { "Country code must be exactly 2 characters long." }
@@ -174,6 +175,10 @@ class Account(
 
     override fun hashCode(): Int {
         return id.hashCode()
+    }
+
+    override fun toString(): String {
+        return "$firstName $lastName <$username>".trim()
     }
 
     companion object {
@@ -232,6 +237,14 @@ class Account(
     }
 
     /**
+     * Gets the identifiers of friends associated with this account.
+     * @return A set of friend identifiers.
+     */
+    fun getFriendIds(): Set<String> {
+        return friends.toSet()
+    }
+
+    /**
      * Checks if an account is marked as a friend.
      * @param account The account to check.
      * @return True if the account is marked as a friend, false otherwise.
@@ -248,6 +261,43 @@ class Account(
      */
     fun isMutualFriend(account: Account): Boolean {
         return friends.contains(account.id) && account.friends.contains(this.id)
+    }
+
+    /**
+     * Adds a friend to the account.
+     * @param account The account to add as a friend.
+     * If the account is already a friend, it will not be added again.
+     */
+    fun addFriend(account: Account) {
+        if (account.id == this.id) {
+            logger.warn { "Account ${this.id} cannot add itself as a friend." }
+            return
+        }
+
+        if (friends.contains(account.id)) {
+            logger.warn { "Account ${this.id} already has ${account.id} as a friend." }
+            return
+        }
+
+        friends.add(account.id)
+    }
+
+    /**
+     * Adds multiple friends to the account.
+     * @param accounts The accounts to add as friends.
+     * If an account is already a friend, it will not be added again.
+     */
+    fun addFriends(vararg accounts: Account) {
+        accounts.forEach { addFriend(it) }
+    }
+
+    /**
+     * Adds multiple friends to the account.
+     * @param accounts The collection of accounts to add as friends.
+     * If an account is already a friend, it will not be added again.
+     */
+    fun addFriends(accounts: Collection<Account>) {
+        accounts.forEach { addFriend(it) }
     }
 
 }
