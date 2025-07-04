@@ -258,9 +258,8 @@ fun recommendFriends(
     val visibleAccounts = allAccounts.filter { it.id != account.id && it.isVisible() && it.id !in currentFriendIds }
 
     val friendsOfFriends = visibleAccounts.filter { candidate ->
-        currentFriendIds.any { friendId ->
-            val friend = allAccounts.find { it.id == friendId }
-            friend?.isFriendAdded(candidate) == true
+        allAccounts.any { friend ->
+            friend.id in currentFriendIds && candidate.id in friend.getFriendIds()
         }
     }
 
