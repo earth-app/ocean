@@ -32,7 +32,7 @@ $dokka.location:com.earthapp.account/Account/isFriendAdded/#com.earthapp.account
 $dokka.location:com.earthapp.account/Account/isMutualFriend/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/is-mutual-friend.html
 $dokka.location:com.earthapp.account/Account/isVisible/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-visible.html
 $dokka.location:com.earthapp.account/Account/lastName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/last-name.html
-$dokka.location:com.earthapp.account/Account/patch/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String?#kotlin.String#kotlin.Int#com.earthapp.Visibility#com.earthapp.account.AccountType/PointingToDeclaration/ocean/com.earthapp.account/-account/patch.html
+$dokka.location:com.earthapp.account/Account/patch/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String?#kotlin.String#kotlin.Int#com.earthapp.Visibility/PointingToDeclaration/ocean/com.earthapp.account/-account/patch.html
 $dokka.location:com.earthapp.account/Account/phoneNumber/#/PointingToDeclaration/ocean/com.earthapp.account/-account/phone-number.html
 $dokka.location:com.earthapp.account/Account/setFieldPrivacy/#kotlin.String#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/set-field-privacy.html
 $dokka.location:com.earthapp.account/Account/setFieldPrivacy/#kotlin.reflect.KProperty[kotlin.Any]#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/set-field-privacy.html
