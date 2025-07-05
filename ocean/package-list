@@ -32,6 +32,8 @@ $dokka.location:com.earthapp.account/Account/isVisible/#/PointingToDeclaration/
 $dokka.location:com.earthapp.account/Account/lastName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/last-name.html
 $dokka.location:com.earthapp.account/Account/patch/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String?#kotlin.String#kotlin.Int#com.earthapp.account.Visibility#com.earthapp.account.AccountType/PointingToDeclaration/ocean/com.earthapp.account/-account/patch.html
 $dokka.location:com.earthapp.account/Account/phoneNumber/#/PointingToDeclaration/ocean/com.earthapp.account/-account/phone-number.html
+$dokka.location:com.earthapp.account/Account/setFieldPrivacy/#kotlin.String#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/set-field-privacy.html
+$dokka.location:com.earthapp.account/Account/setFieldPrivacy/#kotlin.reflect.KProperty[kotlin.Any]#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/set-field-privacy.html
 $dokka.location:com.earthapp.account/Account/toString/#/PointingToDeclaration/ocean/com.earthapp.account/-account/to-string.html
 $dokka.location:com.earthapp.account/Account/type/#/PointingToDeclaration/ocean/com.earthapp.account/-account/type.html
 $dokka.location:com.earthapp.account/Account/username/#/PointingToDeclaration/ocean/com.earthapp.account/-account/username.html
