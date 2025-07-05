@@ -100,6 +100,9 @@ class Account(
         "address" to Privacy.PRIVATE,
         "activities" to Privacy.MUTUAL,
         "country" to Privacy.PUBLIC,
+        "events" to Privacy.MUTUAL,
+        "friends" to Privacy.MUTUAL,
+        "last_login" to Privacy.CIRCLE
     )
 
     internal val friends = mutableSetOf<String>()
@@ -185,6 +188,10 @@ class Account(
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.account.Account")
 
+        private val neverPublic = listOf(
+            "address", "phoneNumber"
+        )
+
         /**
          * Generates a new unique identifier for an account.
          * @return A unique identifier string.
@@ -219,6 +226,30 @@ class Account(
     @JsExport.Ignore
     fun isFieldPrivate(field: KProperty<Any>, level: Privacy): Boolean {
         return isFieldPrivate(field.name, level)
+    }
+
+    /**
+     * Sets the privacy level for a specific field.
+     * @param field The name of the field to set privacy for.
+     * @param privacy The privacy level to set for the field.
+     */
+    fun setFieldPrivacy(field: String, privacy: Privacy) {
+        if (neverPublic.contains(field) && privacy == Privacy.PUBLIC) {
+            logger.warn { "Attempted to set field '$field' to PUBLIC for '$username', which is not allowed." }
+            return
+        }
+
+        fieldPrivacy[field] = privacy
+    }
+
+    /**
+     * Sets the privacy level for a specific field.
+     * @param field The property to set privacy for.
+     * @param privacy The privacy level to set for the field.
+     */
+    @JsExport.Ignore
+    fun setFieldPrivacy(field: KProperty<Any>, privacy: Privacy) {
+        setFieldPrivacy(field.name, privacy)
     }
 
     /**
