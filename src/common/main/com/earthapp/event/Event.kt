@@ -106,7 +106,7 @@ class Event(
         location: Location? = this.location,
         type: EventType = this.type,
         visibility: Visibility = this.visibility,
-    ) {
+    ): Event {
         this.name = name
         this.description = description
         this.date = date
@@ -116,6 +116,7 @@ class Event(
         this.visibility = visibility
 
         validate()
+        return this
     }
 
     override fun validate0() {

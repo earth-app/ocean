@@ -135,18 +135,17 @@ class Account(
         country: String = this.country,
         phoneNumber: Int = this.phoneNumber,
         visibility: Visibility = this.visibility,
-        type: AccountType = this.type,
     ): Account {
-        return Account(id, username).apply {
-            this.firstName = firstName
-            this.lastName = lastName
-            this.email = email
-            this.address = address
-            this.country = country
-            this.phoneNumber = phoneNumber
-            this.visibility = visibility
-            this.type = type
-        }.also { it.validate() }
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.address = address
+        this.country = country
+        this.phoneNumber = phoneNumber
+        this.visibility = visibility
+
+        validate()
+        return this
     }
 
     override fun validate0() {
