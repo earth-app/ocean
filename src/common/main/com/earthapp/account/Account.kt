@@ -2,6 +2,7 @@ package com.earthapp.account
 
 import com.earthapp.StringCompressionSerializer
 import com.earthapp.Exportable
+import com.earthapp.Visibility
 import com.earthapp.activity.Activity
 import com.earthapp.util.EmailValidator
 import com.earthapp.util.newIdentifier

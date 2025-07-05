@@ -1,28 +1,29 @@
-package com.earthapp.account
+package com.earthapp
 
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
 
 /**
- * Represents a type of account's visibility.
+ * Represents a type of visibility for a specific element.
  */
 @OptIn(ExperimentalJsExport::class)
 @JsExport
 @Serializable
 enum class Visibility {
     /**
-     * The account is private and not visible to others.
+     * The element is private and not visible to others.
      */
     PRIVATE,
     /**
-     * The account is public but not visible in search results.
+     * The element is public but not visible in search results.
+     *
      * Unlisted accounts can still be recommended to others for
      * friending.
      */
     UNLISTED,
     /**
-     * The account is public and visible to everyone.
+     * The element is public and visible to everyone.
      */
     PUBLIC
 }

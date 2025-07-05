@@ -8,8 +8,6 @@ import korlibs.io.compression.compress
 import korlibs.io.compression.deflate.GZIP
 import korlibs.io.compression.uncompress
 import korlibs.io.lang.Charsets
-import korlibs.io.lang.decodeToString
-import korlibs.io.lang.encodeToByteArray
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
@@ -65,14 +63,14 @@ internal class StringCompressionSerializer : CompressionSerializer<String>() {
     override fun decode(array: ByteArray): String = array.decodeToString()
 }
 
-internal class ListByteArrayCompressionSerializer : CompressionSerializer<List<ByteArray>>() {
-    override val descriptor = PrimitiveSerialDescriptor("CompressedListByteArray", PrimitiveKind.STRING)
+internal class MutableListByteArrayCompressionSerializer : CompressionSerializer<MutableList<ByteArray>>() {
+    override val descriptor = PrimitiveSerialDescriptor("CompressedMutableListByteArray", PrimitiveKind.STRING)
 
-    override fun encode(value: List<ByteArray>): ByteArray {
+    override fun encode(value: MutableList<ByteArray>): ByteArray {
         return value.joinToString(",") { it.decodeToString() }.encodeToByteArray()
     }
 
-    override fun decode(array: ByteArray): List<ByteArray> {
-        return array.decodeToString().split(",").map { it.encodeToByteArray() }
+    override fun decode(array: ByteArray): MutableList<ByteArray> {
+        return array.decodeToString().split(",").map { it.encodeToByteArray() }.toMutableList()
     }
 }
