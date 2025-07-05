@@ -88,6 +88,36 @@ class Event(
         validate()
     }
 
+    /**
+     * Edits the properties of the event.
+     * @param name The name of the event.
+     * @param description The description of the event.
+     * @param date The date of the event in milliseconds since epoch.
+     * @param endDate The end time of the event in milliseconds since epoch.
+     * @param location The location of the event.
+     * @param type The type of the event.
+     * @param visibility The visibility of the event.
+     */
+    fun patch(
+        name: String = this.name,
+        description: String = this.description,
+        date: Double = this.date,
+        endDate: Double = this.endDate,
+        location: Location? = this.location,
+        type: EventType = this.type,
+        visibility: Visibility = this.visibility,
+    ) {
+        this.name = name
+        this.description = description
+        this.date = date
+        this.endDate = endDate
+        this.location = location
+        this.type = type
+        this.visibility = visibility
+
+        validate()
+    }
+
     override fun validate0() {
         require(hostId.isNotEmpty()) { "Host ID must not be empty." }
         require(name.isNotEmpty()) { "Name must not be empty." }
