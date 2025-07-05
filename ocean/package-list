@@ -102,6 +102,7 @@ $dokka.location:com.earthapp.event/Event/isAttendee/#com.earthapp.account.Accoun
 $dokka.location:com.earthapp.event/Event/isVisibleTo/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.event/-event/is-visible-to.html
 $dokka.location:com.earthapp.event/Event/location/#/PointingToDeclaration/ocean/com.earthapp.event/-event/location.html
 $dokka.location:com.earthapp.event/Event/name/#/PointingToDeclaration/ocean/com.earthapp.event/-event/name.html
+$dokka.location:com.earthapp.event/Event/patch/#kotlin.String#kotlin.String#kotlin.Double#kotlin.Double#com.earthapp.event.Location?#com.earthapp.event.EventType#com.earthapp.Visibility/PointingToDeclaration/ocean/com.earthapp.event/-event/patch.html
 $dokka.location:com.earthapp.event/Event/removeActivity/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.event/-event/remove-activity.html
 $dokka.location:com.earthapp.event/Event/removeAttendee/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.event/-event/remove-attendee.html
 $dokka.location:com.earthapp.event/Event/removeImage/#kotlin.ByteArray/PointingToDeclaration/ocean/com.earthapp.event/-event/remove-image.html
