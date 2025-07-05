@@ -19,6 +19,8 @@ $dokka.location:com.earthapp.account/Account/country/#/PointingToDeclaration/oc
 $dokka.location:com.earthapp.account/Account/email/#/PointingToDeclaration/ocean/com.earthapp.account/-account/email.html
 $dokka.location:com.earthapp.account/Account/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.account/-account/equals.html
 $dokka.location:com.earthapp.account/Account/firstName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/first-name.html
+$dokka.location:com.earthapp.account/Account/getFieldPrivacy/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/get-field-privacy.html
+$dokka.location:com.earthapp.account/Account/getFieldPrivacy/#kotlin.reflect.KProperty[kotlin.Any]/PointingToDeclaration/ocean/com.earthapp.account/-account/get-field-privacy.html
 $dokka.location:com.earthapp.account/Account/getFriendCount/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-friend-count.html
 $dokka.location:com.earthapp.account/Account/getFriendIds/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-friend-ids.html
 $dokka.location:com.earthapp.account/Account/hashCode/#/PointingToDeclaration/ocean/com.earthapp.account/-account/hash-code.html
