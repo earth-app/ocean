@@ -229,6 +229,25 @@ class Account(
     }
 
     /**
+     * Gets the privacy level for a specific field.
+     * @param field The name of the field to get privacy for.
+     * @return The privacy level of the field.
+     */
+    fun getFieldPrivacy(field: String): Privacy {
+        return fieldPrivacy[field] ?: Privacy.PUBLIC
+    }
+
+    /**
+     * Gets the privacy level for a specific field.
+     * @param field The name of the field to get privacy for.
+     * @return The privacy level of the field.
+     */
+    @JsExport.Ignore
+    fun getFieldPrivacy(field: KProperty<Any>): Privacy {
+        return getFieldPrivacy(field.name)
+    }
+
+    /**
      * Sets the privacy level for a specific field.
      * @param field The name of the field to set privacy for.
      * @param privacy The privacy level to set for the field.
