@@ -74,6 +74,13 @@ class Event(
     var visibility: Visibility = Visibility.UNLISTED
 
     /**
+     * The maximum number of attendees allowed for the event.
+     * If null, there is no limit on the number of attendees.
+     */
+    @SerialName("max_attendees")
+    var maxAttendees: Int? = null
+
+    /**
      * The list of attendees for the event, mapped as [Account.id]
      */
     val attendees = mutableListOf<String>()
@@ -290,5 +297,12 @@ class Event(
 
         logger.debug { "Removed activity ${activity.id} from the event: $this" }
     }
+
+    /**
+     * Gets the maximum number of attendees allowed for the event.
+     * If maxAttendees is null, it returns [Int.MAX_VALUE] indicating no limit.
+     * @return The maximum number of attendees.
+     */
+    fun getMaxAttendees(): Int = maxAttendees ?: Int.MAX_VALUE
 
 }
