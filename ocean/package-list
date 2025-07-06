@@ -94,6 +94,7 @@ $dokka.location:com.earthapp.event/Event/date/#/PointingToDeclaration/ocean/com
 $dokka.location:com.earthapp.event/Event/description/#/PointingToDeclaration/ocean/com.earthapp.event/-event/description.html
 $dokka.location:com.earthapp.event/Event/endDate/#/PointingToDeclaration/ocean/com.earthapp.event/-event/end-date.html
 $dokka.location:com.earthapp.event/Event/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.event/-event/equals.html
+$dokka.location:com.earthapp.event/Event/getMaxAttendees/#/PointingToDeclaration/ocean/com.earthapp.event/-event/get-max-attendees.html
 $dokka.location:com.earthapp.event/Event/hashCode/#/PointingToDeclaration/ocean/com.earthapp.event/-event/hash-code.html
 $dokka.location:com.earthapp.event/Event/hostId/#/PointingToDeclaration/ocean/com.earthapp.event/-event/host-id.html
 $dokka.location:com.earthapp.event/Event/id/#/PointingToDeclaration/ocean/com.earthapp.event/-event/id.html
@@ -101,6 +102,7 @@ $dokka.location:com.earthapp.event/Event/images/#/PointingToDeclaration/ocean/c
 $dokka.location:com.earthapp.event/Event/isAttendee/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.event/-event/is-attendee.html
 $dokka.location:com.earthapp.event/Event/isVisibleTo/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.event/-event/is-visible-to.html
 $dokka.location:com.earthapp.event/Event/location/#/PointingToDeclaration/ocean/com.earthapp.event/-event/location.html
+$dokka.location:com.earthapp.event/Event/maxAttendees/#/PointingToDeclaration/ocean/com.earthapp.event/-event/max-attendees.html
 $dokka.location:com.earthapp.event/Event/name/#/PointingToDeclaration/ocean/com.earthapp.event/-event/name.html
 $dokka.location:com.earthapp.event/Event/patch/#kotlin.String#kotlin.String#kotlin.Double#kotlin.Double#com.earthapp.event.Location?#com.earthapp.event.EventType#com.earthapp.Visibility/PointingToDeclaration/ocean/com.earthapp.event/-event/patch.html
 $dokka.location:com.earthapp.event/Event/removeActivity/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.event/-event/remove-activity.html
