@@ -63,6 +63,7 @@ class Account(
     /**
      * The phone number associated with the account.
      */
+    @SerialName("phone_number")
     var phoneNumber: Int = 0
 
     /**
