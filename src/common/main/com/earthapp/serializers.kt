@@ -22,10 +22,10 @@ import kotlinx.serialization.serializer
 
 internal val serializers = SerializersModule {
     polymorphic(Exportable::class) {
-        subclass(Account.serializer())
-        subclass(Event.serializer())
-        subclass(Activity.serializer())
-        subclass(Scraper.Page.serializer())
+        subclass(Account::class, Account.serializer())
+        subclass(Event::class, Event.serializer())
+        subclass(Activity::class, Activity.serializer())
+        subclass(Scraper.Page::class, Scraper.Page.serializer())
     }
 }
 
@@ -35,4 +35,5 @@ internal val json = Json {
     prettyPrint = true
     serializersModule = serializers
     encodeDefaults = true
+    explicitNulls = false
 }

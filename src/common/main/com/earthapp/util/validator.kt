@@ -14,12 +14,19 @@ open class RegexValidatingSerializer(private val regex: Regex) : KSerializer<Str
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("RegexValidatingString", PrimitiveKind.STRING)
 
     override fun serialize(encoder: Encoder, value: String) {
+        if (value.isEmpty()) {
+            encoder.encodeString("")
+            return
+        }
+
         if (!regex.matches(value)) throw SerializationException("String '$value' does not match pattern '$regex'")
         encoder.encodeString(value)
     }
 
     override fun deserialize(decoder: Decoder): String {
         val value = decoder.decodeString()
+        if (value.isEmpty()) return value
+
         if (!regex.matches(value)) throw SerializationException("String '$value' does not match pattern '$regex'")
         return value
     }
