@@ -97,7 +97,7 @@ class Account(
 
     private val fieldPrivacy = mutableMapOf(
         "email" to Privacy.CIRCLE,
-        "phoneNumber" to Privacy.PRIVATE,
+        "phone_number" to Privacy.PRIVATE,
         "address" to Privacy.PRIVATE,
         "activities" to Privacy.MUTUAL,
         "country" to Privacy.PUBLIC,
