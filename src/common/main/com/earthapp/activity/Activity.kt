@@ -1,6 +1,5 @@
 package com.earthapp.activity
 
-import com.earthapp.StringCompressionSerializer
 import com.earthapp.Exportable
 import com.earthapp.json
 import kotlinx.serialization.Serializable
@@ -30,7 +29,6 @@ class Activity(
     /**
      * The description of the activity.
      */
-    @Serializable(with = StringCompressionSerializer::class)
     var description: String? = null
 
     /**

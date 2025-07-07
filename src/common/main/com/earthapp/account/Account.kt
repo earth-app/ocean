@@ -1,6 +1,5 @@
 package com.earthapp.account
 
-import com.earthapp.StringCompressionSerializer
 import com.earthapp.Exportable
 import com.earthapp.Visibility
 import com.earthapp.activity.Activity
@@ -43,7 +42,6 @@ class Account(
     /**
      * A short biography or description of the account holder.
      */
-    @Serializable(with = StringCompressionSerializer::class)
     var bio: String = ""
 
     /**

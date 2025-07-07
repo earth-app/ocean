@@ -1,8 +1,6 @@
 package com.earthapp.event
 
-import com.earthapp.StringCompressionSerializer
 import com.earthapp.Exportable
-import com.earthapp.MutableListByteArrayCompressionSerializer
 import com.earthapp.account.Account
 import com.earthapp.Visibility
 import com.earthapp.activity.Activity
@@ -37,7 +35,6 @@ class Event(
     /**
      * The description of the event.
      */
-    @Serializable(with = StringCompressionSerializer::class)
     var description: String = ""
 
     /**
@@ -59,7 +56,6 @@ class Event(
      * The list of images associated with the event, stored as byte arrays.
      * The first image is considered the main image.
      */
-    @Serializable(with = MutableListByteArrayCompressionSerializer::class)
     val images = mutableListOf<ByteArray>()
 
     /**
