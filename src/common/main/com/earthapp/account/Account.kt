@@ -93,6 +93,7 @@ class Account(
                 type = AccountType.FREE // Reset to free if not admin
         }
 
+    @SerialName("field_privacy")
     private val fieldPrivacy = mutableMapOf(
         "email" to Privacy.CIRCLE,
         "phone_number" to Privacy.PRIVATE,
