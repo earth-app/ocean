@@ -189,7 +189,7 @@ class Account(
         private val logger = KotlinLogging.logger("com.earthapp.account.Account")
 
         private val neverPublic = listOf(
-            "address", "phoneNumber"
+            "address", "phone_number"
         )
 
         /**
