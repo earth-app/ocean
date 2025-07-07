@@ -2,6 +2,7 @@ package com.earthapp.activity
 
 import com.earthapp.Exportable
 import com.earthapp.json
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.contentOrNull
@@ -34,6 +35,7 @@ class Activity(
     /**
      * The type of the activity.
      */
+    @SerialName("activity_types")
     val types = mutableListOf<ActivityType>()
 
     internal constructor(name: String, description: String? = null, vararg types: ActivityType) : this(name.lowercase(), name) {
