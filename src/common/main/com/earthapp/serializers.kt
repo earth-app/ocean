@@ -34,6 +34,7 @@ internal val json = Json {
     isLenient = true
     prettyPrint = true
     serializersModule = serializers
+    encodeDefaults = true
 }
 
 internal abstract class CompressionSerializer<T> : KSerializer<T> {
