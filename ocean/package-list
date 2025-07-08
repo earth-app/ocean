@@ -7,6 +7,7 @@ $dokka.location://fromJson/#kotlin.String/PointingToDeclaration/ocean/[root]/fr
 $dokka.location:com.earthapp.account////PointingToDeclaration/ocean/com.earthapp.account/index.html
 $dokka.location:com.earthapp.account/Account.Companion///PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/index.html
 $dokka.location:com.earthapp.account/Account.Companion/getAllowedPrivacyFields/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/get-allowed-privacy-fields.html
+$dokka.location:com.earthapp.account/Account.Companion/isNeverPublic/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/is-never-public.html
 $dokka.location:com.earthapp.account/Account.Companion/newId/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/new-id.html
 $dokka.location:com.earthapp.account/Account///PointingToDeclaration/ocean/com.earthapp.account/-account/index.html
 $dokka.location:com.earthapp.account/Account/Account/#kotlin.String#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/-account.html
