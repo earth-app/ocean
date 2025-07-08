@@ -90,10 +90,11 @@ class TestAccount {
             firstName = "John"
             lastName = "Doe"
         }
+        val valid = Account.getAllowedPrivacyFields()
         val keys = account.fieldPrivacy.keys
 
-        for (field in Account.getAllowedPrivacyFields())
-            assertTrue { field in keys }
+        for (field in keys)
+            assertTrue { field in valid }
     }
 
 }
