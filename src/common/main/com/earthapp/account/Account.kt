@@ -95,7 +95,7 @@ class Account(
         }
 
     @SerialName("field_privacy")
-    private val fieldPrivacy = mutableMapOf(
+    internal val fieldPrivacy = mutableMapOf(
         "email" to Privacy.CIRCLE,
         "phone_number" to Privacy.PRIVATE,
         "address" to Privacy.PRIVATE,
@@ -188,6 +188,20 @@ class Account(
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.account.Account")
 
+        private val allowedFields = listOf(
+            "name",
+            "bio",
+            "phone_number",
+            "country",
+            "email",
+            "address",
+            "activities",
+            "events",
+            "friends",
+            "last_login",
+            "account_type"
+        )
+
         private val neverPublic = listOf(
             "address", "phone_number"
         )
@@ -201,6 +215,16 @@ class Account(
             val id = newIdentifier()
             logger.debug { "Generated new Account ID: $id" }
             return id
+        }
+
+        /**
+         * Gets the list of allowed privacy fields for accounts.
+         * These fields can be set to different privacy levels.
+         * @return A list of allowed field names.
+         */
+        @JsStatic
+        fun getAllowedPrivacyFields(): List<String> {
+            return allowedFields
         }
     }
 
@@ -234,6 +258,11 @@ class Account(
      * @return The privacy level of the field.
      */
     fun getFieldPrivacy(field: String): Privacy {
+        if (!allowedFields.contains(field)) {
+            logger.warn { "Attempted to get privacy for unknown field '$field' in account '$username'." }
+            return Privacy.PUBLIC
+        }
+
         return fieldPrivacy[field] ?: Privacy.PUBLIC
     }
 
@@ -255,6 +284,11 @@ class Account(
     fun setFieldPrivacy(field: String, privacy: Privacy) {
         if (neverPublic.contains(field) && privacy == Privacy.PUBLIC) {
             logger.warn { "Attempted to set field '$field' to PUBLIC for '$username', which is not allowed." }
+            return
+        }
+
+        if (!allowedFields.contains(field)) {
+            logger.warn { "Attempted to set privacy for unknown field '$field' in account '$username'." }
             return
         }
 

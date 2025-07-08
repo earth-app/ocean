@@ -84,4 +84,16 @@ class TestAccount {
         assertEquals(Visibility.UNLISTED, account.visibility) // Default value
     }
 
+    @Test
+    fun validatePrivacyFields() = runTest {
+        val account = Account("johndoe") {
+            firstName = "John"
+            lastName = "Doe"
+        }
+        val keys = account.fieldPrivacy.keys
+
+        for (field in Account.getAllowedPrivacyFields())
+            assertTrue { field in keys }
+    }
+
 }
