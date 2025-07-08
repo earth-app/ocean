@@ -226,6 +226,17 @@ class Account(
         fun getAllowedPrivacyFields(): List<String> {
             return allowedFields
         }
+
+        /**
+         * Checks if a field is never allowed to be public.
+         * This is used to prevent certain sensitive fields from being publicly accessible.
+         * @param field The name of the field to check.
+         * @return True if the field is never allowed to be public, false otherwise.
+         */
+        @JsStatic
+        fun isNeverPublic(field: String): Boolean {
+            return neverPublic.contains(field)
+        }
     }
 
     /**
