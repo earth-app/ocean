@@ -17,7 +17,7 @@ object PubMed : Scraper() {
         "health", "biomedical", "biology", "ncbi", "eutils"
     )
 
-    const val PER_PAGE = 250
+    const val PER_PAGE = 50
 
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
         val delayMs = if (isAuthenticated(name)) 100L else 400L
@@ -34,7 +34,7 @@ object PubMed : Scraper() {
             logger.info { "Found ${searchResult.count} articles for query: $query; Taking ${pageLimit * PER_PAGE}" }
 
             coroutineScope {
-                val totalPages = if (pageLimit == -1) (searchResult.count + 99) / PER_PAGE else minOf((searchResult.count + 99) / PER_PAGE, pageLimit)
+                val totalPages = if (pageLimit == -1) (searchResult.count + (PER_PAGE - 1)) / PER_PAGE else minOf((searchResult.count + (PER_PAGE - 1)) / PER_PAGE, pageLimit)
                 for (page in 0 until totalPages) {
                     delay(delayMs) // Throttle requests to avoid hitting rate limits (unauthenticated: 3/second, authenticated: 10/second)
                     launch {
