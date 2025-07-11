@@ -12,6 +12,7 @@ class TestScraper {
         Scraper.setApiKey(PubMed, getEnv("NCBI_API_KEY"))
 
         val pages1 = Scraper.searchAll("power", 3)
+        println(pages1)
         assertTrue { pages1.isNotEmpty() }
 
         val pages2 = Scraper.searchAll("sail water salt boat", 3)

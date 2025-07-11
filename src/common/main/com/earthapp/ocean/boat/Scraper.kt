@@ -152,7 +152,8 @@ abstract class Scraper {
         internal val registeredScrapers = listOf<Scraper>(
             PubMed,
             IMEJ,
-            SpringerOpen
+            SpringerOpen,
+            DOAJ
         )
 
         private val apiKeys = mutableMapOf<String, String>()
