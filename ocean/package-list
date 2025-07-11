@@ -142,9 +142,8 @@ $dokka.location:com.earthapp.ocean.boat/Parser///PointingToDeclaration/ocean/co
 $dokka.location:com.earthapp.ocean.boat/Parser/Parser/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-parser/-parser.html
 $dokka.location:com.earthapp.ocean.boat/Parser/parseURL/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-parser/parse-u-r-l.html
 $dokka.location:com.earthapp.ocean.boat/PubMed///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/index.html
-$dokka.location:com.earthapp.ocean.boat/PubMed/ARTICLE_TEXT_QUERIES/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/-a-r-t-i-c-l-e_-t-e-x-t_-q-u-e-r-i-e-s.html
-$dokka.location:com.earthapp.ocean.boat/PubMed/PAGE_COUNT/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/-p-a-g-e_-c-o-u-n-t.html
-$dokka.location:com.earthapp.ocean.boat/PubMed/SEARCH_RESULTS/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/-s-e-a-r-c-h_-r-e-s-u-l-t-s.html
+$dokka.location:com.earthapp.ocean.boat/PubMed/PER_PAGE/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/-p-e-r_-p-a-g-e.html
+$dokka.location:com.earthapp.ocean.boat/PubMed/addApiKey/kotlin.String#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/add-api-key.html
 $dokka.location:com.earthapp.ocean.boat/PubMed/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/base-url.html
 $dokka.location:com.earthapp.ocean.boat/PubMed/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/name.html
 $dokka.location:com.earthapp.ocean.boat/PubMed/search/#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/search.html
@@ -177,8 +176,11 @@ $dokka.location:com.earthapp.ocean.boat/RSSItem/title/#/PointingToDeclaration/o
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/index.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion/createArticle/#kotlin.String#com.earthapp.shovel.Document#kotlin.Function1[com.earthapp.ocean.boat.Scraper.Page,kotlin.Unit]/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/create-article.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion/formatAuthors/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/format-authors.html
+$dokka.location:com.earthapp.ocean.boat/Scraper.Companion/getApiKey/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/get-api-key.html
+$dokka.location:com.earthapp.ocean.boat/Scraper.Companion/isAuthenticated/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/is-authenticated.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion/normalizeLink/#kotlin.String#kotlin.String?/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/normalize-link.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion/searchAll/#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/search-all.html
+$dokka.location:com.earthapp.ocean.boat/Scraper.Companion/setApiKey/#kotlin.String#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/set-api-key.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Page///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-page/index.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Page/Page/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-page/-page.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Page/abstract/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-page/abstract.html
@@ -198,6 +200,7 @@ $dokka.location:com.earthapp.ocean.boat/Scraper.Page/toString/#/PointingToDeclar
 $dokka.location:com.earthapp.ocean.boat/Scraper.Page/url/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-page/url.html
 $dokka.location:com.earthapp.ocean.boat/Scraper///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/index.html
 $dokka.location:com.earthapp.ocean.boat/Scraper/Scraper/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-scraper.html
+$dokka.location:com.earthapp.ocean.boat/Scraper/addApiKey/kotlin.String#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/add-api-key.html
 $dokka.location:com.earthapp.ocean.boat/Scraper/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/base-url.html
 $dokka.location:com.earthapp.ocean.boat/Scraper/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/name.html
 $dokka.location:com.earthapp.ocean.boat/Scraper/search/#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/search.html
@@ -218,6 +221,7 @@ $dokka.location:com.earthapp.util////PointingToDeclaration/ocean/com.earthapp.u
 $dokka.location:com.earthapp.util//API_KEY_LENGTH/#/PointingToDeclaration/ocean/com.earthapp.util/-a-p-i_-k-e-y_-l-e-n-g-t-h.html
 $dokka.location:com.earthapp.util//ID_CHARACTERS/#/PointingToDeclaration/ocean/com.earthapp.util/-i-d_-c-h-a-r-a-c-t-e-r-s.html
 $dokka.location:com.earthapp.util//ID_LENGTH/#/PointingToDeclaration/ocean/com.earthapp.util/-i-d_-l-e-n-g-t-h.html
+$dokka.location:com.earthapp.util//getEnv/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.util/get-env.html
 $dokka.location:com.earthapp.util//newApiKey/#/PointingToDeclaration/ocean/com.earthapp.util/new-api-key.html
 $dokka.location:com.earthapp.util//newIdentifier/#/PointingToDeclaration/ocean/com.earthapp.util/new-identifier.html
 $dokka.location:com.earthapp.util//stripHTML/kotlin.String#/PointingToDeclaration/ocean/com.earthapp.util/strip-h-t-m-l.html
