@@ -131,6 +131,12 @@ $dokka.location:com.earthapp.ocean.boat////PointingToDeclaration/ocean/com.eart
 $dokka.location:com.earthapp.ocean.boat//retrieveRSSFeed/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/retrieve-r-s-s-feed.html
 $dokka.location:com.earthapp.ocean.boat//searchAllAsPromise/com.earthapp.ocean.boat.Scraper.Companion#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-all-as-promise.html
 $dokka.location:com.earthapp.ocean.boat//searchAsPromise/com.earthapp.ocean.boat.Scraper#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-as-promise.html
+$dokka.location:com.earthapp.ocean.boat/DOAJ///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/index.html
+$dokka.location:com.earthapp.ocean.boat/DOAJ/PER_PAGE/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/-p-e-r_-p-a-g-e.html
+$dokka.location:com.earthapp.ocean.boat/DOAJ/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/base-url.html
+$dokka.location:com.earthapp.ocean.boat/DOAJ/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/name.html
+$dokka.location:com.earthapp.ocean.boat/DOAJ/search/#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/search.html
+$dokka.location:com.earthapp.ocean.boat/DOAJ/tags/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/tags.html
 $dokka.location:com.earthapp.ocean.boat/IMEJ///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-i-m-e-j/index.html
 $dokka.location:com.earthapp.ocean.boat/IMEJ/ITEM_COUNT/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-i-m-e-j/-i-t-e-m_-c-o-u-n-t.html
 $dokka.location:com.earthapp.ocean.boat/IMEJ/SEARCH_RESULTS/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-i-m-e-j/-s-e-a-r-c-h_-r-e-s-u-l-t-s.html
