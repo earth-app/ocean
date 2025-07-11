@@ -8,6 +8,7 @@ import com.earthapp.shovel.getFaviconUrl
 import com.earthapp.shovel.getTitle
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.io.IOException
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
@@ -35,6 +36,12 @@ abstract class Scraper {
      * The tags associated with the scraper.
      */
     abstract val tags: List<String>
+
+    /**
+     * Adds the API key to the base URL if it is set.
+     * This function should be overridden by scrapers that require an API key.
+     */
+    open fun String.addApiKey(): String = this
 
     /**
      * Searches for pages based on the provided query.
@@ -148,6 +155,51 @@ abstract class Scraper {
             SpringerOpen
         )
 
+        private val apiKeys = mutableMapOf<String, String>()
+
+        /**
+         * Sets the API key for a given scraper.
+         * This function allows scrapers to store their API keys for later use.
+         * @param scraperName The name of the scraper for which to set the API key.
+         * @param apiKey The API key to set for the scraper.
+         * This key will be used in requests made by the scraper.
+         */
+        @JsStatic
+        fun setApiKey(scraperName: String, apiKey: String) {
+            apiKeys[scraperName] = apiKey
+            logger.info { "API key for $scraperName has been ${if (apiKey.isEmpty()) "set (empty)" else "set"}" }
+        }
+
+        @JsExport.Ignore
+        internal fun setApiKey(scraper: Scraper, apiKey: String?) {
+            setApiKey(scraper.name, apiKey ?: "")
+        }
+
+        /**
+         * Retrieves the API key for a given scraper.
+         * @param scraperName The name of the scraper for which to retrieve the API key.
+         * @return The API key if it exists, or an empty string if not set.
+         */
+        @JsStatic
+        fun getApiKey(scraperName: String): String {
+            return apiKeys[scraperName] ?: ""
+        }
+
+        @JsExport.Ignore
+        internal fun getApiKey(scraper: Scraper): String {
+            return getApiKey(scraper.name)
+        }
+
+        /**
+         * Checks if a scraper is authenticated by verifying if it has an API key set.
+         * @param scraperName The name of the scraper to check for authentication.
+         * @return True if the scraper has an API key set, false otherwise.
+         */
+        @JsStatic
+        fun isAuthenticated(scraperName: String): Boolean {
+            return getApiKey(scraperName).isNotEmpty()
+        }
+
         /**
          * Searches for pages across all registered scrapers based on the provided query.
          * This function aggregates results from all scrapers and returns a distinct list of pages.
@@ -160,15 +212,16 @@ abstract class Scraper {
             val articles = mutableListOf<Page>()
 
             coroutineScope {
-                for (scraper in registeredScrapers) {
-                    logger.info { "Searching in ${scraper.name} for query: $query" }
+                for (scraper in registeredScrapers)
+                    launch {
+                        logger.info { "Searching in ${scraper.name} for query: $query" }
 
-                    try {
-                        articles.addAll(scraper.search(query, pageLimit))
-                    } catch (e: IOException) {
-                        logger.error { "Error while searching in ${scraper.name}: ${e.message}" }
+                        try {
+                            articles.addAll(scraper.search(query, pageLimit))
+                        } catch (e: IOException) {
+                            logger.error { "Error while searching in ${scraper.name}: ${e.message}" }
+                        }
                     }
-                }
             }
 
             return articles.distinctBy { it.url }
