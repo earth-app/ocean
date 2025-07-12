@@ -41,11 +41,11 @@ object DOAJ : Scraper() {
         val createdDate: String,
         @SerialName("last_updated")
         val lastUpdated: String,
-        val bibjson: BibjsonData
+        val bibjson: BibJsonData
     )
 
     @Serializable
-    private data class BibjsonData(
+    private data class BibJsonData(
         val title: String,
         val abstract: String? = null,
         val author: List<AuthorData> = emptyList(),
@@ -234,7 +234,7 @@ object DOAJ : Scraper() {
                 source = source + if (pageInfo != null) ", $pageInfo" else "",
                 date = date,
                 links = links,
-                faviconUrl = "https://doaj.org/static/favicon.ico"
+                faviconUrl = "https://doaj.org/assets/img/favicon/favicon.ico"
             ).apply {
                 abstract = bibjson.abstract ?: ""
                 content = bibjson.abstract ?: "No content available."
