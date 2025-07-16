@@ -67,6 +67,7 @@ $dokka.location:com.earthapp.activity/Activity/Activity/#kotlin.String#kotlin.St
 $dokka.location:com.earthapp.activity/Activity/description/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/description.html
 $dokka.location:com.earthapp.activity/Activity/id/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/id.html
 $dokka.location:com.earthapp.activity/Activity/name/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/name.html
+$dokka.location:com.earthapp.activity/Activity/patch/#kotlin.String#kotlin.String?#kotlin.collections.List[com.earthapp.activity.ActivityType]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/patch.html
 $dokka.location:com.earthapp.activity/Activity/types/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/types.html
 $dokka.location:com.earthapp.activity/ActivityType.HOBBY///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.activity/-activity-type/-h-o-b-b-y/index.html
 $dokka.location:com.earthapp.activity/ActivityType.OTHER///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.activity/-activity-type/-o-t-h-e-r/index.html
