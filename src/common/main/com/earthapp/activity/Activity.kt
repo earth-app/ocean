@@ -24,7 +24,7 @@ class Activity(
     /**
      * The name of the activity.
      */
-    val name: String,
+    var name: String,
 ) : Exportable() {
 
     /**
@@ -41,6 +41,27 @@ class Activity(
     internal constructor(name: String, description: String? = null, vararg types: ActivityType) : this(name.lowercase(), name) {
         this.description = description
         this.types.addAll(types)
+    }
+
+    /**
+     * Patches the activity with new values.
+     * @param name The new name of the activity.
+     * @param description The new description of the activity.
+     * @param types The new types of the activity.
+     * @return The updated Activity instance.
+     */
+    fun patch(
+        name: String = this.name,
+        description: String? = this.description,
+        types: List<ActivityType> = this.types
+    ): Activity {
+        this.description = description
+
+        this.types.clear()
+        this.types.addAll(types)
+
+        validate()
+        return this
     }
 
     override fun validate0() {
