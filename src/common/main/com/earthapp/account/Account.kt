@@ -397,4 +397,205 @@ class Account(
         accounts.forEach { addFriend(it) }
     }
 
+    /**
+     * Removes a friend from the account.
+     * @param account The account to remove from friends.
+     * If the account is not a friend, it will log a warning.
+     */
+    fun removeFriend(account: Account) {
+        if (account.id == this.id) {
+            logger.warn { "Account ${this.id} cannot remove itself as a friend." }
+            return
+        }
+
+        if (!friends.remove(account.id)) {
+            logger.warn { "Account ${this.id} does not have ${account.id} as a friend." }
+            return
+        }
+
+        logger.debug { "Removed account ${account.id} from friends of account ${this.id}." }
+    }
+
+    /**
+     * Removes a friend from the account by their ID.
+     * @param id The ID of the account to remove from friends.
+     * If the account is not a friend, it will log a warning.
+     */
+    @JsName("removeFriendsById")
+    fun removeFriend(id: String) {
+        val account = friends.find { it == id }
+        if (account != null) {
+            removeFriend(Account(id, ""))
+        } else {
+            logger.warn { "Account with ID $id is not a friend of account ${this.id}." }
+        }
+    }
+
+    /**
+     * Removes multiple friends from the account.
+     * @param accounts The accounts to remove from friends.
+     * If an account is not a friend, it will log a warning.
+     */
+    fun removeFriends(vararg accounts: Account) {
+        accounts.forEach { removeFriend(it) }
+    }
+
+    /**
+     * Removes multiple friends from the account.
+     * @param accounts The collection of accounts to remove from friends.
+     * If an account is not a friend, it will log a warning.
+     */
+    @JsName("removeFriendsList")
+    fun removeFriends(accounts: List<Account>) {
+        accounts.forEach { removeFriend(it) }
+    }
+
+    /**
+     * Removes friends from the account by their IDs.
+     * @param ids The IDs of the accounts to remove from friends.
+     * If an account is not a friend, it will log a warning.
+     */
+    fun removeFriendsByIds(vararg ids: String) {
+        ids.forEach { removeFriend(it) }
+    }
+
+    /**
+     * Removes friends from the account by their IDs.
+     * @param ids The collection of IDs of the accounts to remove from friends.
+     * If an account is not a friend, it will log a warning.
+     */
+    @JsName("removeFriendsByIdsList")
+    fun removeFriendsByIds(ids: List<String>) {
+        ids.forEach { removeFriend(it) }
+    }
+
+
+    /**
+     * Gets the count of activities associated with this account.
+     * @return The number of activities.
+     */
+    fun getActivityCount(): Int {
+        return activities.size
+    }
+
+    /**
+     * Adds an activity to the account.
+     * @param activity The activity to be added.
+     * If the activity is already associated with the account, it will not be added again.
+     */
+    fun addActivity(activity: Activity) {
+        if (activities.contains(activity)) {
+            logger.warn { "Activity ${activity.id} is already associated with account ${this.id}." }
+            return
+        }
+
+        activities.add(activity)
+    }
+
+    /**
+     * Adds multiple activities to the account.
+     * @param activities The activities to be added.
+     * If an activity is already associated with the account, it will not be added again.
+     */
+    fun addActivities(vararg activities: Activity) {
+        activities.forEach { addActivity(it) }
+    }
+
+    /**
+     * Adds multiple activities to the account.
+     * @param activities The collection of activities to be added.
+     * If an activity is already associated with the account, it will not be added again.
+     */
+    @JsName("addActivitiesList")
+    fun addActivities(activities: List<Activity>) {
+        activities.forEach { addActivity(it) }
+    }
+
+    /**
+     * Removes an activity from the account.
+     * @param activity The activity to be removed.
+     * If the activity is not associated with the account, it will log a warning.
+     */
+    fun removeActivity(activity: Activity) {
+        if (!activities.remove(activity)) {
+            logger.warn { "Activity ${activity.id} is not associated with account ${this.id}." }
+            return
+        }
+
+        activities.remove(activity)
+        logger.debug { "Removed activity ${activity.id} from account ${this.id}." }
+    }
+
+    /**
+     * Removes an activity from the account by its ID.
+     * @param id The ID of the activity to be removed.
+     * If the activity is not associated with the account, it will log a warning.
+     */
+    @JsName("removeActivityById")
+    fun removeActivity(id: String) {
+        val activity = activities.find { it.id == id }
+        if (activity != null) {
+            removeActivity(activity)
+        } else {
+            logger.warn { "Activity with ID $id is not associated with account ${this.id}." }
+        }
+    }
+
+    /**
+     * Removes multiple activities from the account.
+     * @param activities The activities to be removed.
+     * If an activity is not associated with the account, it will log a warning.
+     */
+    fun removeActivities(vararg activities: Activity) {
+        activities.forEach { removeActivity(it) }
+    }
+
+    /**
+     * Removes multiple activities from the account.
+     * @param activities The collection of activities to be removed.
+     * If an activity is not associated with the account, it will log a warning.
+     */
+    @JsName("removeActivitiesList")
+    fun removeActivities(activities: List<Activity>) {
+        activities.forEach { removeActivity(it) }
+    }
+
+    /**
+     * Removes activities from the account by their IDs.
+     * @param ids The IDs of the activities to be removed.
+     * If an activity is not associated with the account, it will log a warning.
+     */
+    fun removeActivitiesByIds(vararg ids: String) {
+        ids.forEach { removeActivity(it) }
+    }
+
+    /**
+     * Removes activities from the account by their IDs.
+     * @param ids The collection of IDs of the activities to be removed.
+     * If an activity is not associated with the account, it will log a warning.
+     */
+    @JsName("removeActivitiesByIdsList")
+    fun removeActivitiesByIds(ids: List<String>) {
+        ids.forEach { removeActivity(it) }
+    }
+
+    /**
+     * Sets the activities associated with this account.
+     * @param activities The activities to set.
+     */
+    fun setActivities(vararg activities: Activity) {
+        this.activities.clear()
+        this.activities.addAll(activities)
+    }
+
+    /**
+     * Sets the activities associated with this account.
+     * @param activities The list of activities to set.
+     */
+    @JsName("setActivitiesList")
+    fun setActivities(activities: List<Activity>) {
+        this.activities.clear()
+        this.activities.addAll(activities)
+    }
+
 }
