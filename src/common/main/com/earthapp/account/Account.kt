@@ -240,16 +240,6 @@ class Account(
     }
 
     /**
-     * Checks if the account is of type [AccountType.ADMINISTRATOR].
-     * This is a convenience method to determine if the account has administrative privileges.
-     * @return True if the account is an administrator, false otherwise.
-     * This method is useful for checking if the account has special permissions or capabilities.
-     */
-    fun isAdmin(): Boolean {
-        return type == AccountType.ADMINISTRATOR
-    }
-
-    /**
      * Checks if a field is private based on the specified privacy level.
      * @param field The name of the field to check.
      * @param level The requesting body's privacy level of access. For example, if it is your own account, it is [Privacy.PRIVATE] access.
