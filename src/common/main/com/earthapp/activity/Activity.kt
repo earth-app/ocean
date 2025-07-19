@@ -69,7 +69,7 @@ class Activity(
         require(id.isNotEmpty()) { "ID must not be empty." }
         require(name.isNotEmpty()) { "Name must not be empty." }
         require(types.isNotEmpty()) { "Activity types must not be empty." }
-        require(types.size >= 3) { "Activity can have a maximum of 3 types." }
+        require(types.size <= MAX_TYPES) { "Activity can have a maximum of $MAX_TYPES types." }
 
         require(!description.isNullOrEmpty()) { "Description must not be empty." }
         require(description!!.length in 0..2500) { "Description must be between 0 and 2500 characters." }
@@ -81,8 +81,8 @@ class Activity(
      * @return The updated Activity instance.
      */
     fun addType(type: ActivityType) {
-        if (types.size >= 3) {
-            logger.warn { "Cannot add type $type to activity '$id': maximum of 3 types reached." }
+        if (types.size >= MAX_TYPES) {
+            logger.warn { "Cannot add type $type to activity '$id': maximum of $MAX_TYPES types reached." }
             return
         }
 
@@ -96,8 +96,8 @@ class Activity(
      * @return The updated Activity instance.
      */
     fun addTypes(vararg types: ActivityType) {
-        if (this.types.size + types.size > 3) {
-            logger.warn { "Cannot add types ${types.joinToString()} to activity '$id': maximum of 3 types reached." }
+        if (this.types.size + types.size > MAX_TYPES) {
+            logger.warn { "Cannot add types ${types.joinToString()} to activity '$id': maximum of $MAX_TYPES types reached." }
             return
         }
 
@@ -137,6 +137,8 @@ class Activity(
 
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.activity.Activity")
+
+        const val MAX_TYPES = 5
 
         /**
          * Creates an Activity instance from a JSON string.
