@@ -91,6 +91,21 @@ class Activity(
     }
 
     /**
+     * Adds multiple types to the activity.
+     * @param types The types to add.
+     * @return The updated Activity instance.
+     */
+    fun addTypes(vararg types: ActivityType) {
+        if (this.types.size + types.size > 3) {
+            logger.warn { "Cannot add types ${types.joinToString()} to activity '$id': maximum of 3 types reached." }
+            return
+        }
+
+        this.types.addAll(types)
+        validate()
+    }
+
+    /**
      * Removes a type from the activity.
      * @param type The type to remove.
      * @return The updated Activity instance.
@@ -102,6 +117,21 @@ class Activity(
         }
 
         types.remove(type)
+        validate()
+    }
+
+    /**
+     * Removes multiple types from the activity.
+     * @param types The types to remove.
+     */
+    fun removeTypes(vararg types: ActivityType) {
+        for (type in types) {
+            if (!this.types.contains(type)) {
+                logger.warn { "Type $type is not present in the activity types for activity '$id'." }
+                continue
+            }
+            this.types.remove(type)
+        }
         validate()
     }
 
