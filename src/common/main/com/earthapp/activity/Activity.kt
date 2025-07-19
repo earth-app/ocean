@@ -2,6 +2,7 @@ package com.earthapp.activity
 
 import com.earthapp.Exportable
 import com.earthapp.json
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -74,7 +75,38 @@ class Activity(
         require(description!!.length in 0..2500) { "Description must be between 0 and 2500 characters." }
     }
 
+    /**
+     * Adds a type to the activity.
+     * @param type The type to add.
+     * @return The updated Activity instance.
+     */
+    fun addType(type: ActivityType) {
+        if (types.size >= 3) {
+            logger.warn { "Cannot add type $type to activity '$id': maximum of 3 types reached." }
+            return
+        }
+
+        types.add(type)
+        validate()
+    }
+
+    /**
+     * Removes a type from the activity.
+     * @param type The type to remove.
+     * @return The updated Activity instance.
+     */
+    fun removeType(type: ActivityType) {
+        if (!types.contains(type)) {
+            logger.warn { "Type $type is not present in the activity types for activity '$id'." }
+            return
+        }
+
+        types.remove(type)
+        validate()
+    }
+
     companion object {
+        private val logger = KotlinLogging.logger("com.earthapp.activity.Activity")
 
         /**
          * Creates an Activity instance from a JSON string.

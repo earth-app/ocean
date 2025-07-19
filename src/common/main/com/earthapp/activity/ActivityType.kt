@@ -45,6 +45,41 @@ enum class ActivityType {
     RELAXATION,
 
     /**
+     * The activity is related to health and fitness.
+     */
+    HEALTH,
+
+    /**
+     * The activity is related to a project.
+     */
+    PROJECT,
+
+    /**
+     * The activity is related to a personal goal.
+     */
+    PERSONAL_GOAL,
+
+    /**
+     * The activity is related to a community service or volunteering.
+     */
+    COMMUNITY_SERVICE,
+
+    /**
+     * The activity is related to a creative endeavor.
+     */
+    CREATIVE,
+
+    /**
+     * The activity is related to a family event or gathering.
+     */
+    FAMILY,
+
+    /**
+     * The activity is related to an event, celebration, or holiday.
+     */
+    HOLIDAY,
+
+    /**
      * The activity is not specified or does not fit into any of the above categories.
      */
     OTHER
