@@ -139,6 +139,7 @@ class Account(
     ): Account {
         this.firstName = firstName
         this.lastName = lastName
+        this.bio = bio
         this.email = email
         this.address = address
         this.country = country
