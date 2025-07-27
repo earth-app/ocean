@@ -130,6 +130,7 @@ class Account(
         username: String = this.username,
         firstName: String = this.firstName,
         lastName: String = this.lastName,
+        bio: String = this.bio,
         email: String = this.email,
         address: String? = this.address,
         country: String = this.country,
@@ -165,7 +166,7 @@ class Account(
             require(country.length == 2) { "Country code must be exactly 2 characters long." }
 
         if (bio.isNotEmpty())
-            require(bio.length <= 500) { "Bio must not exceed 300 characters." }
+            require(bio.length <= 500) { "Bio must not exceed 500 characters." }
     }
 
     override fun equals(other: Any?): Boolean {
