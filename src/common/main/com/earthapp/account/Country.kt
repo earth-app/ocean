@@ -6,6 +6,11 @@ package com.earthapp.account
 enum class Country {
 
     /**
+     * Represents an international region. Serves as a placeholder for countries not listed or when the user has not specified one.
+     */
+    INTERNATIONAL("", "International", "en-INT", "🌐", "+0"),
+
+    /**
      * Represents the country of the United States.
      */
     UNITED_STATES("US", "United States", "en-US", "🇺🇸", "+1"),

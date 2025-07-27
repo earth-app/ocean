@@ -162,8 +162,10 @@ class Account(
         if (email.isNotEmpty())
             require('@' in email) { "Email must contain '@' character." }
 
-        if (country.isNotEmpty())
+        if (country.isNotEmpty()) {
             require(country.length == 2) { "Country code must be exactly 2 characters long." }
+            require(Country.fromCode(country) != null) { "Invalid country code: $country." }
+        }
 
         if (bio.isNotEmpty())
             require(bio.length <= 500) { "Bio must not exceed 500 characters." }
@@ -597,6 +599,23 @@ class Account(
     fun setActivities(activities: List<Activity>) {
         this.activities.clear()
         this.activities.addAll(activities)
+    }
+
+    /**
+     * Gets the country of the account.
+     * If the country code is empty or invalid, it defaults to [Country.INTERNATIONAL].
+     * @return The [Country] associated with the account.
+     */
+    fun getCountry(): Country {
+        if (country.isEmpty()) return Country.INTERNATIONAL
+
+        val country = Country.fromCode(this.country)
+        if (country == null) {
+            logger.warn { "Invalid country code '$country' for account '$username'. Defaulting to UNKNOWN." }
+            return Country.INTERNATIONAL
+        }
+
+        return country
     }
 
 }
