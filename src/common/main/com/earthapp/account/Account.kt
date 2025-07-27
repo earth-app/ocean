@@ -23,11 +23,10 @@ import kotlin.reflect.KProperty
 @JsExport
 class Account(
     override val id: String,
-
     /**
      * The username associated with the account.
      */
-    val username: String
+    var username: String
 ) : Exportable() {
     /**
      * The first name of the account holder.
@@ -137,6 +136,7 @@ class Account(
         phoneNumber: Int = this.phoneNumber,
         visibility: Visibility = this.visibility,
     ): Account {
+        this.username = username
         this.firstName = firstName
         this.lastName = lastName
         this.bio = bio
