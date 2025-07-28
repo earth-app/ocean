@@ -80,6 +80,16 @@ enum class ActivityType {
     HOLIDAY,
 
     /**
+     * The activity is related to entertainment, such as watching movies, playing games, etc.
+     */
+    ENTERTAINMENT,
+
+    /**
+     * The activity is related to learning or acquiring new skills.
+     */
+    LEARNING,
+
+    /**
      * The activity is not specified or does not fit into any of the above categories.
      */
     OTHER

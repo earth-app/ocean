@@ -155,6 +155,34 @@ class Activity(
         return this.name.equals(name, ignoreCase = true) || aliases.any { it.equals(name, ignoreCase = true) }
     }
 
+    /**
+     * Adds an alias to the activity.
+     * @param alias The alias to add.
+     * If the alias is already present, it will log a warning and not add it again.
+     */
+    fun addAlias(alias: String) {
+        if (aliases.contains(alias)) {
+            logger.warn { "Alias '$alias' is already present in the activity aliases for activity '$id'." }
+            return
+        }
+
+        aliases.add(alias)
+    }
+
+    /**
+     * Adds multiple aliases to the activity.
+     * @param aliases The aliases to add.
+     */
+    fun addAliases(vararg aliases: String) {
+        for (alias in aliases) {
+            if (this.aliases.contains(alias)) {
+                logger.warn { "Alias '$alias' is already present in the activity aliases for activity '$id'." }
+                continue
+            }
+            this.aliases.add(alias)
+        }
+    }
+
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.activity.Activity")
 
