@@ -270,12 +270,12 @@ $dokka.location:com.earthapp.account/Country.YEMEN///PointingToDeclaration/{"org
 $dokka.location:com.earthapp.account/Country.ZAMBIA///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.account/-country/-z-a-m-b-i-a/index.html
 $dokka.location:com.earthapp.account/Country.ZIMBABWE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.account/-country/-z-i-m-b-a-b-w-e/index.html
 $dokka.location:com.earthapp.account/Country///PointingToDeclaration/ocean/com.earthapp.account/-country/index.html
+$dokka.location:com.earthapp.account/Country/code/#/PointingToDeclaration/ocean/com.earthapp.account/-country/code.html
+$dokka.location:com.earthapp.account/Country/countryName/#/PointingToDeclaration/ocean/com.earthapp.account/-country/country-name.html
 $dokka.location:com.earthapp.account/Country/entries/#/PointingToDeclaration/ocean/com.earthapp.account/-country/entries.html
-$dokka.location:com.earthapp.account/Country/getCode/#/PointingToDeclaration/ocean/com.earthapp.account/-country/get-code.html
-$dokka.location:com.earthapp.account/Country/getCountryName/#/PointingToDeclaration/ocean/com.earthapp.account/-country/get-country-name.html
-$dokka.location:com.earthapp.account/Country/getFlagEmoji/#/PointingToDeclaration/ocean/com.earthapp.account/-country/get-flag-emoji.html
-$dokka.location:com.earthapp.account/Country/getLocale/#/PointingToDeclaration/ocean/com.earthapp.account/-country/get-locale.html
-$dokka.location:com.earthapp.account/Country/getPhonePrefix/#/PointingToDeclaration/ocean/com.earthapp.account/-country/get-phone-prefix.html
+$dokka.location:com.earthapp.account/Country/flagEmoji/#/PointingToDeclaration/ocean/com.earthapp.account/-country/flag-emoji.html
+$dokka.location:com.earthapp.account/Country/locale/#/PointingToDeclaration/ocean/com.earthapp.account/-country/locale.html
+$dokka.location:com.earthapp.account/Country/phonePrefix/#/PointingToDeclaration/ocean/com.earthapp.account/-country/phone-prefix.html
 $dokka.location:com.earthapp.account/Country/valueOf/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-country/value-of.html
 $dokka.location:com.earthapp.account/Country/values/#/PointingToDeclaration/ocean/com.earthapp.account/-country/values.html
 $dokka.location:com.earthapp.account/Privacy.CIRCLE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.account/-privacy/-c-i-r-c-l-e/index.html
