@@ -9,11 +9,13 @@ import korlibs.io.compression.uncompress
 import korlibs.io.lang.Charsets
 import korlibs.io.lang.decodeToString
 import korlibs.io.lang.encodeToByteArray
+import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
 
 @Serializable
+@Polymorphic
 @JsExport
 abstract class Exportable {
 
