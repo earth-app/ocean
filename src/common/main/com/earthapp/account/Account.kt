@@ -172,6 +172,9 @@ class Account(
             require(bio.length <= 500) { "Bio must not exceed 500 characters." }
 
         require(phoneNumber in 0.0..999_999_9999.0) { "Phone number must be a valid phone number." }
+
+        if (activities.isNotEmpty())
+            require(activities.size <= 10) { "An account can have a maximum of 10 activities." }
     }
 
     override fun equals(other: Any?): Boolean {
