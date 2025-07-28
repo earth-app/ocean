@@ -34,6 +34,12 @@ class Activity(
     var description: String? = null
 
     /**
+     * A list of aliases for the activity.
+     * Aliases are alternative names that can be used to refer to the activity.
+     */
+    val aliases = mutableListOf<String>()
+
+    /**
      * The type of the activity.
      */
     @SerialName("activity_types")
@@ -135,34 +141,19 @@ class Activity(
         validate()
     }
 
+    /**
+     * Checks if the activity matches a given name or any of its aliases.
+     * @param name The name to check against the activity's name and aliases.
+     * @return True if the activity's name or any of its aliases match the given name, false otherwise.
+     */
+    fun doesMatch(name: String): Boolean {
+        return this.name.equals(name, ignoreCase = true) || aliases.any { it.equals(name, ignoreCase = true) }
+    }
+
     companion object {
         private val logger = KotlinLogging.logger("com.earthapp.activity.Activity")
 
         const val MAX_TYPES = 5
-
-        /**
-         * Creates an Activity instance from a JSON string.
-         * This method is used to deserialize an activity from the JSON representation returned by Cloud.
-         * @param jsonString The JSON string representing the activity.
-         * @return An Activity instance populated with the data from the JSON string.
-         */
-        fun fromCloudJson(jsonString: String): Activity {
-            val obj = json.decodeFromString<JsonObject>(jsonString)
-
-            val id = obj["name"]?.jsonPrimitive?.contentOrNull ?: throw IllegalArgumentException("ID is required")
-            val name = obj["human_name"]?.jsonPrimitive?.contentOrNull ?: throw IllegalArgumentException("Name is required")
-            val description = obj["description"]?.jsonPrimitive?.contentOrNull ?: "No description provided."
-            val types = obj["types"]?.jsonPrimitive?.contentOrNull?.split(",")?.map { ActivityType.valueOf(it) }
-                ?: throw IllegalArgumentException("Types are required")
-
-            val activity = Activity(id, name)
-            activity.description = description
-            activity.types.addAll(types)
-
-            activity.validate()
-            return activity
-        }
-
     }
 
 }
