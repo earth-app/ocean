@@ -63,7 +63,7 @@ class Account(
      * The phone number associated with the account.
      */
     @SerialName("phone_number")
-    var phoneNumber: Int = 0
+    var phoneNumber: Double = 0.0
 
     /**
      * The activities associated with the account.
@@ -133,7 +133,7 @@ class Account(
         email: String = this.email,
         address: String? = this.address,
         country: String = this.country,
-        phoneNumber: Int = this.phoneNumber,
+        phoneNumber: Double = this.phoneNumber,
         visibility: Visibility = this.visibility,
     ): Account {
         this.username = username
@@ -170,6 +170,8 @@ class Account(
 
         if (bio.isNotEmpty())
             require(bio.length <= 500) { "Bio must not exceed 500 characters." }
+
+        require(phoneNumber in 0.0..999_999_9999.0) { "Phone number must be a valid phone number." }
     }
 
     override fun equals(other: Any?): Boolean {
