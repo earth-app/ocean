@@ -2,12 +2,14 @@ package com.earthapp.account
 
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
+import kotlin.js.ExperimentalJsStatic
 import kotlin.js.JsExport
+import kotlin.js.JsStatic
 
 /**
  * Represents a country in the Earth App.
  */
-@OptIn(ExperimentalJsExport::class)
+@OptIn(ExperimentalJsExport::class, ExperimentalJsStatic::class)
 @JsExport
 @Serializable
 enum class Country {
@@ -1029,6 +1031,7 @@ enum class Country {
          * @param code The country code to search for.
          * @return The country with the specified code, or null if not found.
          */
+        @JsStatic
         fun fromCode(code: String): Country? = entries.find { it.code.equals(code, ignoreCase = true) }
 
         /**
@@ -1036,6 +1039,7 @@ enum class Country {
          * @param locale The locale to search for.
          * @return The country with the specified locale, or null if not found.
          */
+        @JsStatic
         fun fromLocale(locale: String): Country? = entries.find { it.locale.equals(locale, ignoreCase = true) }
 
         /**
@@ -1044,6 +1048,7 @@ enum class Country {
          * @param phonePrefix The phone prefix to search for, including the '+' sign.
          * @return The country with the specified phone prefix, or null if not found.
          */
+        @JsStatic
         fun fromPhonePrefix(phonePrefix: String): Country? = entries.find { it.phonePrefix.equals(phonePrefix, ignoreCase = true) }
     }
 }
