@@ -60,12 +60,17 @@ class Activity(
     fun patch(
         name: String = this.name,
         description: String? = this.description,
-        types: List<ActivityType> = this.types
+        types: List<ActivityType> = this.types,
+        aliases: List<String> = this.aliases
     ): Activity {
+        this.name = name
         this.description = description
 
         this.types.clear()
         this.types.addAll(types)
+
+        this.aliases.clear()
+        this.aliases.addAll(aliases)
 
         validate()
         return this
