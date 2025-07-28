@@ -298,7 +298,7 @@ $dokka.location:com.earthapp.activity/Activity/description/#/PointingToDeclarati
 $dokka.location:com.earthapp.activity/Activity/doesMatch/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/does-match.html
 $dokka.location:com.earthapp.activity/Activity/id/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/id.html
 $dokka.location:com.earthapp.activity/Activity/name/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/name.html
-$dokka.location:com.earthapp.activity/Activity/patch/#kotlin.String#kotlin.String?#kotlin.collections.List[com.earthapp.activity.ActivityType]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/patch.html
+$dokka.location:com.earthapp.activity/Activity/patch/#kotlin.String#kotlin.String?#kotlin.collections.List[com.earthapp.activity.ActivityType]#kotlin.collections.List[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/patch.html
 $dokka.location:com.earthapp.activity/Activity/removeType/#com.earthapp.activity.ActivityType/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-type.html
 $dokka.location:com.earthapp.activity/Activity/removeTypes/#kotlin.Array[com.earthapp.activity.ActivityType]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-types.html
 $dokka.location:com.earthapp.activity/Activity/types/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/types.html
