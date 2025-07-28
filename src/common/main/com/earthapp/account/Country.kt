@@ -1,8 +1,15 @@
 package com.earthapp.account
 
+import kotlinx.serialization.Serializable
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
+
 /**
  * Represents a country in the Earth App.
  */
+@OptIn(ExperimentalJsExport::class)
+@JsExport
+@Serializable
 enum class Country {
 
     /**
