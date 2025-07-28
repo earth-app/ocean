@@ -989,11 +989,30 @@ enum class Country {
 
     ;
 
-    private val code: String
-    private val countryName: String
-    private val locale: String
-    private val flagEmoji: String
-    private val phonePrefix: String
+    /**
+     * Represents the two-letter country code as per ISO 3166-1 alpha-2.
+     */
+    val code: String
+
+    /**
+     * Represents the full, English name of the country.
+     */
+    val countryName: String
+
+    /**
+     * Represents the locale of the country, typically in the format of language-country code.
+     */
+    val locale: String
+
+    /**
+     * Represents the emoji flag of the country.
+     */
+    val flagEmoji: String
+
+    /**
+     * Represents the phone prefix of the country, including the '+' sign.
+     */
+    val phonePrefix: String
 
     constructor(code: String, name: String, locale: String, flagEmoji: String, phonePrefix: String) {
         this.code = code
@@ -1002,31 +1021,6 @@ enum class Country {
         this.flagEmoji = flagEmoji
         this.phonePrefix = phonePrefix
     }
-
-    /**
-     * Returns the code of the country.
-     */
-    fun getCode(): String = code
-
-    /**
-     * Returns the name of the country.
-     */
-    fun getCountryName(): String = countryName
-
-    /**
-     * Returns the locale of the country.
-     */
-    fun getLocale(): String = locale
-
-    /**
-     * Returns the flag emoji of the country.
-     */
-    fun getFlagEmoji(): String = flagEmoji
-
-    /**
-     * Returns the phone prefix of the country.
-     */
-    fun getPhonePrefix(): String = phonePrefix
 
     companion object {
 
