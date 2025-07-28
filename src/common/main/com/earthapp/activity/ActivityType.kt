@@ -90,6 +90,46 @@ enum class ActivityType {
     LEARNING,
 
     /**
+     * The activity is related to nature, such as hiking, camping, etc.
+     */
+    NATURE,
+
+    /**
+     * The activity is related to technology, such as programming, gaming, etc.
+     */
+    TECHNOLOGY,
+
+    /**
+     * The activity is related to arts, such as painting, music, etc.
+     */
+    ART,
+
+    /**
+     * The activity is related to spirituality or religion.
+     */
+    SPIRITUALITY,
+
+    /**
+     * The activity is related to finance or investment.
+     */
+    FINANCE,
+
+    /**
+     * The activity is related to home improvement or DIY projects.
+     */
+    HOME_IMPROVEMENT,
+
+    /**
+     * The activity is related to pets or animals.
+     */
+    PETS,
+
+    /**
+     * The activity is related to fashion or personal grooming.
+     */
+    FASHION,
+
+    /**
      * The activity is not specified or does not fit into any of the above categories.
      */
     OTHER
