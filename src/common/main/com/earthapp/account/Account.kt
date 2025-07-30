@@ -102,10 +102,13 @@ class Account(
         "country" to Privacy.PUBLIC,
         "events" to Privacy.MUTUAL,
         "friends" to Privacy.MUTUAL,
+        "circle" to Privacy.CIRCLE,
         "last_login" to Privacy.CIRCLE
     )
 
     internal val friends = mutableSetOf<String>()
+
+    internal val circle = mutableSetOf<String>()
 
     internal constructor(username: String, apply: Account.() -> Unit) : this(newId(), "user-$username") {
         apply(this)
@@ -208,11 +211,12 @@ class Account(
             "events",
             "friends",
             "last_login",
-            "account_type"
+            "account_type",
+            "circle"
         )
 
         private val neverPublic = listOf(
-            "address", "phone_number"
+            "address", "phone_number", "circle"
         )
 
         /**
@@ -622,6 +626,90 @@ class Account(
         }
 
         return country
+    }
+
+    /**
+     * Adds an account to the circle of this account.
+     * @param id The ID of the account to add to the circle.
+     * If the account is already in the circle, it will not be added again.
+     */
+    @JsName("addAccountIdToCircle")
+    fun addAccountToCircle(id: String) {
+        if (circle.contains(id)) {
+            logger.warn { "Account $id is already in the circle of account ${this.id}." }
+            return
+        }
+
+        circle.add(id)
+        logger.debug { "Added account $id to the circle of account ${this.id}." }
+    }
+
+    /**
+     * Adds an account to the circle of this account.
+     * @param account The account to add to the circle.
+     * If the account is already in the circle, it will not be added again.
+     */
+    fun addAccountToCircle(account: Account) {
+        addAccountToCircle(account.id)
+    }
+
+    /**
+     * Removes an account from the circle of this account.
+     * @param id The ID of the account to remove from the circle.
+     * If the account is not in the circle, it will log a warning.
+     */
+    @JsName("removeAccountIdFromCircle")
+    fun removeAccountFromCircle(id: String) {
+        if (!circle.remove(id)) {
+            logger.warn { "Account $id is not in the circle of account ${this.id}." }
+            return
+        }
+
+        logger.debug { "Removed account $id from the circle of account ${this.id}." }
+    }
+
+    /**
+     * Removes an account from the circle of this account.
+     * @param account The account to remove from the circle.
+     * If the account is not in the circle, it will log a warning.
+     */
+    fun removeAccountFromCircle(account: Account) {
+        removeAccountFromCircle(account.id)
+    }
+
+    /**
+     * Checks if an account is in the circle of this account.
+     * @param id The ID of the account to check.
+     * @return True if the account is in the circle, false otherwise.
+     */
+    @JsName("isAccountIdInCircle")
+    fun isAccountInCircle(id: String): Boolean {
+        return circle.contains(id)
+    }
+
+    /**
+     * Checks if an account is in the circle of this account.
+     * @param account The account to check.
+     * @return True if the account is in the circle, false otherwise.
+     */
+    fun isAccountInCircle(account: Account): Boolean {
+        return isAccountInCircle(account.id)
+    }
+
+    /**
+     * Gets the accounts in the circle of this account.
+     * @return The number of accounts in the circle.
+     */
+    fun getCircle(): Set<String> {
+        return circle.toSet()
+    }
+
+    /**
+     * Gets the count of accounts in the circle of this account.
+     * @return The number of accounts in the circle.
+     */
+    fun getCircleCount(): Int {
+        return circle.size
     }
 
 }
