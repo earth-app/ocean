@@ -12,6 +12,8 @@ $dokka.location:com.earthapp.account/Account.Companion/newId/#/PointingToDeclara
 $dokka.location:com.earthapp.account/Account///PointingToDeclaration/ocean/com.earthapp.account/-account/index.html
 $dokka.location:com.earthapp.account/Account/Account/#kotlin.String#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/-account.html
 $dokka.location:com.earthapp.account/Account/activities/#/PointingToDeclaration/ocean/com.earthapp.account/-account/activities.html
+$dokka.location:com.earthapp.account/Account/addAccountToCircle/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/add-account-to-circle.html
+$dokka.location:com.earthapp.account/Account/addAccountToCircle/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/add-account-to-circle.html
 $dokka.location:com.earthapp.account/Account/addActivities/#kotlin.Array[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-activities.html
 $dokka.location:com.earthapp.account/Account/addActivities/#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-activities.html
 $dokka.location:com.earthapp.account/Account/addActivity/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.account/-account/add-activity.html
@@ -25,6 +27,8 @@ $dokka.location:com.earthapp.account/Account/email/#/PointingToDeclaration/ocea
 $dokka.location:com.earthapp.account/Account/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.account/-account/equals.html
 $dokka.location:com.earthapp.account/Account/firstName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/first-name.html
 $dokka.location:com.earthapp.account/Account/getActivityCount/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-activity-count.html
+$dokka.location:com.earthapp.account/Account/getCircle/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-circle.html
+$dokka.location:com.earthapp.account/Account/getCircleCount/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-circle-count.html
 $dokka.location:com.earthapp.account/Account/getCountry/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-country.html
 $dokka.location:com.earthapp.account/Account/getFieldPrivacy/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/get-field-privacy.html
 $dokka.location:com.earthapp.account/Account/getFieldPrivacy/#kotlin.reflect.KProperty[kotlin.Any]/PointingToDeclaration/ocean/com.earthapp.account/-account/get-field-privacy.html
@@ -32,6 +36,8 @@ $dokka.location:com.earthapp.account/Account/getFriendCount/#/PointingToDeclarat
 $dokka.location:com.earthapp.account/Account/getFriendIds/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-friend-ids.html
 $dokka.location:com.earthapp.account/Account/hashCode/#/PointingToDeclaration/ocean/com.earthapp.account/-account/hash-code.html
 $dokka.location:com.earthapp.account/Account/id/#/PointingToDeclaration/ocean/com.earthapp.account/-account/id.html
+$dokka.location:com.earthapp.account/Account/isAccountInCircle/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/is-account-in-circle.html
+$dokka.location:com.earthapp.account/Account/isAccountInCircle/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/is-account-in-circle.html
 $dokka.location:com.earthapp.account/Account/isAdmin/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-admin.html
 $dokka.location:com.earthapp.account/Account/isFieldPrivate/#kotlin.String#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/is-field-private.html
 $dokka.location:com.earthapp.account/Account/isFieldPrivate/#kotlin.reflect.KProperty[kotlin.Any]#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/is-field-private.html
@@ -41,6 +47,8 @@ $dokka.location:com.earthapp.account/Account/isVisible/#/PointingToDeclaration/
 $dokka.location:com.earthapp.account/Account/lastName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/last-name.html
 $dokka.location:com.earthapp.account/Account/patch/#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String#kotlin.String?#kotlin.String#kotlin.Double#com.earthapp.Visibility/PointingToDeclaration/ocean/com.earthapp.account/-account/patch.html
 $dokka.location:com.earthapp.account/Account/phoneNumber/#/PointingToDeclaration/ocean/com.earthapp.account/-account/phone-number.html
+$dokka.location:com.earthapp.account/Account/removeAccountFromCircle/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-account-from-circle.html
+$dokka.location:com.earthapp.account/Account/removeAccountFromCircle/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-account-from-circle.html
 $dokka.location:com.earthapp.account/Account/removeActivities/#kotlin.Array[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities.html
 $dokka.location:com.earthapp.account/Account/removeActivities/#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities.html
 $dokka.location:com.earthapp.account/Account/removeActivitiesByIds/#kotlin.Array[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities-by-ids.html
