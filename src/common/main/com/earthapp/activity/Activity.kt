@@ -45,6 +45,12 @@ class Activity(
     @SerialName("activity_types")
     val types = mutableListOf<ActivityType>()
 
+    /**
+     * A map of additional fields for the activity.
+     * This can be used to store custom data related to the activity.
+     */
+    private val fields = mutableMapOf<String, String>()
+
     internal constructor(name: String, description: String? = null, vararg types: ActivityType) : this(name.lowercase(), name) {
         this.description = description
         this.types.addAll(types)
@@ -181,6 +187,40 @@ class Activity(
             }
             this.aliases.add(alias)
         }
+    }
+
+    /**
+     * Gets a field value by its key.
+     * @param key The key of the field to retrieve.
+     * @return The value of the field, or null if the key does not exist.
+     */
+    fun getField(key: String): String? {
+        if (key.isEmpty()) {
+            logger.warn { "Key for field cannot be empty." }
+            return null
+        }
+
+        return fields[key]
+    }
+
+    /**
+     * Sets a field value by its key.
+     * @param key The key of the field to set.
+     * @param value The value to set for the field.
+     * If the key already exists, it will update the value.
+     */
+    fun setField(key: String, value: String) {
+        if (key.isEmpty()) {
+            logger.warn { "Key for field cannot be empty." }
+            return
+        }
+
+        if (value.isEmpty()) {
+            logger.warn { "Value for field '$key' cannot be empty." }
+            return
+        }
+
+        fields[key] = value
     }
 
     companion object {
