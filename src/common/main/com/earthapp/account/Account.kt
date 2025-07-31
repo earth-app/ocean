@@ -222,6 +222,7 @@ class Account(
         /**
          * A static account representing the automated Earth App administrator, associated with the `ADMIN_API_TOKEN` API token.
          */
+        @JsStatic
         val ADMIN_ACCOUNT = Account("4ZwscntExNruk3zMDjTGs4Wn", "cloud").apply {
             firstName = "Earth"
             lastName = "App"
