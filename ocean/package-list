@@ -6,6 +6,7 @@ $dokka.location://fromBinary/#kotlin.ByteArray/PointingToDeclaration/ocean/[roo
 $dokka.location://fromJson/#kotlin.String/PointingToDeclaration/ocean/[root]/from-json.html
 $dokka.location:com.earthapp.account////PointingToDeclaration/ocean/com.earthapp.account/index.html
 $dokka.location:com.earthapp.account/Account.Companion///PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/index.html
+$dokka.location:com.earthapp.account/Account.Companion/ADMIN_ACCOUNT/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/-a-d-m-i-n_-a-c-c-o-u-n-t.html
 $dokka.location:com.earthapp.account/Account.Companion/getAllowedPrivacyFields/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/get-allowed-privacy-fields.html
 $dokka.location:com.earthapp.account/Account.Companion/isNeverPublic/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/is-never-public.html
 $dokka.location:com.earthapp.account/Account.Companion/newId/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/new-id.html
@@ -393,7 +394,6 @@ $dokka.location:com.earthapp.ocean.boat//retrieveRSSFeed/#kotlin.String/Pointing
 $dokka.location:com.earthapp.ocean.boat//searchAllAsPromise/com.earthapp.ocean.boat.Scraper.Companion#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-all-as-promise.html
 $dokka.location:com.earthapp.ocean.boat//searchAsPromise/com.earthapp.ocean.boat.Scraper#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-as-promise.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/index.html
-$dokka.location:com.earthapp.ocean.boat/DOAJ/PER_PAGE/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/-p-e-r_-p-a-g-e.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/base-url.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/name.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ/search/#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/search.html
@@ -409,7 +409,6 @@ $dokka.location:com.earthapp.ocean.boat/Parser///PointingToDeclaration/ocean/co
 $dokka.location:com.earthapp.ocean.boat/Parser/Parser/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-parser/-parser.html
 $dokka.location:com.earthapp.ocean.boat/Parser/parseURL/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-parser/parse-u-r-l.html
 $dokka.location:com.earthapp.ocean.boat/PubMed///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/index.html
-$dokka.location:com.earthapp.ocean.boat/PubMed/PER_PAGE/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/-p-e-r_-p-a-g-e.html
 $dokka.location:com.earthapp.ocean.boat/PubMed/addApiKey/kotlin.String#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/add-api-key.html
 $dokka.location:com.earthapp.ocean.boat/PubMed/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/base-url.html
 $dokka.location:com.earthapp.ocean.boat/PubMed/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-pub-med/name.html
@@ -441,6 +440,7 @@ $dokka.location:com.earthapp.ocean.boat/RSSItem/pubDate/#/PointingToDeclaration/
 $dokka.location:com.earthapp.ocean.boat/RSSItem/summary/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s-item/summary.html
 $dokka.location:com.earthapp.ocean.boat/RSSItem/title/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-r-s-s-item/title.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/index.html
+$dokka.location:com.earthapp.ocean.boat/Scraper.Companion/PER_PAGE/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/-p-e-r_-p-a-g-e.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion/createArticle/#kotlin.String#com.earthapp.shovel.Document#kotlin.Function1[com.earthapp.ocean.boat.Scraper.Page,kotlin.Unit]/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/create-article.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion/formatAuthors/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/format-authors.html
 $dokka.location:com.earthapp.ocean.boat/Scraper.Companion/getApiKey/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-scraper/-companion/get-api-key.html
