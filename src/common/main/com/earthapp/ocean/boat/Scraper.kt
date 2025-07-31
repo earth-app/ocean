@@ -147,6 +147,8 @@ abstract class Scraper {
     }
 
     companion object {
+        const val PER_PAGE = 50
+
         internal val logger = KotlinLogging.logger("com.earthapp.ocean.boat.Scraper")
 
         internal val registeredScrapers = listOf<Scraper>(

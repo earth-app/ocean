@@ -17,8 +17,6 @@ object PubMed : Scraper() {
         "health", "biomedical", "biology", "ncbi", "eutils"
     )
 
-    const val PER_PAGE = 50
-
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
         val delayMs = if (isAuthenticated(name)) 100L else 400L
         val articles = mutableListOf<Page>()

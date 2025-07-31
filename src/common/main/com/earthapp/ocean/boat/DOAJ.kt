@@ -18,8 +18,6 @@ object DOAJ : Scraper() {
         "scientific", "scholarly", "publishing", "global"
     )
 
-    const val PER_PAGE = 50
-
     private val json = Json {
         ignoreUnknownKeys = true
         coerceInputValues = true
