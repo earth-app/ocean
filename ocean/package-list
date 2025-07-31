@@ -307,10 +307,13 @@ $dokka.location:com.earthapp.activity/Activity/addTypes/#kotlin.Array[com.eartha
 $dokka.location:com.earthapp.activity/Activity/aliases/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/aliases.html
 $dokka.location:com.earthapp.activity/Activity/description/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/description.html
 $dokka.location:com.earthapp.activity/Activity/doesMatch/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/does-match.html
+$dokka.location:com.earthapp.activity/Activity/getAllFields/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/get-all-fields.html
 $dokka.location:com.earthapp.activity/Activity/getField/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/get-field.html
 $dokka.location:com.earthapp.activity/Activity/id/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/id.html
 $dokka.location:com.earthapp.activity/Activity/name/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/name.html
-$dokka.location:com.earthapp.activity/Activity/patch/#kotlin.String#kotlin.String?#kotlin.collections.List[com.earthapp.activity.ActivityType]#kotlin.collections.List[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/patch.html
+$dokka.location:com.earthapp.activity/Activity/patch/#kotlin.String#kotlin.String?#kotlin.collections.List[com.earthapp.activity.ActivityType]#kotlin.collections.List[kotlin.String]#kotlin.collections.Map[kotlin.String,kotlin.String]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/patch.html
+$dokka.location:com.earthapp.activity/Activity/removeAlias/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-alias.html
+$dokka.location:com.earthapp.activity/Activity/removeAliases/#kotlin.Array[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-aliases.html
 $dokka.location:com.earthapp.activity/Activity/removeType/#com.earthapp.activity.ActivityType/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-type.html
 $dokka.location:com.earthapp.activity/Activity/removeTypes/#kotlin.Array[com.earthapp.activity.ActivityType]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-types.html
 $dokka.location:com.earthapp.activity/Activity/setField/#kotlin.String#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/set-field.html
