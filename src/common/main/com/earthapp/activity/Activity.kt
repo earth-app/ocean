@@ -67,7 +67,8 @@ class Activity(
         name: String = this.name,
         description: String? = this.description,
         types: List<ActivityType> = this.types,
-        aliases: List<String> = this.aliases
+        aliases: List<String> = this.aliases,
+        fields: Map<String, String> = this.fields.toMap()
     ): Activity {
         this.name = name
         this.description = description
@@ -77,6 +78,9 @@ class Activity(
 
         this.aliases.clear()
         this.aliases.addAll(aliases)
+
+        this.fields.clear()
+        this.fields.putAll(fields)
 
         validate()
         return this
@@ -188,6 +192,41 @@ class Activity(
             this.aliases.add(alias)
         }
     }
+
+    /**
+     * Removes an alias from the activity.
+     * @param alias The alias to remove.
+     * If the alias is not present, it will log a warning and not remove it.
+     */
+    fun removeAlias(alias: String) {
+        if (!aliases.contains(alias)) {
+            logger.warn { "Alias '$alias' is not present in the activity aliases for activity '$id'." }
+            return
+        }
+
+        aliases.remove(alias)
+    }
+
+    /**
+     * Removes multiple aliases from the activity.
+     * @param aliases The aliases to remove.
+     */
+    fun removeAliases(vararg aliases: String) {
+        for (alias in aliases) {
+            if (!this.aliases.contains(alias)) {
+                logger.warn { "Alias '$alias' is not present in the activity aliases for activity '$id'." }
+                continue
+            }
+            this.aliases.remove(alias)
+        }
+    }
+
+    /**
+     * Gets all fields of the activity as a map.
+     * This includes all key-value pairs stored in the fields map.
+     * @return A map containing all fields of the activity, where keys are field names and values are field values.
+     */
+    fun getAllFields(): Map<String, String> = fields.toMap()
 
     /**
      * Gets a field value by its key.
