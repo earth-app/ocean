@@ -25,6 +25,7 @@ $dokka.location:com.earthapp.account/Account/address/#/PointingToDeclaration/oc
 $dokka.location:com.earthapp.account/Account/bio/#/PointingToDeclaration/ocean/com.earthapp.account/-account/bio.html
 $dokka.location:com.earthapp.account/Account/country/#/PointingToDeclaration/ocean/com.earthapp.account/-account/country.html
 $dokka.location:com.earthapp.account/Account/email/#/PointingToDeclaration/ocean/com.earthapp.account/-account/email.html
+$dokka.location:com.earthapp.account/Account/emailVerified/#/PointingToDeclaration/ocean/com.earthapp.account/-account/email-verified.html
 $dokka.location:com.earthapp.account/Account/equals/#kotlin.Any?/PointingToDeclaration/ocean/com.earthapp.account/-account/equals.html
 $dokka.location:com.earthapp.account/Account/firstName/#/PointingToDeclaration/ocean/com.earthapp.account/-account/first-name.html
 $dokka.location:com.earthapp.account/Account/getActivityCount/#/PointingToDeclaration/ocean/com.earthapp.account/-account/get-activity-count.html
@@ -42,6 +43,7 @@ $dokka.location:com.earthapp.account/Account/isAccountInCircle/#kotlin.String/Po
 $dokka.location:com.earthapp.account/Account/isAdmin/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-admin.html
 $dokka.location:com.earthapp.account/Account/isFieldPrivate/#kotlin.String#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/is-field-private.html
 $dokka.location:com.earthapp.account/Account/isFieldPrivate/#kotlin.reflect.KProperty[kotlin.Any]#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/is-field-private.html
+$dokka.location:com.earthapp.account/Account/isFree/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-free.html
 $dokka.location:com.earthapp.account/Account/isFriendAdded/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/is-friend-added.html
 $dokka.location:com.earthapp.account/Account/isMutualFriend/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/is-mutual-friend.html
 $dokka.location:com.earthapp.account/Account/isVisible/#/PointingToDeclaration/ocean/com.earthapp.account/-account/is-visible.html
