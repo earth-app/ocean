@@ -50,6 +50,12 @@ class Account(
     var email: String = ""
 
     /**
+     * Indicates whether the email address has been verified.
+     * This is used to ensure that the account holder has access to the email address.
+     */
+    var emailVerified: Boolean = false
+
+    /**
      * The address of the account holder.
      */
     var address: String? = null
@@ -92,6 +98,12 @@ class Account(
             else if (type == AccountType.ADMINISTRATOR)
                 type = AccountType.FREE // Reset to free if not admin
         }
+
+    /**
+     * Checks if the account is of type [AccountType.FREE].
+     */
+    val isFree: Boolean
+        get() = type == AccountType.FREE
 
     @SerialName("field_privacy")
     internal val fieldPrivacy = mutableMapOf(
