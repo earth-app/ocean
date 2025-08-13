@@ -236,11 +236,15 @@ class Account(
          */
         @JsStatic
         val ADMIN_ACCOUNT = Account("4ZwscntExNruk3zMDjTGs4Wn", "cloud").apply {
-            firstName = "Earth"
-            lastName = "App"
-            email = "gregory@earth-app.com"
+            firstName = "Cloud"
+            lastName = "Kode"
+            bio = "your friendly neighborhood ai automaton"
+            email = "cloudy@earth-app.com"
+            emailVerified = true
             type = AccountType.ADMINISTRATOR
-            visibility = Visibility.PRIVATE
+            visibility = Visibility.PUBLIC
+            fieldPrivacy.put("name", Privacy.PRIVATE)
+            fieldPrivacy.put("email", Privacy.PUBLIC)
         }
 
         /**
