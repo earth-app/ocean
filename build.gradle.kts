@@ -2,11 +2,11 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
-    kotlin("multiplatform") version "2.2.0"
-    kotlin("plugin.serialization") version "2.2.0"
+    kotlin("multiplatform") version "2.2.10"
+    kotlin("plugin.serialization") version "2.2.10"
     id("org.jetbrains.dokka") version "2.0.0"
     id("com.vanniktech.maven.publish") version "0.34.0"
-    id("org.danilopianini.npm.publish") version "4.0.7"
+    id("org.danilopianini.npm.publish") version "4.1.1"
 
     `maven-publish`
     jacoco
@@ -57,7 +57,7 @@ kotlin {
             implementation("com.earth-app.shovel:shovel:1.0.4")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
-            implementation("io.github.oshai:kotlin-logging:7.0.7")
+            implementation("io.github.oshai:kotlin-logging:7.0.12")
 
             implementation("com.soywiz:korlibs-compression:6.0.0")
         }
