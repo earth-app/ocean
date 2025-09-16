@@ -398,8 +398,8 @@ $dokka.location:com.earthapp.event/Location/toString/#/PointingToDeclaration/oc
 $dokka.location:com.earthapp.event/Location/toStringWithTime/#/PointingToDeclaration/ocean/com.earthapp.event/-location/to-string-with-time.html
 $dokka.location:com.earthapp.ocean.boat////PointingToDeclaration/ocean/com.earthapp.ocean.boat/index.html
 $dokka.location:com.earthapp.ocean.boat//retrieveRSSFeed/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/retrieve-r-s-s-feed.html
-$dokka.location:com.earthapp.ocean.boat//searchAllAsPromise/com.earthapp.ocean.boat.Scraper.Companion#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-all-as-promise.html
-$dokka.location:com.earthapp.ocean.boat//searchAsPromise/com.earthapp.ocean.boat.Scraper#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-as-promise.html
+$dokka.location:com.earthapp.ocean.boat//searchAllAsPromise/[Error type: Unresolved type for Scraper.Companion]#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-all-as-promise.html
+$dokka.location:com.earthapp.ocean.boat//searchAsPromise/[Error type: Unresolved type for Scraper]#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-as-promise.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/index.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/base-url.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/name.html

@@ -1,1 +1,1 @@
-sourceset_dependencies='{":/commonMain":[],":/jsMain":[":/commonMain"],":/jvmMain":[":/commonMain"]}'
+sourceset_dependencies='{":/commonMain":[],":/jsMain":[":/webMain"],":/jvmMain":[":/commonMain"],":/webMain":[":/commonMain"]}'
