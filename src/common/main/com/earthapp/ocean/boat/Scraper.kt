@@ -10,6 +10,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.io.IOException
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.ExperimentalJsStatic
@@ -84,6 +85,7 @@ abstract class Scraper {
         /**
          * The URL of the favicon for the page.
          */
+        @SerialName("favicon")
         val faviconUrl: String = "",
     ) : Exportable() {
         /**
@@ -114,6 +116,7 @@ abstract class Scraper {
         /**
          * The theme color for the page, defaulting to white.
          */
+        @SerialName("theme_color")
         var themeColor: String = "#ffffff"
 
         /**
