@@ -6,7 +6,6 @@ $dokka.location://fromBinary/#kotlin.ByteArray/PointingToDeclaration/ocean/[roo
 $dokka.location://fromJson/#kotlin.String/PointingToDeclaration/ocean/[root]/from-json.html
 $dokka.location:com.earthapp.account////PointingToDeclaration/ocean/com.earthapp.account/index.html
 $dokka.location:com.earthapp.account/Account.Companion///PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/index.html
-$dokka.location:com.earthapp.account/Account.Companion/ADMIN_ACCOUNT/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/-a-d-m-i-n_-a-c-c-o-u-n-t.html
 $dokka.location:com.earthapp.account/Account.Companion/getAllowedPrivacyFields/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/get-allowed-privacy-fields.html
 $dokka.location:com.earthapp.account/Account.Companion/isNeverPublic/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/is-never-public.html
 $dokka.location:com.earthapp.account/Account.Companion/newId/#/PointingToDeclaration/ocean/com.earthapp.account/-account/-companion/new-id.html
@@ -488,7 +487,6 @@ $dokka.location:com.earthapp.ocean.boat/SpringerOpen/search/#kotlin.String#kotli
 $dokka.location:com.earthapp.ocean.boat/SpringerOpen/tags/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-springer-open/tags.html
 $dokka.location:com.earthapp.ocean////PointingToDeclaration/ocean/com.earthapp.ocean/index.html
 $dokka.location:com.earthapp.ocean//recommendActivity/#kotlin.collections.List[com.earthapp.activity.Activity]#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-activity.html
-$dokka.location:com.earthapp.ocean//recommendActivityForAccount/#kotlin.collections.List[com.earthapp.activity.Activity]#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-activity-for-account.html
 $dokka.location:com.earthapp.ocean//recommendEvents/#com.earthapp.event.Location#kotlin.collections.List[kotlin.String]#kotlin.collections.List[com.earthapp.event.Event]#kotlin.collections.List[com.earthapp.event.Event]#kotlin.collections.List[com.earthapp.event.Event]#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-events.html
 $dokka.location:com.earthapp.ocean//recommendFriends/#com.earthapp.account.Account#com.earthapp.event.Location#kotlin.collections.List[com.earthapp.account.Account]#kotlin.collections.List[com.earthapp.event.Event]/PointingToDeclaration/ocean/com.earthapp.ocean/recommend-friends.html
 $dokka.location:com.earthapp.util////PointingToDeclaration/ocean/com.earthapp.util/index.html
