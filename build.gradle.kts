@@ -6,7 +6,7 @@ plugins {
     kotlin("plugin.serialization") version "2.2.20"
     id("org.jetbrains.dokka") version "2.0.0"
     id("com.vanniktech.maven.publish") version "0.34.0"
-    id("org.danilopianini.npm.publish") version "4.1.2"
+    id("org.danilopianini.npm.publish") version "4.1.3"
 
     `maven-publish`
     jacoco
@@ -70,7 +70,7 @@ kotlin {
         jvmMain.dependencies {
             runtimeOnly("ch.qos.logback:logback-classic:1.5.18")
 
-            implementation("com.prof18.rssparser:rssparser:6.0.12")
+            implementation("com.prof18.rssparser:rssparser:6.1.0")
         }
 
         jsMain.dependencies {
