@@ -232,22 +232,6 @@ class Account(
         )
 
         /**
-         * A static account representing the automated Earth App administrator, associated with the `ADMIN_API_TOKEN` API token.
-         */
-        @JsStatic
-        val ADMIN_ACCOUNT = Account("4ZwscntExNruk3zMDjTGs4Wn", "cloud").apply {
-            firstName = "Cloud"
-            lastName = "Kode"
-            bio = "your friendly neighborhood ai automaton"
-            email = "cloudy@earth-app.com"
-            emailVerified = true
-            type = AccountType.ADMINISTRATOR
-            visibility = Visibility.PUBLIC
-            fieldPrivacy.put("name", Privacy.PRIVATE)
-            fieldPrivacy.put("email", Privacy.PUBLIC)
-        }
-
-        /**
          * Generates a new unique identifier for an account.
          * @return A unique identifier string.
          */
