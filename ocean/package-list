@@ -14,11 +14,11 @@ $dokka.location:com.earthapp.account/Account/Account/#kotlin.String#kotlin.Strin
 $dokka.location:com.earthapp.account/Account/activities/#/PointingToDeclaration/ocean/com.earthapp.account/-account/activities.html
 $dokka.location:com.earthapp.account/Account/addAccountToCircle/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/add-account-to-circle.html
 $dokka.location:com.earthapp.account/Account/addAccountToCircle/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/add-account-to-circle.html
-$dokka.location:com.earthapp.account/Account/addActivities/#kotlin.Array[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-activities.html
+$dokka.location:com.earthapp.account/Account/addActivities/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.account/-account/add-activities.html
 $dokka.location:com.earthapp.account/Account/addActivities/#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-activities.html
 $dokka.location:com.earthapp.account/Account/addActivity/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.account/-account/add-activity.html
 $dokka.location:com.earthapp.account/Account/addFriend/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friend.html
-$dokka.location:com.earthapp.account/Account/addFriends/#kotlin.Array[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
+$dokka.location:com.earthapp.account/Account/addFriends/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
 $dokka.location:com.earthapp.account/Account/addFriends/#kotlin.collections.List[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/add-friends.html
 $dokka.location:com.earthapp.account/Account/address/#/PointingToDeclaration/ocean/com.earthapp.account/-account/address.html
 $dokka.location:com.earthapp.account/Account/bio/#/PointingToDeclaration/ocean/com.earthapp.account/-account/bio.html
@@ -51,19 +51,19 @@ $dokka.location:com.earthapp.account/Account/patch/#kotlin.String#kotlin.String#
 $dokka.location:com.earthapp.account/Account/phoneNumber/#/PointingToDeclaration/ocean/com.earthapp.account/-account/phone-number.html
 $dokka.location:com.earthapp.account/Account/removeAccountFromCircle/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-account-from-circle.html
 $dokka.location:com.earthapp.account/Account/removeAccountFromCircle/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-account-from-circle.html
-$dokka.location:com.earthapp.account/Account/removeActivities/#kotlin.Array[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities.html
+$dokka.location:com.earthapp.account/Account/removeActivities/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities.html
 $dokka.location:com.earthapp.account/Account/removeActivities/#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities.html
-$dokka.location:com.earthapp.account/Account/removeActivitiesByIds/#kotlin.Array[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities-by-ids.html
+$dokka.location:com.earthapp.account/Account/removeActivitiesByIds/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities-by-ids.html
 $dokka.location:com.earthapp.account/Account/removeActivitiesByIds/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activities-by-ids.html
 $dokka.location:com.earthapp.account/Account/removeActivity/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activity.html
 $dokka.location:com.earthapp.account/Account/removeActivity/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-activity.html
 $dokka.location:com.earthapp.account/Account/removeFriend/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friend.html
 $dokka.location:com.earthapp.account/Account/removeFriend/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friend.html
-$dokka.location:com.earthapp.account/Account/removeFriends/#kotlin.Array[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friends.html
+$dokka.location:com.earthapp.account/Account/removeFriends/#com.earthapp.account.Account/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friends.html
 $dokka.location:com.earthapp.account/Account/removeFriends/#kotlin.collections.List[com.earthapp.account.Account]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friends.html
-$dokka.location:com.earthapp.account/Account/removeFriendsByIds/#kotlin.Array[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friends-by-ids.html
+$dokka.location:com.earthapp.account/Account/removeFriendsByIds/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friends-by-ids.html
 $dokka.location:com.earthapp.account/Account/removeFriendsByIds/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.account/-account/remove-friends-by-ids.html
-$dokka.location:com.earthapp.account/Account/setActivities/#kotlin.Array[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/set-activities.html
+$dokka.location:com.earthapp.account/Account/setActivities/#com.earthapp.activity.Activity/PointingToDeclaration/ocean/com.earthapp.account/-account/set-activities.html
 $dokka.location:com.earthapp.account/Account/setActivities/#kotlin.collections.List[com.earthapp.activity.Activity]/PointingToDeclaration/ocean/com.earthapp.account/-account/set-activities.html
 $dokka.location:com.earthapp.account/Account/setFieldPrivacy/#kotlin.String#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/set-field-privacy.html
 $dokka.location:com.earthapp.account/Account/setFieldPrivacy/#kotlin.reflect.KProperty[kotlin.Any]#com.earthapp.account.Privacy/PointingToDeclaration/ocean/com.earthapp.account/-account/set-field-privacy.html
@@ -302,9 +302,9 @@ $dokka.location:com.earthapp.activity/Activity.Companion/MAX_TYPES/#/PointingToD
 $dokka.location:com.earthapp.activity/Activity///PointingToDeclaration/ocean/com.earthapp.activity/-activity/index.html
 $dokka.location:com.earthapp.activity/Activity/Activity/#kotlin.String#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/-activity.html
 $dokka.location:com.earthapp.activity/Activity/addAlias/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/add-alias.html
-$dokka.location:com.earthapp.activity/Activity/addAliases/#kotlin.Array[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/add-aliases.html
+$dokka.location:com.earthapp.activity/Activity/addAliases/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/add-aliases.html
 $dokka.location:com.earthapp.activity/Activity/addType/#com.earthapp.activity.ActivityType/PointingToDeclaration/ocean/com.earthapp.activity/-activity/add-type.html
-$dokka.location:com.earthapp.activity/Activity/addTypes/#kotlin.Array[com.earthapp.activity.ActivityType]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/add-types.html
+$dokka.location:com.earthapp.activity/Activity/addTypes/#com.earthapp.activity.ActivityType/PointingToDeclaration/ocean/com.earthapp.activity/-activity/add-types.html
 $dokka.location:com.earthapp.activity/Activity/aliases/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/aliases.html
 $dokka.location:com.earthapp.activity/Activity/description/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/description.html
 $dokka.location:com.earthapp.activity/Activity/doesMatch/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/does-match.html
@@ -314,9 +314,9 @@ $dokka.location:com.earthapp.activity/Activity/id/#/PointingToDeclaration/ocean
 $dokka.location:com.earthapp.activity/Activity/name/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/name.html
 $dokka.location:com.earthapp.activity/Activity/patch/#kotlin.String#kotlin.String?#kotlin.collections.List[com.earthapp.activity.ActivityType]#kotlin.collections.List[kotlin.String]#kotlin.collections.Map[kotlin.String,kotlin.String]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/patch.html
 $dokka.location:com.earthapp.activity/Activity/removeAlias/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-alias.html
-$dokka.location:com.earthapp.activity/Activity/removeAliases/#kotlin.Array[kotlin.String]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-aliases.html
+$dokka.location:com.earthapp.activity/Activity/removeAliases/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-aliases.html
 $dokka.location:com.earthapp.activity/Activity/removeType/#com.earthapp.activity.ActivityType/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-type.html
-$dokka.location:com.earthapp.activity/Activity/removeTypes/#kotlin.Array[com.earthapp.activity.ActivityType]/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-types.html
+$dokka.location:com.earthapp.activity/Activity/removeTypes/#com.earthapp.activity.ActivityType/PointingToDeclaration/ocean/com.earthapp.activity/-activity/remove-types.html
 $dokka.location:com.earthapp.activity/Activity/setField/#kotlin.String#kotlin.String/PointingToDeclaration/ocean/com.earthapp.activity/-activity/set-field.html
 $dokka.location:com.earthapp.activity/Activity/types/#/PointingToDeclaration/ocean/com.earthapp.activity/-activity/types.html
 $dokka.location:com.earthapp.activity/ActivityType.ART///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}ocean/com.earthapp.activity/-activity-type/-a-r-t/index.html
@@ -397,8 +397,8 @@ $dokka.location:com.earthapp.event/Location/toString/#/PointingToDeclaration/oc
 $dokka.location:com.earthapp.event/Location/toStringWithTime/#/PointingToDeclaration/ocean/com.earthapp.event/-location/to-string-with-time.html
 $dokka.location:com.earthapp.ocean.boat////PointingToDeclaration/ocean/com.earthapp.ocean.boat/index.html
 $dokka.location:com.earthapp.ocean.boat//retrieveRSSFeed/#kotlin.String/PointingToDeclaration/ocean/com.earthapp.ocean.boat/retrieve-r-s-s-feed.html
-$dokka.location:com.earthapp.ocean.boat//searchAllAsPromise/[Error type: Unresolved type for Scraper.Companion]#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-all-as-promise.html
-$dokka.location:com.earthapp.ocean.boat//searchAsPromise/[Error type: Unresolved type for Scraper]#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-as-promise.html
+$dokka.location:com.earthapp.ocean.boat//searchAllAsPromise/com.earthapp.ocean.boat.Scraper.Companion#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-all-as-promise.html
+$dokka.location:com.earthapp.ocean.boat//searchAsPromise/com.earthapp.ocean.boat.Scraper#kotlin.String#kotlin.Int/PointingToDeclaration/ocean/com.earthapp.ocean.boat/search-as-promise.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ///PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/index.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ/baseUrl/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/base-url.html
 $dokka.location:com.earthapp.ocean.boat/DOAJ/name/#/PointingToDeclaration/ocean/com.earthapp.ocean.boat/-d-o-a-j/name.html

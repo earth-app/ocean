@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ActivityType</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     ocean
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,8 +46,8 @@
         <div class="library-version" id="library-version">
 1.0.0        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
                         data-filter=":/commonMain">common</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,26 +82,28 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     ocean
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="ocean::com.earthapp.activity/ActivityType///PointingToDeclaration//1558683979">
   <div class="breadcrumbs"><a href="../../../index.html">ocean</a><span class="delimiter">/</span><a href="../index.html">com.earthapp.activity</a><span class="delimiter">/</span><span class="current">ActivityType</span></div>
   <div class="cover ">
@@ -114,9 +114,9 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="ENTRY">Entries</button></div>
     <div class="tabs-section-body">
       <div data-togglable="ENTRY">
-        <h2 class="">Entries</h2>
+        <h2 class="tableheader">Entries</h2>
         <div class="table"><a data-name="1794343511%2FClasslikes%2F1558683979" anchor-label="HOBBY" id="1794343511%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-h-o-b-b-y/index.html">HOBBY</a></div>
@@ -131,7 +131,7 @@
             </div>
           </div>
 <a data-name="-2029187975%2FClasslikes%2F1558683979" anchor-label="SPORT" id="-2029187975%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-p-o-r-t/index.html">SPORT</a></div>
@@ -146,7 +146,7 @@
             </div>
           </div>
 <a data-name="-382693324%2FClasslikes%2F1558683979" anchor-label="WORK" id="-382693324%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-w-o-r-k/index.html">WORK</a></div>
@@ -161,7 +161,7 @@
             </div>
           </div>
 <a data-name="1631597582%2FClasslikes%2F1558683979" anchor-label="STUDY" id="1631597582%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-t-u-d-y/index.html">STUDY</a></div>
@@ -176,7 +176,7 @@
             </div>
           </div>
 <a data-name="-1085011267%2FClasslikes%2F1558683979" anchor-label="TRAVEL" id="-1085011267%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t-r-a-v-e-l/index.html">TRAVEL</a></div>
@@ -191,7 +191,7 @@
             </div>
           </div>
 <a data-name="-995005488%2FClasslikes%2F1558683979" anchor-label="SOCIAL" id="-995005488%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-o-c-i-a-l/index.html">SOCIAL</a></div>
@@ -206,7 +206,7 @@
             </div>
           </div>
 <a data-name="890641736%2FClasslikes%2F1558683979" anchor-label="RELAXATION" id="890641736%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-r-e-l-a-x-a-t-i-o-n/index.html">RELAXATION</a></div>
@@ -221,7 +221,7 @@
             </div>
           </div>
 <a data-name="1947227775%2FClasslikes%2F1558683979" anchor-label="HEALTH" id="1947227775%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-h-e-a-l-t-h/index.html">HEALTH</a></div>
@@ -236,7 +236,7 @@
             </div>
           </div>
 <a data-name="1647978782%2FClasslikes%2F1558683979" anchor-label="PROJECT" id="1647978782%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-r-o-j-e-c-t/index.html">PROJECT</a></div>
@@ -251,7 +251,7 @@
             </div>
           </div>
 <a data-name="1045552471%2FClasslikes%2F1558683979" anchor-label="PERSONAL_GOAL" id="1045552471%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-e-r-s-o-n-a-l_-g-o-a-l/index.html">PERSONAL_GOAL</a></div>
@@ -266,7 +266,7 @@
             </div>
           </div>
 <a data-name="-217517436%2FClasslikes%2F1558683979" anchor-label="COMMUNITY_SERVICE" id="-217517436%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-c-o-m-m-u-n-i-t-y_-s-e-r-v-i-c-e/index.html">COMMUNITY_SERVICE</a></div>
@@ -281,7 +281,7 @@
             </div>
           </div>
 <a data-name="-775708462%2FClasslikes%2F1558683979" anchor-label="CREATIVE" id="-775708462%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-c-r-e-a-t-i-v-e/index.html">CREATIVE</a></div>
@@ -296,7 +296,7 @@
             </div>
           </div>
 <a data-name="424530311%2FClasslikes%2F1558683979" anchor-label="FAMILY" id="424530311%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-f-a-m-i-l-y/index.html">FAMILY</a></div>
@@ -311,7 +311,7 @@
             </div>
           </div>
 <a data-name="213146141%2FClasslikes%2F1558683979" anchor-label="HOLIDAY" id="213146141%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-h-o-l-i-d-a-y/index.html">HOLIDAY</a></div>
@@ -326,7 +326,7 @@
             </div>
           </div>
 <a data-name="1082787981%2FClasslikes%2F1558683979" anchor-label="ENTERTAINMENT" id="1082787981%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-e-n-t-e-r-t-a-i-n-m-e-n-t/index.html">ENTERTAINMENT</a></div>
@@ -341,7 +341,7 @@
             </div>
           </div>
 <a data-name="-714292223%2FClasslikes%2F1558683979" anchor-label="LEARNING" id="-714292223%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-l-e-a-r-n-i-n-g/index.html">LEARNING</a></div>
@@ -356,7 +356,7 @@
             </div>
           </div>
 <a data-name="-1302186102%2FClasslikes%2F1558683979" anchor-label="NATURE" id="-1302186102%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-n-a-t-u-r-e/index.html">NATURE</a></div>
@@ -371,7 +371,7 @@
             </div>
           </div>
 <a data-name="-994550353%2FClasslikes%2F1558683979" anchor-label="TECHNOLOGY" id="-994550353%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t-e-c-h-n-o-l-o-g-y/index.html">TECHNOLOGY</a></div>
@@ -386,7 +386,7 @@
             </div>
           </div>
 <a data-name="437308264%2FClasslikes%2F1558683979" anchor-label="ART" id="437308264%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-a-r-t/index.html">ART</a></div>
@@ -401,7 +401,7 @@
             </div>
           </div>
 <a data-name="1150077474%2FClasslikes%2F1558683979" anchor-label="SPIRITUALITY" id="1150077474%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-p-i-r-i-t-u-a-l-i-t-y/index.html">SPIRITUALITY</a></div>
@@ -416,7 +416,7 @@
             </div>
           </div>
 <a data-name="-947299809%2FClasslikes%2F1558683979" anchor-label="FINANCE" id="-947299809%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-f-i-n-a-n-c-e/index.html">FINANCE</a></div>
@@ -431,7 +431,7 @@
             </div>
           </div>
 <a data-name="1970816313%2FClasslikes%2F1558683979" anchor-label="HOME_IMPROVEMENT" id="1970816313%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-h-o-m-e_-i-m-p-r-o-v-e-m-e-n-t/index.html">HOME_IMPROVEMENT</a></div>
@@ -446,7 +446,7 @@
             </div>
           </div>
 <a data-name="1819195671%2FClasslikes%2F1558683979" anchor-label="PETS" id="1819195671%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-e-t-s/index.html">PETS</a></div>
@@ -461,7 +461,7 @@
             </div>
           </div>
 <a data-name="99493757%2FClasslikes%2F1558683979" anchor-label="FASHION" id="99493757%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-f-a-s-h-i-o-n/index.html">FASHION</a></div>
@@ -476,7 +476,7 @@
             </div>
           </div>
 <a data-name="-625353963%2FClasslikes%2F1558683979" anchor-label="OTHER" id="-625353963%2FClasslikes%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-o-t-h-e-r/index.html">OTHER</a></div>
@@ -493,9 +493,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="882190909%2FProperties%2F1558683979" anchor-label="entries" id="882190909%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="entries.html"><span><span>entries</span></span></a></div>
@@ -510,7 +510,7 @@
             </div>
           </div>
 <a data-name="-372974862%2FProperties%2F1558683979" anchor-label="name" id="-372974862%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../com.earthapp.event/-event-type/-h-y-b-r-i-d/index.html#-372974862%2FProperties%2F1558683979"><span><span>name</span></span></a></div>
@@ -519,13 +519,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../com.earthapp.event/-event-type/-h-y-b-r-i-d/index.html#-372974862%2FProperties%2F1558683979">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">val </span><a href="../../com.earthapp.event/-event-type/-h-y-b-r-i-d/index.html#-372974862%2FProperties%2F1558683979">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-739389684%2FProperties%2F1558683979" anchor-label="ordinal" id="-739389684%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../com.earthapp.event/-event-type/-h-y-b-r-i-d/index.html#-739389684%2FProperties%2F1558683979"><span><span>ordinal</span></span></a></div>
@@ -534,7 +534,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../com.earthapp.event/-event-type/-h-y-b-r-i-d/index.html#-739389684%2FProperties%2F1558683979">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">val </span><a href="../../com.earthapp.event/-event-type/-h-y-b-r-i-d/index.html#-739389684%2FProperties%2F1558683979">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -542,9 +542,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-666632577%2FFunctions%2F1558683979" anchor-label="valueOf" id="-666632577%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="value-of.html"><span>value</span><wbr></wbr><span><span>Of</span></span></a></div>
@@ -559,7 +559,7 @@
             </div>
           </div>
 <a data-name="-878737973%2FFunctions%2F1558683979" anchor-label="values" id="-878737973%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="values.html"><span><span>values</span></span></a></div>
@@ -579,17 +579,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2025 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

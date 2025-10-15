@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Page</title>
     <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../../styles/main.css" rel="Stylesheet">
 <link href="../../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../../index.html" tabindex="1">
                     ocean
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,8 +46,8 @@
         <div class="library-version" id="library-version">
 1.0.0        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
                         data-filter=":/commonMain">common</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,26 +82,28 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     ocean
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="ocean::com.earthapp.ocean.boat/Scraper.Page///PointingToDeclaration//1558683979">
   <div class="breadcrumbs"><a href="../../../../index.html">ocean</a><span class="delimiter">/</span><a href="../../index.html">com.earthapp.ocean.boat</a><span class="delimiter">/</span><a href="../index.html">Scraper</a><span class="delimiter">/</span><span class="current">Page</span></div>
   <div class="cover ">
@@ -114,9 +114,9 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-1044606789%2FConstructors%2F1558683979" anchor-label="Page" id="-1044606789%2FConstructors%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-page.html"><span><span>Page</span></span></a></div>
@@ -133,9 +133,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="685492224%2FProperties%2F1558683979" anchor-label="abstract" id="685492224%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="abstract.html"><span><span>abstract</span></span></a></div>
@@ -150,7 +150,7 @@
             </div>
           </div>
 <a data-name="763040759%2FProperties%2F1558683979" anchor-label="author" id="763040759%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="author.html"><span><span>author</span></span></a></div>
@@ -165,7 +165,7 @@
             </div>
           </div>
 <a data-name="306960031%2FProperties%2F1558683979" anchor-label="content" id="306960031%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="content.html"><span><span>content</span></span></a></div>
@@ -180,7 +180,7 @@
             </div>
           </div>
 <a data-name="110753908%2FProperties%2F1558683979" anchor-label="date" id="110753908%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="date.html"><span><span>date</span></span></a></div>
@@ -195,7 +195,7 @@
             </div>
           </div>
 <a data-name="-1750512057%2FProperties%2F1558683979" anchor-label="faviconUrl" id="-1750512057%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="favicon-url.html"><span>favicon</span><wbr></wbr><span><span>Url</span></span></a></div>
@@ -210,7 +210,7 @@
             </div>
           </div>
 <a data-name="459719911%2FProperties%2F1558683979" anchor-label="id" id="459719911%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="id.html"><span><span>id</span></span></a></div>
@@ -225,7 +225,7 @@
             </div>
           </div>
 <a data-name="-457301640%2FProperties%2F1558683979" anchor-label="keywords" id="-457301640%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="keywords.html"><span><span>keywords</span></span></a></div>
@@ -240,7 +240,7 @@
             </div>
           </div>
 <a data-name="753202719%2FProperties%2F1558683979" anchor-label="links" id="753202719%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="links.html"><span><span>links</span></span></a></div>
@@ -255,7 +255,7 @@
             </div>
           </div>
 <a data-name="1802588007%2FProperties%2F1558683979" anchor-label="source" id="1802588007%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="source.html"><span><span>source</span></span></a></div>
@@ -270,7 +270,7 @@
             </div>
           </div>
 <a data-name="-533722424%2FProperties%2F1558683979" anchor-label="themeColor" id="-533722424%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="theme-color.html"><span>theme</span><wbr></wbr><span><span>Color</span></span></a></div>
@@ -285,7 +285,7 @@
             </div>
           </div>
 <a data-name="-157350816%2FProperties%2F1558683979" anchor-label="title" id="-157350816%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="title.html"><span><span>title</span></span></a></div>
@@ -300,7 +300,7 @@
             </div>
           </div>
 <a data-name="236387305%2FProperties%2F1558683979" anchor-label="url" id="236387305%2FProperties%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="url.html"><span><span>url</span></span></a></div>
@@ -317,9 +317,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-111473018%2FFunctions%2F1558683979" anchor-label="deepCopy" id="-111473018%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../../com.earthapp/-exportable/deep-copy.html"><span>deep</span><wbr></wbr><span><span>Copy</span></span></a></div>
@@ -334,7 +334,7 @@
             </div>
           </div>
 <a data-name="-1548207137%2FFunctions%2F1558683979" anchor-label="equals" id="-1548207137%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="equals.html"><span><span>equals</span></span></a></div>
@@ -349,7 +349,7 @@
             </div>
           </div>
 <a data-name="-1127070169%2FFunctions%2F1558683979" anchor-label="hashCode" id="-1127070169%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hash-code.html"><span>hash</span><wbr></wbr><span><span>Code</span></span></a></div>
@@ -364,7 +364,7 @@
             </div>
           </div>
 <a data-name="2144098059%2FFunctions%2F1558683979" anchor-label="toBinary" id="2144098059%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../../com.earthapp/-exportable/to-binary.html"><span>to</span><wbr></wbr><span><span>Binary</span></span></a></div>
@@ -379,7 +379,7 @@
             </div>
           </div>
 <a data-name="371308484%2FFunctions%2F1558683979" anchor-label="toJson" id="371308484%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../../com.earthapp/-exportable/to-json.html"><span>to</span><wbr></wbr><span><span>Json</span></span></a></div>
@@ -394,7 +394,7 @@
             </div>
           </div>
 <a data-name="-1305236234%2FFunctions%2F1558683979" anchor-label="toString" id="-1305236234%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -409,7 +409,7 @@
             </div>
           </div>
 <a data-name="663871889%2FFunctions%2F1558683979" anchor-label="validate" id="663871889%2FFunctions%2F1558683979" data-filterable-set=":/commonMain"></a>
-          <div class="table-row" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../../com.earthapp/-exportable/validate.html"><span><span>validate</span></span></a></div>
@@ -429,17 +429,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2025 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
