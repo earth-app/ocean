@@ -2,11 +2,11 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
-    kotlin("multiplatform") version "2.2.20"
-    kotlin("plugin.serialization") version "2.2.20"
+    kotlin("multiplatform") version "2.2.21"
+    kotlin("plugin.serialization") version "2.2.21"
     id("org.jetbrains.dokka") version "2.1.0"
     id("com.vanniktech.maven.publish") version "0.34.0"
-    id("org.danilopianini.npm.publish") version "4.1.3"
+    id("org.danilopianini.npm.publish") version "4.1.5"
 
     `maven-publish`
     jacoco
@@ -68,9 +68,9 @@ kotlin {
         }
 
         jvmMain.dependencies {
-            runtimeOnly("ch.qos.logback:logback-classic:1.5.19")
+            runtimeOnly("ch.qos.logback:logback-classic:1.5.20")
 
-            implementation("com.prof18.rssparser:rssparser:6.1.0")
+            implementation("com.prof18.rssparser:rssparser:6.1.1")
         }
 
         jsMain.dependencies {
