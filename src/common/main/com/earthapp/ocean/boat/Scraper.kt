@@ -132,6 +132,9 @@ abstract class Scraper {
             require(title.isNotEmpty()) { "Title must not be empty." }
             require(content.isNotEmpty()) { "Content must not be empty." }
             require(author.isNotEmpty()) { "Author must not be empty." }
+
+            // remove keywords with only whitespace
+            keywords.removeAll { it.isBlank() }
         }
 
         override fun equals(other: Any?): Boolean {
@@ -339,6 +342,18 @@ abstract class Scraper {
                 keywords.addAll(metadata["og:type"] ?: emptyList())
 
                 apply()
+
+                // separate conjoined keywords
+                val keywords0 = keywords.toList()
+                keywords.clear()
+                for (kw in keywords0) {
+                    keywords.addAll(
+                        kw.split(",", ";", ".", "/", "|")
+                            .map { it.trim() }
+                            .filter { it.isNotEmpty() }
+                    )
+                }
+
                 validate()
             }
         }
