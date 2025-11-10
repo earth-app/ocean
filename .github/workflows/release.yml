@@ -36,6 +36,16 @@ jobs:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_PRIVATE_KEY }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
         run: ./gradlew publish --no-configuration-cache
+      - name: Extract Gradle version
+        run: echo "VERSION=$(./gradlew properties | grep '^version:' | awk '{print $2}')" >> $GITHUB_ENV
+      - name: Tag as Latest in GitHub Packages
+        if: ${{ github.ref_name == 'master' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          echo "@earth-app:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          npm dist-tag add @earth-app/ocean@${{ env.VERSION }} latest
 
   release:
     runs-on: ubuntu-latest
