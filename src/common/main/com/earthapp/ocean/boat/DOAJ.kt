@@ -159,6 +159,17 @@ object DOAJ : Scraper() {
                 return null
             }
 
+            val abstract = bibjson.abstract
+            if (abstract == null) {
+                logger.warn { "Skipping article with no abstract: ${article.id}" }
+                return null
+            }
+
+            if (abstract.length < MIN_CONTENT_SIZE) {
+                logger.warn { "Skipping article with too short abstract: ${article.id}" }
+                return null
+            }
+
             val articleUrl = bibjson.link.find { it.type == "fulltext" }?.url
                 ?: "https://doaj.org/article/${article.id}"
 
@@ -234,8 +245,9 @@ object DOAJ : Scraper() {
                 links = links,
                 faviconUrl = "https://doaj.org/assets/img/favicon/favicon.ico"
             ).apply {
-                abstract = bibjson.abstract ?: ""
-                content = bibjson.abstract ?: "No content available."
+                this.abstract = abstract
+                this.content = abstract
+
                 themeColor = "#f1645a" // DOAJ brand color
 
                 keywords.addAll(bibjson.keywords)

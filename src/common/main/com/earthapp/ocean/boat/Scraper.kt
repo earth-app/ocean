@@ -153,7 +153,8 @@ abstract class Scraper {
     }
 
     companion object {
-        const val PER_PAGE = 50
+        const val PER_PAGE = 75
+        const val MIN_CONTENT_SIZE = 100
 
         internal val logger = KotlinLogging.logger("com.earthapp.ocean.boat.Scraper")
 
@@ -161,7 +162,23 @@ abstract class Scraper {
             PubMed,
             IMEJ,
             SpringerOpen,
-            DOAJ
+            DOAJ,
+            // science
+            RSS("New Scientist Magazine", "https://www.newscientist.com/feed/home/?cmpid=RSS%7CNSNS-Home"),
+            RSS("Space.com", "https://www.space.com/feeds.xml"),
+            // psychology
+            RSS("School of Psychology", "https://blogs.sussex.ac.uk/psychology/feed/"),
+            // tech
+            RSS("MIT News", "https://news.mit.edu/rss/topic/artificial-intelligence2"),
+            // art
+            RSS("Art News", "https://www.artnews.com/feed/"),
+            RSS("This is Colossal", "https://www.thisiscolossal.com/feed/"),
+            RSS("Canvas", "https://canvas.saatchiart.com/feed"),
+            // environment
+            RSS("Grist", "https://grist.org/feed/"),
+            RSS("Earth 991", "https://earth911.com/feed/"),
+            RSS("Earth University @ Columbia", "https://news.climate.columbia.edu/feed/"),
+            RSS("EcoWatch", "https://www.ecowatch.com/energy-news/feed")
         )
 
         private val apiKeys = mutableMapOf<String, String>()
@@ -348,7 +365,7 @@ abstract class Scraper {
                 keywords.clear()
                 for (kw in keywords0) {
                     keywords.addAll(
-                        kw.split(",", ";", ".", "/", "|")
+                        kw.split(",", ";", ".", "/", "|", " and ")
                             .map { it.trim() }
                             .filter { it.isNotEmpty() }
                     )

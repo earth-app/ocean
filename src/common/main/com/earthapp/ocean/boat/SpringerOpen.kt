@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 object SpringerOpen : Scraper() {
 
     override val name: String = "SpringerOpen"
-    override val baseUrl: String = "https://www.springeropen.com"
+    override val baseUrl: String = "https://link.springer.com"
     override val tags: List<String> = listOf(
         "open access",
         "research",
@@ -22,15 +22,17 @@ object SpringerOpen : Scraper() {
         "social sciences"
     )
 
-    const val PAGE_COUNT = "main > div[data-test='search-content'] > div.c-divider > div > p"
-    const val ARTICLE_URLS = "main > div[data-test='search-content'] > ol.c-listing > li > article > h3[itemprop='name'] > a[itemprop='url']"
+    const val PAGE_COUNT = "span[data-test='results-data-total']"
+    const val ARTICLE_URLS = "div.app-card-open__main > h3.app-card-open__heading > a.app-card-open__link"
 
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
-        val url = "$baseUrl/search?query=${query.replace(" ", "+")}&sort=PubDate&searchType=publisherSearch"
+        val url = "$baseUrl/search?query=${query.replace(" ", "+")}&sortBy=newestFirst&openAccess=true&content-type=Article&date=m12"
         logger.debug { "Searching $name for query: '$query' - $url" }
 
         val firstPage = url.fetchDocument()
-        val pages = (firstPage.querySelector(PAGE_COUNT)?.textContent?.trim()?.replace(",", "") ?: "Page 1 of 1").split("\\s+".toRegex())[3].toIntOrNull() ?: 1
+        val pageCount = firstPage.querySelector(PAGE_COUNT)?.textContent?.trim()?.replace(",", "") ?: "Showing 1-0 of 0 results"
+        val pages = pageCount.substringAfter("of").substringBefore("results").trim().toIntOrNull()
+            ?.let { (it + 19) / 20 } ?: 0
         val articles = mutableListOf<Page>()
 
         coroutineScope {
@@ -53,9 +55,15 @@ object SpringerOpen : Scraper() {
                             val contents = articleDoc.querySelectorAll("main > article > section")
                                 .map { it.textContent }
 
+                            val content = contents.joinToString("\n\n")
+                            if (content.length < MIN_CONTENT_SIZE) {
+                                logger.warn { "$name --- Skipping article at $url due to insufficient content length." }
+                                return@launch
+                            }
+
                             articles.add(
                                 createArticle(url, articleDoc) {
-                                    content = contents.joinToString("\n\n")
+                                    this.content = content
                                 }
                             )
                         }

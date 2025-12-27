@@ -15,7 +15,7 @@ class TestScraper {
         println(pages1)
         assertTrue { pages1.isNotEmpty() }
 
-        val pages2 = Scraper.searchAll("sail water salt boat", 3)
+        val pages2 = Scraper.searchAll("sail boat", 3)
         assertTrue { pages2.isNotEmpty() }
     }
 

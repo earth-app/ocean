@@ -134,6 +134,11 @@ object PubMed : Scraper() {
         val abstractTexts = article.querySelectorAll("AbstractText")
         val abstract = abstractTexts.joinToString("\n") { it.textContent }
 
+        if (abstract.length < MIN_CONTENT_SIZE) {
+            logger.warn { "Skipping article due to short abstract: $pubmedUrl" }
+            return null
+        }
+
         // Parse DOI
         val doi = article.querySelectorAll("ArticleId").find {
             it["IdType"] == "doi"

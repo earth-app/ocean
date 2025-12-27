@@ -52,10 +52,16 @@ object IMEJ : Scraper() {
                     for (url in articleUrls) {
                         launch {
                             val articleDoc = url.fetchDocument()
+                            val content = articleDoc.querySelector("section.item.abstract > p")?.textContent ?: ""
+
+                            if (content.length < MIN_CONTENT_SIZE) {
+                                logger.warn { "$name --- Skipping article at $url due to insufficient content length." }
+                                return@launch
+                            }
 
                             articles.add(
                                 createArticle(url, articleDoc) {
-                                    content = articleDoc.querySelector("section.item.abstract > p")?.textContent ?: ""
+                                    this.content = content
                                 }
                             )
                         }
