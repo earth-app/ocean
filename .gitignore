@@ -3,6 +3,8 @@
 .gradle/
 .kotlin/
 build/
+bin/
+.DS_Store
 logs/
 *.iml
 local.properties
