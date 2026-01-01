@@ -57,7 +57,7 @@ kotlin {
             implementation("com.earth-app.shovel:shovel:1.0.4")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
-            implementation("io.github.oshai:kotlin-logging:7.0.13")
+            implementation("io.github.oshai:kotlin-logging:7.0.14")
 
             implementation("com.soywiz:korlibs-compression:6.0.0")
         }
