@@ -1,3 +1,4 @@
+import dev.petuska.npm.publish.task.NpmPublishTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
@@ -117,6 +118,14 @@ tasks {
 
             html.required.set(true)
             html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
+        }
+    }
+
+    withType<NpmPublishTask> {
+        tag = when {
+            project.hasProperty("snapshot") -> "next"
+            project.hasProperty("suffix") -> "beta"
+            else -> "latest"
         }
     }
 }
