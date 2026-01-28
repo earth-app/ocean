@@ -69,7 +69,7 @@ kotlin {
         }
 
         jvmMain.dependencies {
-            runtimeOnly("ch.qos.logback:logback-classic:1.5.25")
+            runtimeOnly("ch.qos.logback:logback-classic:1.5.26")
 
             implementation("com.prof18.rssparser:rssparser:6.1.2")
         }
