@@ -6,6 +6,7 @@ import com.earthapp.shovel.querySelector
 import com.earthapp.shovel.querySelectorAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 
 object PubMed : Scraper() {
@@ -18,7 +19,6 @@ object PubMed : Scraper() {
     )
 
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
-        val delayMs = if (isAuthenticated(name)) 100L else 400L
         val articles = mutableListOf<Page>()
 
         try {
@@ -33,15 +33,35 @@ object PubMed : Scraper() {
 
             coroutineScope {
                 val totalPages = if (pageLimit == -1) (searchResult.count + (PER_PAGE - 1)) / PER_PAGE else minOf((searchResult.count + (PER_PAGE - 1)) / PER_PAGE, pageLimit)
+
+                val maxConcurrent = 8
+                val jobs = mutableListOf<kotlinx.coroutines.Job>()
+
                 for (page in 0 until totalPages) {
-                    delay(delayMs) // Throttle requests to avoid hitting rate limits (unauthenticated: 3/second, authenticated: 10/second)
-                    launch {
-                        val offset = page * PER_PAGE
-                        val articlesPage = performEFetch(searchResult.webEnv, searchResult.queryKey, offset = offset)
-                        articles.addAll(articlesPage)
-                        logger.debug { "Fetched page ${page + 1} of articles ($PER_PAGE articles on page)." }
+                    // Wait for a slot when we reach max concurrent
+                    while (jobs.size >= maxConcurrent) {
+                        delay(10L) // Minimal polling delay
+                        jobs.removeAll { it.isCompleted }
                     }
+
+                    val job = launch {
+                        try {
+                            // Minimal stagger to avoid rate limit issues
+                            if (page > 0) delay((page % 4) * 25L)
+
+                            val offset = page * PER_PAGE
+                            val articlesPage = performEFetch(searchResult.webEnv, searchResult.queryKey, offset = offset)
+                            articles.addAll(articlesPage)
+                            logger.debug { "Fetched page ${page + 1} of articles ($PER_PAGE articles on page)." }
+                        } catch (e: Exception) {
+                            logger.error { "Error fetching page ${page + 1}: ${e.message}" }
+                        }
+                    }
+                    jobs.add(job)
                 }
+
+                // Wait for remaining jobs
+                jobs.joinAll()
             }
         } catch (e: Exception) {
             logger.error { "Error searching PubMed E-utilities: ${e.message}" }
@@ -85,16 +105,23 @@ object PubMed : Scraper() {
         val doc = url.addApiKey().fetchDocument()
         val articles = mutableListOf<Page>()
 
+        // Parallel batch processing: process 4 articles concurrently for faster parsing
+        val articleElements = doc.querySelectorAll("PubmedArticle")
+        val batchSize = 4
+
         coroutineScope {
-            doc.querySelectorAll("PubmedArticle").forEach { article ->
-                launch {
-                    try {
-                        val page = parseArticle(article)
-                        if (page != null) {
-                            articles.add(page)
+            for (i in articleElements.indices step batchSize) {
+                val batch = articleElements.subList(i, minOf(i + batchSize, articleElements.size))
+                batch.forEach { article ->
+                    launch {
+                        try {
+                            val page = parseArticle(article)
+                            if (page != null) {
+                                articles.add(page)
+                            }
+                        } catch (e: Exception) {
+                            logger.error { "Error parsing article: ${e.message}" }
                         }
-                    } catch (e: Exception) {
-                        logger.error { "Error parsing article: ${e.message}" }
                     }
                 }
             }

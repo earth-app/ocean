@@ -4,6 +4,7 @@ import com.earthapp.shovel.fetchText
 import io.ktor.http.encodeURLPathPart
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -96,7 +97,6 @@ object DOAJ : Scraper() {
     )
 
     override suspend fun search(query: String, pageLimit: Int): List<Page> {
-        val delayMs = 200L
         val articles = mutableListOf<Page>()
 
         try {
@@ -120,10 +120,21 @@ object DOAJ : Scraper() {
                     minOf((totalArticles + (PER_PAGE - 1)) / PER_PAGE, pageLimit)
                 }
 
+                val maxConcurrent = 8
+                val jobs = mutableListOf<kotlinx.coroutines.Job>()
+
                 for (page in 1..totalPages) {
-                    delay(delayMs) // Rate limiting
-                    launch {
+                    // Wait for a slot when we reach max concurrent
+                    while (jobs.size >= maxConcurrent) {
+                        delay(10L) // Minimal polling delay
+                        jobs.removeAll { it.isCompleted }
+                    }
+
+                    val job = launch {
                         try {
+                            // Stagger requests slightly to avoid thundering herd
+                            if (page > 1) delay((page % 4) * 50L)
+
                             val response = performSearch(searchUrl, page = page, pageSize = PER_PAGE)
                             val pageArticles = response.results.mapNotNull { parseArticle(it) }
                             articles.addAll(pageArticles)
@@ -132,7 +143,11 @@ object DOAJ : Scraper() {
                             logger.error { "Error fetching page $page: ${e.message}" }
                         }
                     }
+                    jobs.add(job)
                 }
+
+                // Wait for remaining jobs
+                jobs.joinAll()
             }
 
         } catch (e: Exception) {

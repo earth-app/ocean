@@ -4,6 +4,8 @@ import com.earthapp.shovel.fetchDocument
 import com.earthapp.shovel.querySelector
 import com.earthapp.shovel.querySelectorAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 
 object IMEJ : Scraper() {
@@ -38,36 +40,76 @@ object IMEJ : Scraper() {
 
         val articles = mutableListOf<Page>()
 
-        coroutineScope {
-            for (i in 1..(if (pageLimit == -1) pages else minOf(pages, pageLimit))) {
-                launch {
-                    val document = if (i == 1) firstPage else "$url&searchPage=$i".fetchDocument()
-                    logger.debug { "$name -- Searching through Page $i... (${document.url})" }
+        try {
+            val totalPages = if (pageLimit == -1) pages else minOf(pages, pageLimit)
 
-                    val articleUrls = document.querySelectorAll("$SEARCH_RESULTS > li > div.obj_article_summary > h3.title > a")
-                        .mapNotNull { normalizeLink(baseUrl, it["href"]) }
+            coroutineScope {
+                val maxPageConcurrent = 4
+                val pageJobs = mutableListOf<kotlinx.coroutines.Job>()
 
-                    logger.debug { "$name --- Found ${articleUrls.size} articles on Page $i" }
+                for (i in 1..totalPages) {
+                    // Wait for slot when at max concurrent
+                    while (pageJobs.size >= maxPageConcurrent) {
+                        delay(5L)
+                        pageJobs.removeAll { it.isCompleted }
+                    }
 
-                    for (url in articleUrls) {
-                        launch {
-                            val articleDoc = url.fetchDocument()
-                            val content = articleDoc.querySelector("section.item.abstract > p")?.textContent ?: ""
+                    val pageJob = launch {
+                        try {
+                            delay((i % 3) * 50L) // Minimal stagger
+                            val document = if (i == 1) firstPage else "$url&searchPage=$i".fetchDocument()
+                            logger.debug { "$name -- Searching through Page $i... (${document.url})" }
 
-                            if (content.length < MIN_CONTENT_SIZE) {
-                                logger.warn { "$name --- Skipping article at $url due to insufficient content length." }
-                                return@launch
+                            val articleUrls = document.querySelectorAll("$SEARCH_RESULTS > li > div.obj_article_summary > h3.title > a")
+                                .mapNotNull { normalizeLink(baseUrl, it["href"]) }
+
+                            logger.debug { "$name --- Found ${articleUrls.size} articles on Page $i" }
+
+                            val maxArticleConcurrent = 6
+                            val articleJobs = mutableListOf<kotlinx.coroutines.Job>()
+
+                            for (articleUrl in articleUrls) {
+                                // Wait for slot when at max concurrent
+                                while (articleJobs.size >= maxArticleConcurrent) {
+                                    delay(5L)
+                                    articleJobs.removeAll { it.isCompleted }
+                                }
+
+                                val articleJob = launch {
+                                    try {
+                                        val articleDoc = articleUrl.fetchDocument()
+                                        val content = articleDoc.querySelector("section.item.abstract > p")?.textContent ?: ""
+
+                                        if (content.length < MIN_CONTENT_SIZE) {
+                                            logger.warn { "$name --- Skipping article at $articleUrl due to insufficient content length." }
+                                            return@launch
+                                        }
+
+                                        articles.add(
+                                            createArticle(articleUrl, articleDoc) {
+                                                this.content = content
+                                            }
+                                        )
+                                    } catch (e: Exception) {
+                                        logger.error { "Error processing article $articleUrl: ${e.message}" }
+                                    }
+                                }
+                                articleJobs.add(articleJob)
                             }
 
-                            articles.add(
-                                createArticle(url, articleDoc) {
-                                    this.content = content
-                                }
-                            )
+                            articleJobs.joinAll()
+                        } catch (e: Exception) {
+                            logger.error { "Error fetching page $i: ${e.message}" }
                         }
                     }
+                    pageJobs.add(pageJob)
                 }
+
+                // Wait for remaining page jobs
+                pageJobs.joinAll()
             }
+        } catch (e: Exception) {
+            logger.error { "Error searching $name: ${e.message}" }
         }
 
         return articles
