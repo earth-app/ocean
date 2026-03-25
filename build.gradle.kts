@@ -14,7 +14,7 @@ plugins {
     signing
 }
 
-val v = "1.0.2"
+val v = "1.0.3"
 
 group = "com.earth-app.ocean"
 version = "${if (project.hasProperty("snapshot")) "$v-SNAPSHOT" else v}${project.findProperty("suffix")?.toString()?.run { "-${this}" } ?: ""}"
