@@ -44,7 +44,7 @@ object DOAJ : Scraper() {
 
     @Serializable
     private data class BibJsonData(
-        val title: String,
+        val title: String = "",
         val abstract: String? = null,
         val author: List<AuthorData> = emptyList(),
         val journal: JournalData,
@@ -62,7 +62,7 @@ object DOAJ : Scraper() {
 
     @Serializable
     private data class AuthorData(
-        val name: String,
+        val name: String = "",
         val affiliation: String? = null
     )
 
@@ -175,7 +175,9 @@ object DOAJ : Scraper() {
 
             logger.debug { "$name --- Processing article: $articleUrl" }
 
-            val authors = bibjson.author.map { it.name }
+            val authors = bibjson.author.mapNotNull { author ->
+                author.name.takeIf { it.isNotBlank() }
+            }
             val author = formatAuthors(authors)
 
             val journal = bibjson.journal.title
