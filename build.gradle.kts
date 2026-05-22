@@ -3,11 +3,11 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
-    kotlin("multiplatform") version "2.3.0"
-    kotlin("plugin.serialization") version "2.3.0"
-    id("org.jetbrains.dokka") version "2.1.0"
+    kotlin("multiplatform") version "2.3.21"
+    kotlin("plugin.serialization") version "2.3.21"
+    id("org.jetbrains.dokka") version "2.2.0"
     id("com.vanniktech.maven.publish") version "0.36.0"
-    id("org.danilopianini.npm.publish") version "4.1.10"
+    id("org.danilopianini.npm.publish") version "4.1.11"
 
     `maven-publish`
     jacoco
@@ -56,8 +56,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation("com.earth-app.shovel:shovel:1.1.1")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
             implementation("io.github.oshai:kotlin-logging:8.0.03")
 
             implementation("com.soywiz:korlibs-compression:6.0.0")
@@ -65,13 +65,13 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
         }
 
         jvmMain.dependencies {
-            runtimeOnly("ch.qos.logback:logback-classic:1.5.27")
+            runtimeOnly("ch.qos.logback:logback-classic:1.5.32")
 
-            implementation("com.prof18.rssparser:rssparser:6.1.2")
+            implementation("com.prof18.rssparser:rssparser:6.1.5")
         }
 
         jsMain.dependencies {
