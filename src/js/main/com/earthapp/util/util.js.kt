@@ -1,5 +1,9 @@
 package com.earthapp.util
 
-import korlibs.platform.process
+private external val process: dynamic
 
-actual fun getEnv(name: String): String? = process.env[name]
+actual fun getEnv(name: String): String? {
+    val proc = process ?: return null
+    val env = proc.env ?: return null
+    return (env[name] as? String)?.takeIf { it.isNotEmpty() }
+}

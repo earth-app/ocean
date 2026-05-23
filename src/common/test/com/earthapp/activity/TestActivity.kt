@@ -1,8 +1,6 @@
 package com.earthapp.activity
 
 import com.earthapp.Exportable
-import com.earthapp.util.ID_CHARACTERS
-import com.earthapp.util.ID_LENGTH
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -23,33 +21,18 @@ class TestActivity {
             aliases.add("TA")
         }
 
-        // To-From JSON
         val json = activity.toJson()
         logger.debug { "Test JSON: $json" }
         assertTrue { json.isNotEmpty() }
 
-        val deserializedJson = Exportable.fromJson(json) as? Activity
-        assertNotNull(deserializedJson)
-        deserializedJson.validate()
-        assertEquals(activity.id, deserializedJson.id)
-        assertEquals(activity.name, deserializedJson.name)
-        assertEquals(activity.description, deserializedJson.description)
-        assertEquals(activity.types, deserializedJson.types)
-        assertEquals(activity.aliases, deserializedJson.aliases)
-
-        // To-From Binary
-        val binary = activity.toBinary()
-        logger.debug { "Test Binary: Size ${binary.size}" }
-        assertTrue { binary.isNotEmpty() }
-
-        val deserializedBinary = Exportable.fromBinary(binary) as? Activity
-        assertNotNull(deserializedBinary)
-        deserializedBinary.validate()
-        assertEquals(activity.id, deserializedBinary.id)
-        assertEquals(activity.name, deserializedBinary.name)
-        assertEquals(activity.description, deserializedBinary.description)
-        assertEquals(activity.types, deserializedBinary.types)
-        assertEquals(activity.aliases, deserializedBinary.aliases)
+        val deserialized = Exportable.fromJson(json) as? Activity
+        assertNotNull(deserialized)
+        deserialized.validate()
+        assertEquals(activity.id, deserialized.id)
+        assertEquals(activity.name, deserialized.name)
+        assertEquals(activity.description, deserialized.description)
+        assertEquals(activity.types, deserialized.types)
+        assertEquals(activity.aliases, deserialized.aliases)
     }
 
     @Test
@@ -68,7 +51,6 @@ class TestActivity {
 
         assertFalse { activity.toJson().isEmpty() }
 
-        // Should throw on validate() because required fields are missing
         try {
             activity.validate()
             assertFalse(true, "Validation should fail due to missing required fields")

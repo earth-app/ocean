@@ -2,13 +2,6 @@
 
 package com.earthapp
 
-import io.github.oshai.kotlinlogging.KotlinLogging
-import korlibs.io.compression.compress
-import korlibs.io.compression.deflate.GZIP
-import korlibs.io.compression.uncompress
-import korlibs.io.lang.Charsets
-import korlibs.io.lang.decodeToString
-import korlibs.io.lang.encodeToByteArray
 import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport
@@ -36,42 +29,22 @@ abstract class Exportable {
     internal abstract fun validate0()
 
     /**
-     * Exports the object to a string format.
+     * Exports the object to a JSON string.
      * @return The string representation of the object.
      */
     fun toJson(): String = json.encodeToString(this)
 
     /**
-     * Exports the object to a binary format.
-     * @return The binary representation of the object.
-     */
-    fun toBinary(): ByteArray {
-        val bytes = toJson().encodeToByteArray(Charsets.UTF8)
-        return bytes.compress(GZIP)
-    }
-
-    /**
-     * Creates a deep copy of the object.
+     * Creates a deep copy of the object via a JSON round-trip.
      * @return A new instance of the object with the same properties.
      */
     fun deepCopy(): Exportable = json.decodeFromString<Exportable>(json.encodeToString(this))
 
     companion object {
-        private val logger = KotlinLogging.logger("com.earthapp.Exportable")
-
         /**
-         * Deserializes a JSON string into an object of the specified type.
+         * Deserializes a JSON string into an [Exportable].
          */
         fun fromJson(jsonString: String): Exportable = json.decodeFromString(jsonString)
-
-        /**
-         * Deserializes a binary string into an object of the specified type.
-         */
-        fun fromBinary(binary: ByteArray): Exportable {
-            val decompressed = binary.uncompress(GZIP)
-            val jsonString = decompressed.decodeToString(Charsets.UTF8)
-            return fromJson(jsonString)
-        }
     }
 
 }
