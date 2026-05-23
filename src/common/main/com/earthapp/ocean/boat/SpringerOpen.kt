@@ -3,10 +3,12 @@ package com.earthapp.ocean.boat
 import com.earthapp.shovel.fetchDocument
 import com.earthapp.shovel.querySelector
 import com.earthapp.shovel.querySelectorAll
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.joinAll
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 
 object SpringerOpen : Scraper() {
 
@@ -41,75 +43,58 @@ object SpringerOpen : Scraper() {
             val totalPages = if (pageLimit == -1) pages else minOf(pages, pageLimit)
 
             coroutineScope {
-                val maxPageConcurrent = 4
-                val pageJobs = mutableListOf<kotlinx.coroutines.Job>()
+                val pageGate = Semaphore(4)
+                val articleGate = Semaphore(6)
 
-                for (i in 1..totalPages) {
-                    // Wait for slot when at max concurrent
-                    while (pageJobs.size >= maxPageConcurrent) {
-                        delay(5L)
-                        pageJobs.removeAll { it.isCompleted }
-                    }
+                (1..totalPages).map { i ->
+                    async {
+                        pageGate.withPermit {
+                            try {
+                                delay((i % 3) * 50L)
+                                val document = if (i == 1) firstPage else "$url&page=$i".fetchDocument()
+                                logger.debug { "$name -- Searching through Page $i... (${document.url})" }
 
-                    val pageJob = launch {
-                        try {
-                            delay((i % 3) * 50L) // Minimal stagger to avoid thundering herd
-                            val document = if (i == 1) firstPage else "$url&page=$i".fetchDocument()
-                            logger.debug { "$name -- Searching through Page $i... (${document.url})" }
+                                val articleUrls = document.querySelectorAll(ARTICLE_URLS)
+                                    .mapNotNull { normalizeLink(baseUrl, it["href"]) }
+                                    .filter { it.contains("springeropen.com") }
 
-                            val articleUrls = document.querySelectorAll(ARTICLE_URLS)
-                                .mapNotNull { normalizeLink(baseUrl, it["href"]) }
-                                .filter { it.contains("springeropen.com") }
+                                logger.debug { "$name --- Found ${articleUrls.size} articles on Page $i" }
 
-                            logger.debug { "$name --- Found ${articleUrls.size} articles on Page $i" }
+                                coroutineScope {
+                                    articleUrls.map { articleUrl ->
+                                        async {
+                                            articleGate.withPermit {
+                                                try {
+                                                    logger.debug { "$name --- Processing article on Page $i: $articleUrl" }
 
-                            val maxArticleConcurrent = 6
-                            val articleJobs = mutableListOf<kotlinx.coroutines.Job>()
+                                                    val articleDoc = articleUrl.fetchDocument()
+                                                    val contents = articleDoc.querySelectorAll("main > article > section")
+                                                        .map { it.textContent }
 
-                            for (articleUrl in articleUrls) {
-                                // Wait for slot when at max concurrent
-                                while (articleJobs.size >= maxArticleConcurrent) {
-                                    delay(5L)
-                                    articleJobs.removeAll { it.isCompleted }
-                                }
+                                                    val content = contents.joinToString("\n\n")
+                                                    if (content.length < MIN_CONTENT_SIZE) {
+                                                        logger.warn { "$name --- Skipping article at $articleUrl due to insufficient content length." }
+                                                        return@withPermit
+                                                    }
 
-                                val articleJob = launch {
-                                    try {
-                                        logger.debug { "$name --- Processing article on Page $i: $articleUrl" }
-
-                                        val articleDoc = articleUrl.fetchDocument()
-                                        val contents = articleDoc.querySelectorAll("main > article > section")
-                                            .map { it.textContent }
-
-                                        val content = contents.joinToString("\n\n")
-                                        if (content.length < MIN_CONTENT_SIZE) {
-                                            logger.warn { "$name --- Skipping article at $articleUrl due to insufficient content length." }
-                                            return@launch
-                                        }
-
-                                        articles.add(
-                                            createArticle(articleUrl, articleDoc) {
-                                                this.content = content
+                                                    articles.add(
+                                                        createArticle(articleUrl, articleDoc) {
+                                                            this.content = content
+                                                        }
+                                                    )
+                                                } catch (e: Exception) {
+                                                    logger.error { "Error processing article $articleUrl: ${e.message}" }
+                                                }
                                             }
-                                        )
-                                    } catch (e: Exception) {
-                                        logger.error { "Error processing article $articleUrl: ${e.message}" }
-                                    }
+                                        }
+                                    }.awaitAll()
                                 }
-                                articleJobs.add(articleJob)
+                            } catch (e: Exception) {
+                                logger.error { "Error fetching page $i: ${e.message}" }
                             }
-
-                            // Wait for all articles on this page
-                            articleJobs.joinAll()
-                        } catch (e: Exception) {
-                            logger.error { "Error fetching page $i: ${e.message}" }
                         }
                     }
-                    pageJobs.add(pageJob)
-                }
-
-                // Wait for remaining page jobs
-                pageJobs.joinAll()
+                }.awaitAll()
             }
         } catch (e: Exception) {
             logger.error { "Error searching $name: ${e.message}" }

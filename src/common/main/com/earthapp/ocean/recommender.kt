@@ -4,10 +4,27 @@
 package com.earthapp.ocean
 
 import com.earthapp.activity.Activity
+import com.earthapp.activity.ActivityType
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
 
-//<editor-fold desc="Activity Recommendation Function">
+@JsExport.Ignore
+private val WORD_SPLIT = Regex("\\W+")
+
+@JsExport.Ignore
+private fun Activity.keywordSet(): Set<String> {
+    val name = name
+    val description = description ?: ""
+    val result = HashSet<String>(name.length / 4 + description.length / 4 + 8)
+    fun add(text: String) {
+        for (token in text.split(WORD_SPLIT)) {
+            if (token.length > 2) result.add(token.lowercase())
+        }
+    }
+    add(name)
+    add(description)
+    return result
+}
 
 @JsExport.Ignore
 private data class ScoredActivity(val activity: Activity, val keywordScore: Double, val typeScore: Double) {
@@ -17,50 +34,58 @@ private data class ScoredActivity(val activity: Activity, val keywordScore: Doub
 
 /**
  * Recommends three activities based on the current activities that the user is engaged in.
- * This function analyzes the current activities and suggests new ones that complement or enhance the user's experience.
  *
- * - The first activity is an activity that most closely matches the user's current activities.
- * - The second activity is an activity that may be similar to some of the activities but may be a bit different.
- * - The third activity is an activity that is completely different from the user's current activities, providing a fresh experience.
+ * - The first is the closest match to the user's current activities.
+ * - The second is a related-but-different option (a tie-break between similarity and novelty).
+ * - The third is intentionally different, providing a fresh experience.
  *
- * This function is designed to help users discover new activities that they might enjoy based on their current interests and activities.
  * @param all A list of all available activities in the system.
  * @param current A list of currently active activities.
- * @return A list of recommended activities that the user might enjoy based on their current activities.
+ * @return A list of recommended activities (up to three).
  */
 fun recommendActivity(
     all: List<Activity>,
     current: List<Activity>
 ): List<Activity> {
-    val currentKeywords = current.flatMap { activity ->
-        activity.name.split(Regex("\\W+")) + (activity.description ?: "").split(Regex("\\W+"))
-    }.map { it.lowercase() }.filter { it.length > 2 }.toSet()
+    val currentIds = current.mapTo(HashSet(current.size)) { it.id }
 
-    val currentTypes = current.flatMap { it.types }.toSet()
+    val currentKeywords = HashSet<String>()
+    val currentTypes = HashSet<ActivityType>()
+    for (activity in current) {
+        currentKeywords.addAll(activity.keywordSet())
+        currentTypes.addAll(activity.types)
+    }
+    val currentTypesSize = currentTypes.size.coerceAtLeast(1).toDouble()
 
-    val scored = all
-        .filter { it.id !in current.map { c -> c.id } }
-        .map { activity ->
-            val candidateKeywords = (activity.name.split(Regex("\\W+")) + (activity.description ?: "").split(Regex("\\W+")))
-                .map { it.lowercase() }
-                .filter { it.length > 2 }
-                .toSet()
+    val scored = ArrayList<ScoredActivity>(all.size)
+    for (activity in all) {
+        if (activity.id in currentIds) continue
 
-            val intersection = currentKeywords.intersect(candidateKeywords).size.toDouble()
-            val union = (currentKeywords + candidateKeywords).size.toDouble().coerceAtLeast(1.0)
-            val keywordScore = intersection / union
+        val candidateKeywords = activity.keywordSet()
 
-            val sharedTypes = currentTypes.intersect(activity.types).size
-            val typeScore = sharedTypes.toDouble() / (currentTypes.size.coerceAtLeast(1))
+        var intersectionCount = 0
+        for (k in candidateKeywords) if (k in currentKeywords) intersectionCount++
+        val unionCount = (currentKeywords.size + candidateKeywords.size - intersectionCount).coerceAtLeast(1)
+        val keywordScore = intersectionCount.toDouble() / unionCount.toDouble()
 
-            ScoredActivity(activity, keywordScore, typeScore)
-        }
+        var sharedTypes = 0
+        for (t in activity.types) if (t in currentTypes) sharedTypes++
+        val typeScore = sharedTypes.toDouble() / currentTypesSize
 
-    val sorted = scored.sortedWith(compareByDescending<ScoredActivity> { it.totalScore }
-        .thenByDescending { if (it.isNovel) 1 else 0 }) // prefer novelty on tie
+        scored.add(ScoredActivity(activity, keywordScore, typeScore))
+    }
+
+    val sorted = scored.sortedWith(
+        compareByDescending<ScoredActivity> { it.totalScore }
+            .thenByDescending { if (it.isNovel) 1 else 0 } // prefer novelty on tie
+    )
 
     val first = sorted.firstOrNull()?.activity
-    val second = if (sorted.size >= 3) sorted[sorted.size / 2].activity else sorted.drop(1).firstOrNull()?.activity
+    val second = when {
+        sorted.size >= 3 -> sorted[sorted.size / 2].activity
+        sorted.size == 2 -> sorted[1].activity
+        else -> null
+    }
 
     val different = scored
         .filter { it.keywordScore < 0.2 && it.typeScore < 0.2 }
@@ -70,5 +95,3 @@ fun recommendActivity(
 
     return listOfNotNull(first, second, different)
 }
-
-//</editor-fold>

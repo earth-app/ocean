@@ -2,10 +2,12 @@ package com.earthapp.ocean.boat
 
 import com.earthapp.shovel.fetchText
 import io.ktor.http.encodeURLPathPart
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.joinAll
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -119,35 +121,23 @@ object DOAJ : Scraper() {
                 } else {
                     minOf((totalArticles + (PER_PAGE - 1)) / PER_PAGE, pageLimit)
                 }
+                val gate = Semaphore(8)
 
-                val maxConcurrent = 8
-                val jobs = mutableListOf<kotlinx.coroutines.Job>()
-
-                for (page in 1..totalPages) {
-                    // Wait for a slot when we reach max concurrent
-                    while (jobs.size >= maxConcurrent) {
-                        delay(10L) // Minimal polling delay
-                        jobs.removeAll { it.isCompleted }
-                    }
-
-                    val job = launch {
-                        try {
-                            // Stagger requests slightly to avoid thundering herd
-                            if (page > 1) delay((page % 4) * 50L)
-
-                            val response = performSearch(searchUrl, page = page, pageSize = PER_PAGE)
-                            val pageArticles = response.results.mapNotNull { parseArticle(it) }
-                            articles.addAll(pageArticles)
-                            logger.debug { "Fetched page $page of articles (${pageArticles.size} articles on page)." }
-                        } catch (e: Exception) {
-                            logger.error { "Error fetching page $page: ${e.message}" }
+                (1..totalPages).map { page ->
+                    async {
+                        gate.withPermit {
+                            try {
+                                if (page > 1) delay((page % 4) * 50L)
+                                val response = performSearch(searchUrl, page = page, pageSize = PER_PAGE)
+                                val pageArticles = response.results.mapNotNull { parseArticle(it) }
+                                articles.addAll(pageArticles)
+                                logger.debug { "Fetched page $page of articles (${pageArticles.size} articles on page)." }
+                            } catch (e: Exception) {
+                                logger.error { "Error fetching page $page: ${e.message}" }
+                            }
                         }
                     }
-                    jobs.add(job)
-                }
-
-                // Wait for remaining jobs
-                jobs.joinAll()
+                }.awaitAll()
             }
 
         } catch (e: Exception) {
