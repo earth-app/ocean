@@ -58,7 +58,7 @@ kotlin {
             implementation("com.earth-app.shovel:shovel:1.1.1")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
-            implementation("io.github.oshai:kotlin-logging:8.0.03")
+            implementation("io.github.oshai:kotlin-logging:8.0.4")
         }
 
         commonTest.dependencies {
@@ -67,7 +67,7 @@ kotlin {
         }
 
         jvmMain.dependencies {
-            runtimeOnly("ch.qos.logback:logback-classic:1.5.32")
+            runtimeOnly("ch.qos.logback:logback-classic:1.5.33")
 
             implementation("com.prof18.rssparser:rssparser:6.1.5")
         }
