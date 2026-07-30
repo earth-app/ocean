@@ -3,10 +3,10 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
-    kotlin("multiplatform") version "2.3.21"
-    kotlin("plugin.serialization") version "2.3.21"
+    kotlin("multiplatform") version "2.4.10"
+    kotlin("plugin.serialization") version "2.4.10"
     id("org.jetbrains.dokka") version "2.2.0"
-    id("com.vanniktech.maven.publish") version "0.36.0"
+    id("com.vanniktech.maven.publish") version "0.37.0"
     id("org.danilopianini.npm.publish") version "4.1.11"
 
     `maven-publish`
@@ -58,7 +58,7 @@ kotlin {
             implementation("com.earth-app.shovel:shovel:1.1.1")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
-            implementation("io.github.oshai:kotlin-logging:8.0.03")
+            implementation("io.github.oshai:kotlin-logging:8.0.4")
         }
 
         commonTest.dependencies {
@@ -67,9 +67,9 @@ kotlin {
         }
 
         jvmMain.dependencies {
-            runtimeOnly("ch.qos.logback:logback-classic:1.5.32")
+            runtimeOnly("ch.qos.logback:logback-classic:1.6.1")
 
-            implementation("com.prof18.rssparser:rssparser:6.1.5")
+            implementation("com.prof18.rssparser:rssparser:6.1.8")
         }
 
         jsMain.dependencies {
